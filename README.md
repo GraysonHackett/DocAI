@@ -11,8 +11,6 @@ Welcome to the DocAI capstone project in partnership with RedHat
 
 
 
-TODO:
-- continue scraping
-- replace logos once we have then
-- add API key
-- user stories flow, etc. 
+Make sure to: 
+- npm install dotenv openai axios 
+- add REACT_APP_API_KEY to your .env file within root (outside of source directory)
