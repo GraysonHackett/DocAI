@@ -10,7 +10,7 @@ function App() {
                 <h1>Welcome to DocAI</h1>
             </header>
             <main>
-                <Chatbot />
+                <Chatbot/>
             </main>
         </div>
     );
