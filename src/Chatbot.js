@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ChatbotStyles.css';
 
-
 function OpenAIExample() {
   const [response, setResponse] = useState(null);
   const [textInput, setTextInput] = useState('');
 
   const fetchAIResponse = async () => {
     try {
-      const apiKey = process.env.REACT_APP_API_KEY; 
+      const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = textInput;
       const url = 'https://api.openai.com/v1/chat/completions';
 
       const response = await axios.post(
         url,
         {
-          model: 'gpt-3.5-turbo', 
-          messages: [{ role: "user", content: prompt}],
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: prompt }],
           max_tokens: 50,
         },
         {
@@ -51,17 +50,19 @@ function OpenAIExample() {
   };
 
   return (
-    <div className='openai-container'>
+    <div className="openai-container">
       <input
-        className='text-box'
+        className="text-box"
         type="text"
         value={textInput}
         onChange={(e) => setTextInput(e.target.value)}
-        onKeyPress={handleKeyPress} 
+        onKeyPress={handleKeyPress}
         placeholder="Type your message here"
       />
-      <button onClick={fetchAIResponse} className='send-button'>Send Message</button>
-      {response && <p className='response'>{response}</p>}
+      <button onClick={fetchAIResponse} className="send-button">
+        Send Message
+      </button>
+      {response && <p className="response">{response}</p>}
     </div>
   );
 }

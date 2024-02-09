@@ -10,7 +10,10 @@ Welcome to the DocAI capstone project in partnership with RedHat
 3. ``npm install openai``
 
 
-
 Make sure to: 
-- npm install dotenv openai axios 
-- add REACT_APP_API_KEY to your .env file within root (outside of source directory)
+
+1. npm install dotenv axios 
+2. add key to .env file
+
+
+![alt text](https://venturebeat.com/wp-content/uploads/2021/09/Red-Hat-e1684880569131.jpg?w=1200&strip=all)
