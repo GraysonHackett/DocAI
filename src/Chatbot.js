@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './ChatbotStyles.css'; // Add this line
+import './ChatbotStyles.css';
 
 
 function OpenAIExample() {
@@ -16,14 +16,14 @@ function OpenAIExample() {
       const response = await axios.post(
         url,
         {
-          model: 'gpt-3.5-turbo', // Example model, adjust as needed
+          model: 'gpt-3.5-turbo', 
           messages: [{ role: "user", content: prompt}],
           max_tokens: 50,
         },
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`, // Ensure correct authorization header
+            Authorization: `Bearer ${apiKey}`,
           },
         }
       );
@@ -34,14 +34,13 @@ function OpenAIExample() {
         setResponse(chosenText);
       } else {
         console.error('Error: No choices found in the response');
-        setResponse(''); // Set response to an empty string or handle as appropriate
+        setResponse('');
       }
 
       // Clear the text input after sending the message
       setTextInput('');
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
-      // Handle errors
     }
   };
 
