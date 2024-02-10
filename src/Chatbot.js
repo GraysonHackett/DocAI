@@ -11,6 +11,7 @@ function OpenAIExample() {
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = textInput;
       const url = 'https://api.openai.com/v1/chat/completions';
+      setTextInput(''); // clears the text box, possibly put after response from API? 
 
       const response = await axios.post(
         url,
@@ -37,7 +38,6 @@ function OpenAIExample() {
       }
 
       // Clear the text input after sending the message
-      setTextInput('');
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
     }
