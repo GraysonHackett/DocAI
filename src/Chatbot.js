@@ -17,12 +17,12 @@ function OpenAiAPI() {
     }
   }, [instructionSent, filesSent]);
 
-  // "pre-processing"
+  // "instrctions prompt"
   const sendInstruction = async () => {
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
       const instructions =
-        "Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources.";
+        "Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as consice as possible, and even copy and paste answers from the documentation when necessary";
 
       const url = 'https://api.openai.com/v1/chat/completions';
 
@@ -32,7 +32,7 @@ function OpenAiAPI() {
         {
           model: 'gpt-3.5-turbo',
           messages: [{ role: 'user', content: instructions }],
-          max_tokens: 50, // If this is not enough, newer models have a 32k token limit
+          max_tokens: 100, // If this is not enough, newer models have a 32k token limit
         },
         {
           headers: {
@@ -48,7 +48,8 @@ function OpenAiAPI() {
       console.error('Error sending instruction to OpenAI API:', error);
     }
   };
-
+  // sending documentation files 
+  // TODO: add the instruictions and files to one API request, to help with API usage limit 
   const sendFiles = async () => {
     try {
       const apiKey = process.env.REACT_APP_API_KEY;
@@ -71,7 +72,7 @@ function OpenAiAPI() {
         {
           model: 'gpt-3.5-turbo',
           messages: fileContents,
-          max_tokens: 500,
+          max_tokens: 500, // change based on .md file size? 
         },
         {
           headers: {
@@ -100,7 +101,7 @@ function OpenAiAPI() {
         {
           model: 'gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: 50,
+          max_tokens: 100, // will limit length of response as well as request (~ 4-5 tokens per word)
         },
         {
           headers: {

@@ -15,5 +15,8 @@ Make sure to:
 1. npm install dotenv axios 
 2. add key to .env file
 
+Notes: 
+
+- The request limit is 2 per min, 200 per day, 40,000 tokens per min 
 
 ![alt text](https://venturebeat.com/wp-content/uploads/2021/09/Red-Hat-e1684880569131.jpg?w=1200&strip=all)
