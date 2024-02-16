@@ -3,6 +3,10 @@
 # API key 
 .env
 
+# package
+.package-lock.json
+.package.json 
+
 # Documenation set 
 /documentation_set 
 
