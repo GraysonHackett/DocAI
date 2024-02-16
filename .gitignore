@@ -3,6 +3,9 @@
 # API key 
 .env
 
+# Documenation set 
+/documentation_set 
+
 # dependencies
 /node_modules
 /.pnp

@@ -11,7 +11,7 @@ function OpenAiAPI() {
   useEffect(() => {
     // Send initial instruction when component mounts
     if (!instructionSent) {
-      sendInstruction();
+      sendInstruction();  // TODO: Insutrctions appear to be sending twice on mount 
     } else if (!filesSent) {
       setTimeout(sendFiles, 3000);
     }
@@ -134,14 +134,15 @@ function OpenAiAPI() {
 
   return (
     <div className="openai-container">
-      <input
-        className="text-box"
-        type="text"
-        value={textInput}
-        onChange={(e) => setTextInput(e.target.value)}
-        onKeyPress={handleKeyPress}
-        placeholder="Type your message here"
-      />
+      <div className="text-box">
+        <input
+          type="text"
+          value={textInput}
+          onChange={(e) => setTextInput(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder="Type your message here"
+          />
+        </div>
       <button onClick={fetchAIResponse} className="send-button">
         Send Message
       </button>
