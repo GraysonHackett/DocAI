@@ -1,4 +1,4 @@
-# DocAI - Temp README 
+# DocAI - Temp README
 
 ## <u>Overview</u>
 
@@ -8,9 +8,18 @@ This project is a capstone class project developed in collaboration with the Col
 
 To run the project locally, follow these setup instructions:
 
-1. Clone the repository to your local machine.
-2. Ensure that `package.json` and `package-lock.json` files are present in the project directory. If not, they will be created automatically upon cloning.
+1. Clone the repository to your local machine:
+   ```sh 
+   git clone https://github.com/GraysonHackett/DocAI
+   ```
+2. Update all dependencies with terminal command: 
+   ```sh
+   npm install 
+   ```
 3. Install the necessary dependencies by running the following command in your terminal:
+   ```sh
+   npm install axios dotenv node-fetch openai 
+   ```
 4. Create a `.env` file in the project root directory and add your OpenAI API key to it. The file should look like this:
    ```js
    REACT_APP_API_KEY=your_openai_api_key_here

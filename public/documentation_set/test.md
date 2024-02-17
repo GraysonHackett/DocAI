@@ -12,10 +12,11 @@ markdown files into readable files (PDF, EPUB, HTML...).
 
 In order to use this makefile you will need to make sure that the following
 dependencies are installed on your system:
-  - GNU make
-  - Pandoc
-  - LuaLaTeX
-  - DejaVu Sans fonts
+
+- GNU make
+- Pandoc
+- LuaLaTeX
+- DejaVu Sans fonts
 
 ### Folder structure
 
@@ -32,13 +33,13 @@ my-document/     # Root directory.
 
 ### Setup generic data
 
-Edit the *metadata.yml* file to set configuration data:
+Edit the _metadata.yml_ file to set configuration data:
 
 ```yml
 ---
 title: My document title
 author: Ralph Huwiler
-rights:  Creative Commons Attribution 4.0 International
+rights: Creative Commons Attribution 4.0 International
 language: en-US
 tags: [document, my-document, etc]
 abstract: |
@@ -52,7 +53,7 @@ page](http://pandoc.org/MANUAL.html#extension-yaml_metadata_block).
 ### Creating chapters
 
 Creating a new chapter is as simple as creating a new markdown file in the
-*src/* folder; you'll end up with something like this:
+_src/_ folder; you'll end up with something like this:
 
 ```
 src/01-introduction.md
