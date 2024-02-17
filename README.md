@@ -42,7 +42,7 @@ The main component of the project is the `Chatbot.js` file, which contains the i
 
 ### <u>Functionality Overview</u>
 
-The `Chatbot.js` file defines a React functional component named `OpenAiAPI`
+The `Chatbot.js` file outlines our chatbot setup within the function `OpenAiAPI`
 
 - Initial instructions and documentation will be sent to the OpenAI API when the component mounts.
 - It sends user input messages to the OpenAI API and displays the response from the AI.
