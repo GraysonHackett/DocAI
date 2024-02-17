@@ -8,10 +8,10 @@
   padding: 20px;
   box-sizing: border-box;
 }
-/* TODO: figure out use?  */
 
 .text-box {
   width: 80%;
+  min-width: 200px;
   max-width: 500px;
   height: 40px;
   padding: 8px;
@@ -21,7 +21,7 @@
   font-size: 16px;
   left: 600px;
   resize: both;
-} 
+}
 /* add resizing for webpage + styling */
 
 .send-button {
@@ -29,7 +29,7 @@
   max-width: 100px;
   background-color: black;
   color: white;
-  border: none;
+  border: 2px solid white;
   border-radius: 4px;
   padding: 10px 20px;
   font-size: 16px;
@@ -41,6 +41,8 @@
 
 .send-button:hover {
   background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 /* add styling */
 

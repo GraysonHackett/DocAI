@@ -70,8 +70,9 @@ function OpenAiAPI() {
 
   return (
     <div className="openai-container">
-      <div className="text-box">
+      <div>
         <input
+          className="text-box"
           type="text"
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
