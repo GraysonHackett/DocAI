@@ -36,8 +36,8 @@ The main component of the project is the `Chatbot.js` file, which contains the i
 
 ### <u>Dependencies Used</u>
 
-> `openai`: Used for accessing the openai API and its elements.
-> `axios`: Used for sending HTTP requests to the OpenAI API.
+> `openai`: Used for accessing the openai API and its elements.<br>
+> `axios`: Used for sending HTTP requests to the OpenAI API.<br>
 > `dotenv`: Used for loading environment variables from the `.env` file.
 
 ### <u>Functionality Overview</u>
@@ -69,8 +69,8 @@ The snippet shows how we use Axios to send a POST request to the API URL, includ
 
 The component structure is as follows:
 
-> `textInput`: State variable to store the user's input message.
-> `response`: State variable to store the response from the OpenAI API.
+> `textInput`: State variable to store the user's input message.<br>
+> `response`: State variable to store the response from the OpenAI API.<br>
 > `instructionSent` and `filesSent`: State variables to keep track of whether initial instructions and Markdown files have been sent to the API.
 
 ### <u>API Integration</u>
