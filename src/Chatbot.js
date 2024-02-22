@@ -1,46 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './ChatbotStyles.css';
+import './App.css';
 
-const readDocumentation = async () => {
-  try {
-    const response = await fetch('/documentation_set/test.md');
-    const fileContents = await response.text();
-    return fileContents.trim(); // Trim whitespace from both ends
-  } catch (error) {
-    console.error('Error reading documentation:', error);
-    return '';
-  }
-};
-
-function OpenAiAPI() {
-  const [response, setResponse] = useState(null);
+function OpenAIExample() {
+  const [messages, setMessages] = useState([]);
   const [textInput, setTextInput] = useState('');
-  const [documentation, setDocumentation] = useState('');
-
-  const instructions =
-    'Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as consice as possible, and even copy and paste answers from the documentation when necessary';
 
   const fetchAIResponse = async () => {
     try {
-      if (!documentation) {
-        const docs = await readDocumentation();
-        setDocumentation(docs); //TODO: Application appears to be sending first request without documentation, then every following request with? 
-      }
-
+      const userMessage = textInput;
       const apiKey = process.env.REACT_APP_API_KEY;
-      const prompt = `${instructions} \n\n ${documentation} \n\n Question = ${textInput}`;
+      const prompt = textInput;
       const url = 'https://api.openai.com/v1/chat/completions';
-      setTextInput('');
-
-      //console.log(prompt);
+      setTextInput(''); // clears the text box, possibly put after response from API?
 
       const response = await axios.post(
         url,
         {
           model: 'gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: 100, // will limit length of response as well as request (~ 4-5 tokens per word)
+          max_tokens: 50,
         },
         {
           headers: {
@@ -50,13 +29,20 @@ function OpenAiAPI() {
         }
       );
 
+      // Ensure choices array exists and has at least one element
       if (response.data.choices && response.data.choices.length > 0) {
         const chosenText = response.data.choices[0].message.content;
-        setResponse(chosenText);
+        setMessages(oldMessages => [
+          ...oldMessages,
+          { text: userMessage, sender: 'user' },
+          { text: chosenText, sender: 'ai' }
+        ]);
       } else {
         console.error('Error: No choices found in the response');
-        setResponse('');
+        //setResponse('');
       }
+
+      // Clear the text input after sending the message
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
     }
@@ -70,22 +56,28 @@ function OpenAiAPI() {
 
   return (
     <div className="openai-container">
-      <div>
+      <div className="messages-container">
+        {messages.map((msg, index) => (
+            <div key={index} className={`message ${msg.sender}`}>
+              {msg.text}
+            </div>
+          ))}
+      </div>
+      <div className="input-container">
         <input
           className="text-box"
           type="text"
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Type your message here"
+          placeholder="What can I help you with today?"
         />
+        <button onClick={fetchAIResponse} className="send-button">
+          Send Message
+        </button>
       </div>
-      <button onClick={fetchAIResponse} className="send-button">
-        Send Message
-      </button>
-      {response && <p className="response">{response}</p>}
     </div>
   );
 }
 
-export default OpenAiAPI;
+export default OpenAIExample;

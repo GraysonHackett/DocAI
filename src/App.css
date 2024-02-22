@@ -1,9 +1,10 @@
-/* src/App.css */
-body {
-  font-family: 'Arial', sans-serif;
+/* Consolidated App.css */
+body, html {
+  font-family: 'Open Sans', sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: #282c34;
+  background-color: #f5f5f5; 
+  color: #333;
 }
 
 #root {
@@ -11,7 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .App {
@@ -20,50 +21,98 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 90%;
   max-width: 800px;
-  margin: 0 auto;
-  height: 100%; /* Make it full-height */
+  margin: auto; /* Center the box horizontally */
 }
 
 .App-header {
   background-color: #282c34;
   padding: 20px;
   color: white;
-  border-radius: 8px 8px 8px 8px;
+  width: 100%; /* Stretch across the top */
+  position: fixed; /* Stick to the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 main {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align chat at the top */
   justify-content: center;
-  flex: 1; /* Expand to fill remaining height */
+  flex-direction: column; /* Stack children vertically */
+  width: 100%;
+  padding-top: 100px; /* Space for header */
+  padding-bottom: 100px; /* Space for .text-box and .send-button */
+  max-height: calc(100vh - 200px); /* Max height for chat window */
+  overflow-y: auto; /* Make chat scrollable */
 }
 
-input {
+.openai-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Align messages to the bottom */
+  width: 100%;
+}
+
+/* Chat input and button */
+.text-box, .send-button {
+  box-sizing: border-box;
   padding: 12px;
-  margin-right: 8px;
-  border: 1px solid #444654;
+  margin: 8px 0; /* Space between input and button */
+  border: 1px solid #ddd;
   border-radius: 4px;
-  position: absolute;
-  bottom:5px;
-  left: 470px;
-  width: 400px;
 }
 
-button {
-  padding: 12px;
-  background-color: black;
+.text-box {
+  width: calc(100% - 100px); /* Adjusted width for .text-box */
+}
+
+.send-button {
+  width: 100px; /* Width of the button */
+  background-color: #007bff; /* Bootstrap primary color for familiarity */
   color: white;
-  border: 1px solid #444654;
-  cursor: pointer;
-  border-radius: 4px;
-  position: absolute;
-  bottom: 5px;
-  right: 480px;
 }
 
-button:hover {
-  background-color: white;
-  color: black;
+
+.send-button:hover {
+  background-color: #0056b3; /* Darken on hover */
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column; /* Stack messages vertically */
+  align-items: flex-start; /* Align messages to the left */
+  justify-content: flex-end; /* Align messages to the bottom */
+  max-height: calc(100vh - 200px); /* Maximum height for messages container */
+  overflow-y: auto; /* Enable vertical scrolling if messages overflow */
+  padding: 10px; /* Add padding to the container */
+}
+
+/* Chat message styles */
+.message {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  word-wrap: break-word; /* Ensure long words don't break layout */
+}
+
+/* Styling for messages sent by the user */
+.message.user {
+  background-color: #007AFF; /* Color for user messages */
+  color: white; /* Text color for user messages */
+  align-self: flex-end; /* Align user messages to the right */
+  border-radius: 20px;
+  margin-left: 20px; /* Add margin to create space between messages */
+}
+
+/* Styling for messages sent by the AI */
+.message.ai {
+  background-color: #e9ecef; /* Color for AI messages */
+  color: #333; /* Text color for AI messages */
+  align-self: flex-start; /* Align AI messages to the left */
+  border-radius: 20px;
+  margin-right: 20px; /* Add margin to create space between messages */
 }
