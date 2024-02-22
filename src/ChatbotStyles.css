@@ -1,54 +1,68 @@
-.chatbot-container {
-  display: inline-block;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.text-box {
-  width: 80%;
-  min-width: 200px;
-  max-width: 500px;
-  height: 40px;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid black;
-  border-radius: 4px;
-  font-size: 16px;
-  left: 600px;
-  resize: both;
-}
-/* add resizing for webpage + styling */
-
-.send-button {
-  width: 80%;
-  max-width: 100px;
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  right: 580px;
-  margin-bottom: 10px;
-}
-/* add resizing for webpage + styling */
-
-.send-button:hover {
-  background-color: white;
-  border: 2px solid black;
-  border-radius: 4px;
-}
-/* add styling */
-
-.response {
-  font-size: 16px;
-  margin-top: 20px;
-  max-width: 90%;
-}
-/* styling */
+.openai-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Align messages to the bottom */
+    width: 600px;
+    height: 700px;
+  }
+  
+  /* Chat input and button */
+  .text-box {
+    box-sizing: border-box;
+    padding: 18px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 500px;
+    align-self: center;
+  }
+  
+  .send-button {
+    background-color: #007bff; /* Bootstrap primary color for familiarity */
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+  }
+  
+  
+  .send-button:hover {
+    background-color: #0056b3; /* Darken on hover */
+  }
+  
+  .messages-container {
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    align-items: center; /* Align messages to the left */
+    justify-content: flex-end; /* Align messages to the bottom */
+    max-height: calc(100vh - 200px); /* Maximum height for messages container */
+    overflow-y: auto; /* Enable vertical scrolling if messages overflow */
+    padding: 10px; /* Add padding to the container */
+  }
+  
+  /* Chat message styles */
+  .message {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    word-wrap: break-word; /* Ensure long words don't break layout */
+  }
+  
+  /* Styling for messages sent by the user */
+  .message.user {
+    background-color: #007AFF; /* Color for user messages */
+    color: white; /* Text color for user messages */
+    align-self: flex-end; /* Align user messages to the right */
+    border-radius: 20px;
+    margin-left: 20px; /* Add margin to create space between messages */
+  }
+  
+  /* Styling for messages sent by the AI */
+  .message.ai {
+    background-color: #e9ecef; /* Color for AI messages */
+    color: #333; /* Text color for AI messages */
+    align-self: flex-start; /* Align AI messages to the left */
+    border-radius: 20px;
+    margin-right: 20px; /* Add margin to create space between messages */
+  }
