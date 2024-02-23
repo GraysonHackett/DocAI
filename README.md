@@ -18,7 +18,7 @@ To run the project locally, follow these setup instructions:
    ```
 3. Install the necessary dependencies by running the following command in your terminal:
    ```sh
-   npm install axios dotenv node-fetch openai 
+   npm install axios dotenv node-fetch openai react-markdown
    ```
 4. Create a `.env` file in the project root directory and add your OpenAI API key to it. The file should look like this:
    ```js
