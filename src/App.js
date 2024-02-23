@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} alt="DocAI Logo" className="App-logo"/> {/* Add this line for the logo */}
+                
                 <h1>DocAI</h1>
             </header>
             <main>
