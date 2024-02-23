@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ChatbotStyles.css';
+import ReactMarkdown from 'react-markdown'; 
 
 const readDocumentation = async () => {
   try {
@@ -33,13 +34,13 @@ function OpenAIExample() {
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput(''); // clears the text box, possibly put after response from API?
-
+      console.log(prompt); 
       const response = await axios.post(
         url,
         {
           model: 'gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: 50,
+          max_tokens: 500,
         },
         {
           headers: {
@@ -77,14 +78,16 @@ function OpenAIExample() {
   return (
     <div className="openai-container">
       <div className="messages-container">
-          {messages.map((msg, index) => (
-            <div key={index} className={`message ${msg.sender}`}>
-              <div className='invisible-width'>
-                {msg.text}
-              </div>
-            </div>
-          ))}
-      </div>
+      {messages.map((msg, index) => (
+        <div key={index} className={`message ${msg.sender}`}>
+          {msg.sender === 'ai' ? (
+            <ReactMarkdown>{msg.text}</ReactMarkdown>
+          ) : (
+            <div>{msg.text}</div>
+          )}
+        </div>
+      ))}
+    </div>
       <div className='input-container'>
         <input
             className="text-box"
@@ -95,7 +98,7 @@ function OpenAIExample() {
             placeholder="What can I help you with today?"
         ></input>
         <button onClick={fetchAIResponse} className="send-button">
-            S
+            Send
           </button>
       </div>
     </div>

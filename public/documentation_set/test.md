@@ -47,8 +47,8 @@ abstract: |
 ---
 ```
 
-You can find the list of all available keys on [this
-page](http://pandoc.org/MANUAL.html#extension-yaml_metadata_block).
+You can find the list of all available keys on [Key Page
+](http://pandoc.org/MANUAL.html#extension-yaml_metadata_block).
 
 ### Creating chapters
 
@@ -66,3 +66,5 @@ Pandoc and Make will join them automatically ordered by name; that's why the
 numeric prefixes are being used.
 
 All you need to specify for each chapter at least one title:
+
+-- END OF DOCUMENTATION FILE -- 

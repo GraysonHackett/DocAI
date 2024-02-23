@@ -15,7 +15,7 @@ function App() {
                 <Chatbot/>
             </main>
             <footer className='footer'>
-                DocAI Created In Collaboration with Red Hat ©2024 
+                DocAI Project Created In Collaboration with Red Hat ©2024 
             </footer>
         </div>
     );
