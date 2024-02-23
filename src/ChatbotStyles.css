@@ -1,68 +1,91 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; 
+  background-color: #0D171C; /* Grey background */
+  border-radius: 20px;
+  border: 1px solid #203946;
+}
+
 .openai-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end; /* Align messages to the bottom */
-    width: 600px;
-    height: 700px;
-  }
-  
-  /* Chat input and button */
-  .text-box {
-    box-sizing: border-box;
-    padding: 18px;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 500px;
-    align-self: center;
-  }
-  
-  .send-button {
-    background-color: #007bff; /* Bootstrap primary color for familiarity */
-    color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 100px;
-    height: 50px;
-  }
-  
-  
-  .send-button:hover {
-    background-color: #0056b3; /* Darken on hover */
-  }
-  
-  .messages-container {
-    display: flex;
-    flex-direction: column; /* Stack messages vertically */
-    align-items: center; /* Align messages to the left */
-    justify-content: flex-end; /* Align messages to the bottom */
-    max-height: calc(100vh - 200px); /* Maximum height for messages container */
-    overflow-y: auto; /* Enable vertical scrolling if messages overflow */
-    padding: 10px; /* Add padding to the container */
-  }
-  
-  /* Chat message styles */
-  .message {
-    margin: 10px 0;
-    padding: 10px 20px;
-    border-radius: 20px;
-    word-wrap: break-word; /* Ensure long words don't break layout */
-  }
-  
-  /* Styling for messages sent by the user */
-  .message.user {
-    background-color: #007AFF; /* Color for user messages */
-    color: white; /* Text color for user messages */
-    align-self: flex-end; /* Align user messages to the right */
-    border-radius: 20px;
-    margin-left: 20px; /* Add margin to create space between messages */
-  }
-  
-  /* Styling for messages sent by the AI */
-  .message.ai {
-    background-color: #e9ecef; /* Color for AI messages */
-    color: #333; /* Text color for AI messages */
-    align-self: flex-start; /* Align AI messages to the left */
-    border-radius: 20px;
-    margin-right: 20px; /* Add margin to create space between messages */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Align messages to the bottom */
+  width: 600px;
+  height: 700px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px; /* Adjust width as needed */
+  margin-top: 20px; /* Add some space between main container and input container */
+}
+
+/* Chat input and button */
+.text-box {
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid grey;
+  border-radius: 25px;
+  width: calc(100% - 120px); /* Adjust width */
+}
+
+.send-button {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid;
+  border-radius: 40px;
+  width: 55px;
+  height: 55px;
+}
+
+.send-button:hover {
+  background-color: #0056b3; /* Darken on hover */
+}
+
+/* Chat message styles */
+.message {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  word-wrap: break-word; /* Ensure long words don't break layout */
+}
+
+.messages-container {
+  width: 600px; /* Adjust width as needed */
+  height: 400px; /* Match the openai-container height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-bottom: 20px; /* Add space between message container and input container */
+}
+
+/* Styling for messages sent by the user */
+.message.user {
+  background-color: #007aff; /* Color for user messages */
+  color: white; /* Text color for user messages */
+  border-radius: 20px;
+  display: inline-flex;
+  float: right;
+  text-align: right;
+  max-width: 300px;
+  margin: 0px 0px 0px 250px;
+}
+
+/* Styling for messages sent by the AI */
+.message.ai {
+  background-color: #e9ecef; /* Color for AI messages */
+  color: #333; /* Text color for AI messages */
+  border-radius: 20px;
+  display: inline-flex;
+  float: left;
+  text-align: left;
+  max-width: 300px;
+}
+
+.invisible-width {
+  background-color: transparent;
+}

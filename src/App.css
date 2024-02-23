@@ -3,7 +3,7 @@ body, html {
   font-family: 'Open Sans', sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5; 
+  background-color: #0D171C; 
   color: #333;
 }
 
@@ -17,16 +17,18 @@ body, html {
 
 .App {
   text-align: center;
-  background-color: #fff;
+  background-color: transparent;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 800px;
+  height: calc(100vh - 120px); /* Adjusted to create spacing from the header and bottom */
   margin: auto; /* Center the box horizontally */
   display: flex; /* Aligns the logo and the h1 horizontally */
   align-items: center; /* Centers items vertically within the header */
   justify-content: flex-start; /* Aligns items to the start of the header */
+  margin-top: 50px; /* Move the box 50px under the header */
+  margin-bottom: 50px; /* Move the box 50px above the bottom */
 }
 
 .App-header {
@@ -49,27 +51,8 @@ body, html {
   height: 120px; /* Smaller logo size for smaller devices */
   width: auto;
 }
-.text-box, .send-button {
-  width: calc(100% - 20px); /* Adjust width for smaller screens */
-}
-
 .App-header h1 {
-color: #c88443; /* Gold for the header text to stand out against the Burgundy background */
-}
-
-.response {
-border-left: 5px solid #c88443; /* Gold accent on chat responses for a pop of color */
-}
-
-/* Complementary accents (soft green for Burgundy, soft blue for Gold) */
-/* These are softer, desaturated versions of the direct complements */
-
-.accent-green {
-color: #749a5e; /* Soft green as a complement to Burgundy, for less vibrant accents */
-}
-
-.accent-blue {
-color: #437c88; /* Soft blue as a complement to Gold, for text or icons */
+color: white; /* Gold for the header text to stand out against the Burgundy background */
 }
 
 main {
@@ -81,4 +64,20 @@ main {
   max-height: 600px; /* Max height for chat window */
   padding-bottom: 20px; /* Adds padding at the bottom */
   margin-top: auto; /* Pushes the main content to the bottom */
+}
+
+.footer {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif; /* Use the same font family as the chatbot */
+  padding: 10px;
+  size: 1px;
+  color: white;
+  width: 100%;
+  position: fixed; /* Stick to the bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex; /* Enables Flexbox layout */
+  align-items: center; /* Centers items vertically within the footer */
+  justify-content: center; /* Aligns items to the center of the footer */
 }
