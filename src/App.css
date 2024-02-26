@@ -8,7 +8,7 @@
   --lightgray:#84828F;
   --white:#D9D9D9;
 }
-/* Consolidated App.css */
+
 body, html {
   font-family: 'Open Sans', sans-serif; 
   margin: 0;
@@ -18,12 +18,16 @@ body, html {
   overflow: hidden;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+/* New style for the left taskbar */
+.leftTaskbar {
+  background-color: var(--darkgray);
+  width: 250px;
+  height: calc(100vh - 120px); /* Adjusted to match the height of the .App container */
+  padding-right: 50px;
+  padding-top: 20px;
+  margin-top: auto;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .App {
@@ -31,65 +35,56 @@ body, html {
   background-color: transparent;
   padding: 20px;
   border-radius: 8px;
-  width: 90%;
-  max-width: 800px;
   height: calc(100vh - 120px); /* Adjusted to create spacing from the header and bottom */
-  margin: auto; /* Center the box horizontally */
-  display: flex; /* Aligns the logo and the h1 horizontally */
-  align-items: center; /* Centers items vertically within the header */
-  justify-content: flex-start; /* Aligns items to the start of the header */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 0; /* Adjusted margin to make the App container touch the left side of the screen */
   margin-top: 50px; /* Move the box 50px under the header */
   margin-bottom: 50px; /* Move the box 50px above the bottom */
 }
 
 .App-header {
-  background-color: var(--darkblue); /* Burgundy for the header */
-  padding-top: 20px;
-  padding-left: 320px;
+  background-color: var(--darkblue);
+  padding-left: 50px;
   color: white;
-  width: 100%; /* Stretch across the top */
-  height:55px;
-  position: fixed; /* Stick to the top */
+  width: calc(100% - 200px - 75px); /* Adjusted width to accommodate left taskbar and padding */
+  height: 55px;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Ensure it's above other content */
-  display: flex; /* Enables Flexbox layout */
-  align-items: center; /* Centers items vertically within the header */
-  justify-content: flex-start; /* Aligns items to the start of the header, keeping them inline */
-    /* Add any additional styling here (background, padding, etc.) */
-}
-
-.App-logo {
-  height: 120px; /* Smaller logo size for smaller devices */
-  width: auto;
-}
-.App-header h1 {
-color: white; /* Gold for the header text to stand out against the Burgundy background */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 main {
   display: flex;
-  align-items: flex-start; /* Changed to flex-start to align chat at the top */
+  align-items: center;
   justify-content: center;
-  flex-direction: column; /* Stack children vertically */
-  width: 100%;
-  max-height: 600px; /* Max height for chat window */
-  padding-bottom: 20px; /* Adds padding at the bottom */
-  margin-top: auto; /* Pushes the main content to the bottom */
+  flex-direction: column;
+  width: 80vw; /* Adjusted width to accommodate left taskbar padding */
+  height: 100%;
+  max-height: 750px;
+  background-color: var(--blue);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-bottom: 20px;
+  margin-top: auto;
 }
 
 .footer {
   font-size: 14px;
-  font-family: 'Open Sans', sans-serif; /* Use the same font family as the chatbot */
+  font-family: 'Open Sans', sans-serif;
   padding: 10px;
   size: 1px;
   color: white;
   width: 100%;
-  position: fixed; /* Stick to the bottom */
+  position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1000; /* Ensure it's above other content */
-  display: flex; /* Enables Flexbox layout */
-  align-items: center; /* Centers items vertically within the footer */
-  justify-content: center; /* Aligns items to the center of the footer */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
