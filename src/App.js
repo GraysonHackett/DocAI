@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ToggleSwitch from './Toggleswitch';
 import Chatbot from './Chatbot';
-import './App.css'; // Ensure this line is here to import your CSS
+import './App.css';
 
 function App() {
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
     return (
-        <div className="App">
+        <div className={darkMode ? "App dark-mode" : "App"}>
             <div className="leftTaskbar"></div>
             <header className="App-header">
                 <h1>DocAI</h1>
+                <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
             </header>
             <main>
                 <Chatbot/>
