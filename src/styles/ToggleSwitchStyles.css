@@ -10,7 +10,13 @@
   justify-content: center;
 }
 
-label {
+.toggle-switch input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.toggle-switch label {
   width: 100px;
   height: 100%;
   position: relative;
@@ -22,7 +28,7 @@ label {
   transition: 0.3s;
 }
 
-label:after {
+.toggle-switch label:after {
   content: '';
   width: 35px; /* Adjusted width */
   height: 35px; /* Adjusted height */
@@ -36,13 +42,7 @@ label:after {
   transition: 0.3s;
 }
 
-input {
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-input:checked + label {
+.toggle-switch input:checked + label {
   background: #242424;
 }
 
@@ -53,6 +53,6 @@ input:checked + label {
   background: linear-gradient(180deg, #777, #3a3a3a);
 }
 
-label:active:after {
+.toggle-switch label:active:after {
   width: 50px;
 }
