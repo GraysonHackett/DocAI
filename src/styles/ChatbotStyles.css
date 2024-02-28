@@ -2,7 +2,8 @@
   /* Color pallete */
   --darkblue: #0e131b;
   --darkgray: #302f37;
-  --blue: #202832;
+  --textblue: #007AFF;
+  --textgray: #8E8E93; 
   --sendblue: #728597;
   --darkgray: #485a70;
   --lightgray: #303c4b;
@@ -86,25 +87,33 @@
 }
 
 .message.user {
-  background-color: var(--darkgray);
+  background-color: var(--textblue);
   color: var(--white);
   border-radius: 20px;
   display: inline-flex;
   float: right;
   text-align: right;
-  max-width: 300px;
-  margin: 25px 0px 25px 300px;
+  max-width: 30vw;
+  margin: 2.5vh 0px 2.5vh 30vw;
+}
+
+.App.dark-mode .message.user {
+  background-color: var(--darkgray);
 }
 
 .message.ai {
-  background-color: var(--lightgray);
+  background-color: var(--textgray);
   color: var(--white);
   border-radius: 20px;
   float: left;
   text-align: left;
-  max-width: 500px;
+  max-width: 50vw;
   max-height: fit-content;
-  margin: 0px 300px 0px 0px;
+  margin: 0px 30vw 0px 0px;
+}
+
+.App.dark-mode .message.ai {
+  background-color: var(--darkgray);
 }
 
 /* Style for links within messages sent by the AI */
