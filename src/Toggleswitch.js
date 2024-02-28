@@ -1,5 +1,6 @@
 import React from 'react';
 import './ToggleSwitchStyles.css';
+// TODO: Change sun & moon to images and position correctly 
 
 const ToggleSwitch = ({ isChecked, onChange }) => {
   return (
@@ -9,7 +10,7 @@ const ToggleSwitch = ({ isChecked, onChange }) => {
       <div className="background"></div>
       <svg className="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path></path>
-      </svg>
+      </svg> 
       <svg className="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path></path>
       </svg>
