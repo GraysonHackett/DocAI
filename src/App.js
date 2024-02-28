@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ToggleSwitch from './ToggleSwitch';
-import Chatbot from './Chatbot';
+import Chatbot from './Chatbot'; 
 import './styles/App.css';
 
 function App() {
@@ -14,8 +14,7 @@ function App() {
     <div className={darkMode ? 'App dark-mode' : 'App'}>
       <div className="leftTaskbar"></div>
       <header
-        className={darkMode ? 'App-header dark-mode-header' : 'App-header'}
-      >
+        className={darkMode ? 'App-header dark-mode-header' : 'App-header'} >
         <h1 style={{ color: darkMode ? '#fff' : '#000' }}>DocAI</h1>
         <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
       </header>
