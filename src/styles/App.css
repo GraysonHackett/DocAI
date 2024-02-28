@@ -13,21 +13,32 @@ body, html {
   font-family: 'Open Sans', sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: var(--darkblue); 
+  background-color: var(--white); 
   color: #333;
   overflow: hidden;
 }
 
+.App.dark-mode body, html {
+  background-color: var(--darkblue);
+}
+
 /* New style for the left taskbar */
 .leftTaskbar {
-  background-color: var(--darkgray);
+  background-color: white;
   width: 250px;
-  height: calc(100vh - 120px); /* Adjusted to match the height of the .App container */
+  height: 100%;
+  max-height: 750px;
   padding-right: 50px;
   padding-top: 20px;
   margin-top: auto;
+  border: 2px solid black;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+.App.dark-mode .leftTaskbar {
+  background-color: var(--darkgray);
+  border: 2px solid white; 
 }
 
 .App{
@@ -45,37 +56,26 @@ body, html {
 }
 
 .App-header {
-  background-color: var(--darkblue);
-  padding-left: 50px;
+  background-color: var(--sendblue);
+  padding-left: 25px;
   color: white;
-  width: calc(100% - 200px - 75px); /* Adjusted width to accommodate left taskbar and padding */
-  height: 55px;
+  width: 100%; /* Adjusted width to accommodate left taskbar and padding */
+  height: 90px;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
+  display: inline-flex;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
+.App.dark-mode .App-header {
+  background-color: var(--darkblue);
+}
+
 .dark-mode {
-  background-color: #333;
+  background-color: var(--darkblue);
   color: #fff;
-}
-
-.dark-mode-toggle {
-  background-color: transparent;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-}
-
-.dark-mode-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
@@ -86,11 +86,17 @@ main {
   width: 80vw; /* Adjusted width to accommodate left taskbar padding */
   height: 100%;
   max-height: 750px;
-  background-color: var(--blue);
+  background-color: var(--white);
+  border: 2px solid var(--darkblue);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   padding-bottom: 20px;
   margin-top: auto;
+}
+
+.App.dark-mode main {
+  background-color: var(--blue);
+  border: 2px solid white;
 }
 
 .footer {
@@ -98,7 +104,7 @@ main {
   font-family: 'Open Sans', sans-serif;
   padding: 10px;
   size: 1px;
-  color: white;
+  color: black;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -107,4 +113,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.App.dark-mode footer {
+  color: white;
+  background-color: var(--darkblue);
 }

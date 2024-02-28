@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './ChatbotStyles.css';
+import './styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown'; 
 
 const readDocumentation = async () => {
