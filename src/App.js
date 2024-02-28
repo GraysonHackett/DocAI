@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ToggleSwitch from './Toggleswitch';
+import ToggleSwitch from './ToggleSwitch';
 import Chatbot from './Chatbot';
-import './App.css';
+import './styles/App.css';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
