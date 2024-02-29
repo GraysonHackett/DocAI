@@ -1,5 +1,9 @@
 import React from 'react';
 import './styles/ToggleSwitchStyles.css';
+<<<<<<< HEAD:src/ToggleSwitch.js
+=======
+// TODO: Change sun & moon to images and position correctly 
+>>>>>>> dfcc8fc (sizing adujustment):src/Toggleswitch.js
 
 const ToggleSwitch = ({ isChecked, onChange }) => {
   return (
