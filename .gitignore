@@ -2,7 +2,10 @@
 
 # API key 
 .env
- 
+
+#Firebase setup
+/src/.firebase.js
+
 # Documenation set 
 /documentation_set 
 

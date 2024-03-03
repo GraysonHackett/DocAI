@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Import BrowserRouter, Routes, Route, and Link
 import ToggleSwitch from './ToggleSwitch';
 import Chatbot from './Chatbot';
+import { auth } from './Firebase'; // Import Firebase auth
 import './styles/App.css';
+import Auth from './Auth';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
+    const [user, setUser] = useState(null);
     const [uploadedFile, setUploadedFile] = useState(null);
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
+    };
+
+    const handleSignOut = async () => {
+        try {
+            await auth.signOut();
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
     };
 
     const handleFileUpload = (event) => {
@@ -18,21 +30,31 @@ function App() {
     };
 
     return (
-        <div className={darkMode ? "App dark-mode" : "App"}>
-            <div className="leftTaskbar">
-                <input type="file" accept='.md' onChange={handleFileUpload} />
+        <Router>
+            <div className={darkMode ? "App dark-mode" : "App"}>
+                <div className="leftTaskbar">
+                    <input type="file" accept='.md' onChange={handleFileUpload} />
+                </div>
+                <header className="App-header">
+                    <h1>DocAI</h1>
+                    <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
+                    {user ? (
+                        <button onClick={handleSignOut}>Sign Out</button>
+                    ) : (
+                        <Link to="/Auth">Login</Link>
+                    )}
+                </header>
+                <main>
+                    <Routes>
+                        <Route exact path="/Auth" element={<Auth />} /> {/* Define the /auth route */}
+                    </Routes>
+                    <Chatbot uploadedFile={uploadedFile} />
+                </main>
+                <footer className='footer'>
+                    DocAI Project Created In Collaboration with Red Hat ©2024 
+                </footer>
             </div>
-            <header className="App-header">
-                <h1>DocAI</h1>
-                <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
-            </header>
-            <main>
-                <Chatbot uploadedFile={uploadedFile} />
-            </main>
-            <footer className='footer'>
-                DocAI Project Created In Collaboration with Red Hat ©2024 
-            </footer>
-        </div>
+        </Router>
     );
 }
 
