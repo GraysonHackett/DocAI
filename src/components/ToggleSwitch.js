@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/ToggleSwitchStyles.css';
+import '../styles/ToggleSwitchStyles.css';
 
 const ToggleSwitch = ({ isChecked, onChange }) => {
   return (

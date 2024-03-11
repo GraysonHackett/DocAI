@@ -4,7 +4,7 @@
 .env
 
 #Firebase setup
-/src/.firebase.js
+/src/.Firebase.js
 
 # Documenation set 
 /documentation_set 
