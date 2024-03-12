@@ -3,11 +3,12 @@
   width: 100px; /* Adjusted width */
   height: 125px; /* Adjusted height */
   position: relative;
-  left: 84vw;
+  left: 85%;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
 }
 
 .toggle-switch input {
@@ -32,7 +33,7 @@
   content: '';
   width: 35px; /* Adjusted width */
   height: 35px; /* Adjusted height */
-  position: absolute;
+  position: relative;
   top: 6px; 
   left: 5px;
   right: 3px;
