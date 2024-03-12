@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ToggleSwitch from './ToggleSwitch';
 import Chatbot from './Chatbot';
+import Taskbar from './Taskbar'; // Import the Taskbar component
 import { auth } from '../database/Firebase';
 import '../styles/App.css';
+import '../styles/Taskbar.css'
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
 
@@ -36,17 +38,15 @@ function App() {
     }
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
+  const handleFileUpload = (file) => {
     setUploadedFile(file);
-    // You can add further logic here, such as file validation or sending the file to the server.
   };
 
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <div className="leftTaskbar">
-          <input type="file" accept=".md" onChange={handleFileUpload} />
+        <div className='taskbar'>
+          <Taskbar /> {/* Render the Taskbar component */}
         </div>
         <header className="App-header">
           <h1>DocAI</h1>

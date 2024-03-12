@@ -1,13 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# API key 
+# API key's 
 .env
-
-#Firebase setup
-/src/.Firebase.js
-
-# Documenation set 
-/documentation_set 
 
 # dependencies
 /node_modules

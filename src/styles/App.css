@@ -22,25 +22,6 @@ body, html {
   background-color: var(--darkblue);
 }
 
-/* New style for the left taskbar */
-.leftTaskbar {
-  background-color: white;
-  width: 250px;
-  height: 100%;
-  max-height: 750px;
-  padding-right: 50px;
-  padding-top: 20px;
-  margin-top: auto;
-  border: 2px solid black;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.App.dark-mode .leftTaskbar {
-  background-color: var(--darkgray);
-  border: 2px solid white; 
-}
-
 .App{
   text-align: center;
   background-color: transparent;

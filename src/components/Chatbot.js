@@ -8,6 +8,7 @@ function Chatbot({ uploadedFile }) {
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
 
+  // TODO: add personality to chatbot and test it "hi im docai".....
   const instructions =
     'Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as concise as possible, and even copy and paste answers from the documentation when necessary';
 
