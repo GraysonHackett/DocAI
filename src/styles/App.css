@@ -22,25 +22,6 @@ body, html {
   background-color: var(--darkblue);
 }
 
-/* New style for the left taskbar */
-.leftTaskbar {
-  background-color: white;
-  width: 250px;
-  height: 100%;
-  max-height: 750px;
-  padding-right: 50px;
-  padding-top: 20px;
-  margin-top: auto;
-  border: 2px solid black;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.App.dark-mode .leftTaskbar {
-  background-color: var(--darkgray);
-  border: 2px solid white; 
-}
-
 .App{
   text-align: center;
   background-color: transparent;
@@ -60,17 +41,17 @@ body, html {
   padding-left: 25px;
   color: white;
   width: 100%; /* Adjusted width to accommodate left taskbar and padding */
-  height: 90px;
+  height: 10%;
   position: fixed;
   top: 0;
   left: 0;
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 }
 
 .App.dark-mode .App-header {
-  background-color: var(--darkblue);
+  background-color: var(--darkgray);
 }
 
 .dark-mode {
@@ -118,4 +99,25 @@ main {
 .App.dark-mode footer {
   color: white;
   background-color: var(--darkblue);
+}
+
+.loginButton {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 200px;
+  background-color: #007bff; /* Blue color, you can change it to your preferred color */
+  color: white;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Adjust font size as needed */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+  margin-left: 74%;
+  text-decoration: none;
+}
+
+/* TODO: change css for signup to adjust for the spacing between the slider */
+
+.loginButton:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
 }

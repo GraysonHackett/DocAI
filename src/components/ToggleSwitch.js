@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/ToggleSwitchStyles.css';
+import '../styles/ToggleSwitchStyles.css';
 
 const ToggleSwitch = ({ isChecked, onChange }) => {
   return (
@@ -16,5 +16,8 @@ const ToggleSwitch = ({ isChecked, onChange }) => {
     </div>
   );
 };
+
+//TODO: Get the sun and moon image in the slider box
+//TODO: fix CSS sizing of toggle-switch to fit-content and be same size as login button, relative to screen size
 
 export default ToggleSwitch;
