@@ -17,4 +17,7 @@ const ToggleSwitch = ({ isChecked, onChange }) => {
   );
 };
 
+//TODO: Get the sun and moon image in the slider box
+//TODO: fix CSS sizing of toggle-switch to fit-content and be same size as login button, relative to screen size
+
 export default ToggleSwitch;

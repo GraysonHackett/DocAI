@@ -19,6 +19,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0);
   height: 400px;
   width: 400px;
+  position: relative;
 }
 
 .auth-container h2 {
@@ -38,7 +39,7 @@
 
 .auth-container .error {
   color: red;
-  margin-bottom: 15px;
+  margin-top: 5%;
 }
 
 .auth-container button {
@@ -53,7 +54,7 @@
 }
 
 .auth-container button + button {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .auth-container button:hover {
@@ -70,4 +71,22 @@
 
 .auth-container a:hover {
   text-decoration: underline;
-}  
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #fff;
+  text-decoration: none;
+  color: #333;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

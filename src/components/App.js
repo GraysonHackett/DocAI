@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Import BrowserRouter, Routes, Route, and Link
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ToggleSwitch from './ToggleSwitch';
 import Chatbot from './Chatbot';
-import { auth } from '../database/Firebase'; // Import Firebase auth
+import { auth } from '../database/Firebase';
 import '../styles/App.css';
-import Auth from '../authentication/Auth';
+import Login from '../authentication/Login';
+import Signup from '../authentication/Signup';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [user] = useState(null);
+  const [user, setUser] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -43,14 +56,16 @@ function App() {
               Sign Out
             </button>
           ) : (
-            <Link className="loginLink" to="/Auth">
+            <Link className="loginButton" to="/login">
               Login
             </Link>
           )}
+          {user && <span className="user-name">{user.displayName}</span>}
         </header>
         <main>
           <Routes>
-            <Route exact path="/Auth" element={<Auth />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
           </Routes>
           <Chatbot uploadedFile={uploadedFile} />
         </main>
