@@ -26,4 +26,7 @@
     align-items: center;
   }
 
-.App.dark-mode .fileList {}
+.App.dark-mode .fileList {
+    /* TODO: add stylign to fileList for darkmode*/
+    background-color: #0e131b;
+}
