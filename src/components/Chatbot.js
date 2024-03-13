@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown';
+import { storage } from '../database/Firebase';
+import { getDownloadURL, ref } from '@firebase/storage';
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState([]);
   const [textInput, setTextInput] = useState('');
-  const [documentation, setDocumentation] = useState('');
+  const [documentation, setDocumentation] = useState(''); 
+
+  useEffect(() => {
+    const fetchFileContents = async () => {
+      try {
+        if (uploadedFile) {
+          const fileRef = ref(storage, uploadedFile);
+          const fileUrl = await getDownloadURL(fileRef);
+          const response = await axios.get(fileUrl);
+          setDocumentation(response.data); // Assuming the file contains documentation text
+        }
+      } catch (error) {
+        console.error('Error fetching file contents:', error);
+      }
+    };
+
+    fetchFileContents();
+  }, [uploadedFile]);
 
   // TODO: add personality to chatbot and test it "hi im docai".....
   const instructions =
@@ -14,13 +33,10 @@ function Chatbot({ uploadedFile }) {
 
   const fetchAIResponse = async () => {
     try {
-      if (!documentation && uploadedFile) {
-        const fileContents = await readFile(uploadedFile);
-        setDocumentation(fileContents.trim());
-      }
 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
+      console.log(prompt); 
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
       const response = await axios.post(

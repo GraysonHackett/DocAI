@@ -21,8 +21,7 @@ function Login() {
     }
   };
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
+  const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         console.log(userCredentials);
@@ -31,6 +30,12 @@ function Login() {
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
       });
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSignIn();
+    }
   };
 
   return (
@@ -49,6 +54,7 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          onKeyPress={handleKeyPress}
         />
         <button onClick={handleSignIn}>Sign In</button>
         <Link to="/signup">Don't have an account? Sign Up</Link>

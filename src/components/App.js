@@ -38,15 +38,16 @@ function App() {
     }
   };
 
-  const handleFileUpload = (file) => {
-    setUploadedFile(file);
+  const handleFileSelect = (fileUrl) => {
+    setUploadedFile(fileUrl);
+    console.log(uploadedFile);
   };
 
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
         <div className='taskbar'>
-          <Taskbar /> {/* Render the Taskbar component */}
+        <Taskbar onSelectFile={handleFileSelect} />
         </div>
         <header className="App-header">
           <h1>DocAI</h1>
@@ -64,6 +65,7 @@ function App() {
         </header>
         <main>
           <Routes>
+            <Route exact path='/' element={<main />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
           </Routes>

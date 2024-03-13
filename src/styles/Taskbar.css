@@ -28,5 +28,42 @@
 
 .App.dark-mode .fileList {
     /* TODO: add stylign to fileList for darkmode*/
-    background-color: #0e131b;
+    background-color: white;
+}
+
+.fileUpload {
+  width: auto;
+  height: 200px;
+  justify-content: center;
+  position: relative;
+}
+
+.uploadButton {
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 100%;
+}
+
+.fileSelection {
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.fileList li {
+  list-style: none;
+}
+
+.fileList button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.fileList button:hover {
+  background-color: #f0f0f0;
+}
+
+.fileList .selected {
+  background-color: #007bff;
+  color: white;
 }
