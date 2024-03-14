@@ -43,8 +43,6 @@ function Chatbot({ uploadedFile }) {
 
     So go ahead and fire away with your queries, and I'll do my best to assist you! 😊📚
     `;
-  const [documentation, setDocumentation] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const fetchAIResponse = async (userInput) => {
     setIsLoading(true); // Indicate that AI is processing the response.
@@ -58,10 +56,6 @@ function Chatbot({ uploadedFile }) {
         const fileContents = await readFile(uploadedFile);
         setDocumentation(fileContents.trim());
       }
-      const prompt = `${instructions} \n\n ${documentation} \n\n ${userInput}`;
-
-
-      const apiKey = process.env.REACT_APP_API_KEY;
       const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
 
       const url = 'https://api.openai.com/v1/chat/completions';
