@@ -7,20 +7,24 @@ function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // TODO: add personality to chatbot and test it "hi im docai".....
   const instructions =
     'Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as concise as possible, and even copy and paste answers from the documentation when necessary';
 
-  const fetchAIResponse = async () => {
+  const fetchAIResponse = async (userInput) => {
+    setIsLoading(true); // Indicate that AI is processing the response.
     try {
       if (!documentation && uploadedFile) {
         const fileContents = await readFile(uploadedFile);
         setDocumentation(fileContents.trim());
       }
+      const prompt = `${instructions} \n\n ${documentation} \n\n ${userInput}`;
+
 
       const apiKey = process.env.REACT_APP_API_KEY;
-      const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
+      const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
       const response = await axios.post(
@@ -42,7 +46,6 @@ function Chatbot({ uploadedFile }) {
         const chosenText = response.data.choices[0].message.content;
         setMessages(oldMessages => [
           ...oldMessages,
-          { text: textInput, sender: 'user' },
           { text: chosenText, sender: 'ai' }
         ]);
       } else {
@@ -50,12 +53,20 @@ function Chatbot({ uploadedFile }) {
       }
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
+    } finally {
+      setIsLoading(false); // Stop loading once the response is processed.
     }
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      fetchAIResponse();
+    if (event.key === 'Enter' && textInput.trim() !== '') {
+      // Add user's message immediately.
+      setMessages(oldMessages => [
+        ...oldMessages,
+        { text: textInput, sender: 'user' }
+      ]);
+      fetchAIResponse(textInput); // Send the text input to the AI.
+      setTextInput(''); // Clear the input field.
     }
   };
 
