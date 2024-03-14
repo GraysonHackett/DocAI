@@ -6,8 +6,9 @@ import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
 
 function Chatbot({ uploadedFile }) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
+
   const [documentation, setDocumentation] = useState(''); 
 
   useEffect(() => {
@@ -42,14 +43,27 @@ function Chatbot({ uploadedFile }) {
 
     So go ahead and fire away with your queries, and I'll do my best to assist you! 😊📚
     `;
+  const [documentation, setDocumentation] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-
-  const fetchAIResponse = async () => {
+  const fetchAIResponse = async (userInput) => {
+    setIsLoading(true); // Indicate that AI is processing the response.
     try {
 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
       console.log(prompt); 
+      
+      if (!documentation && uploadedFile) {
+        const fileContents = await readFile(uploadedFile);
+        setDocumentation(fileContents.trim());
+      }
+      const prompt = `${instructions} \n\n ${documentation} \n\n ${userInput}`;
+
+
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
+
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
       const response = await axios.post(
@@ -71,7 +85,6 @@ function Chatbot({ uploadedFile }) {
         const chosenText = response.data.choices[0].message.content;
         setMessages(oldMessages => [
           ...oldMessages,
-          { text: textInput, sender: 'user' },
           { text: chosenText, sender: 'ai' }
         ]);
       } else {
@@ -79,12 +92,20 @@ function Chatbot({ uploadedFile }) {
       }
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
+    } finally {
+      setIsLoading(false); // Stop loading once the response is processed.
     }
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      fetchAIResponse();
+    if (event.key === 'Enter' && textInput.trim() !== '') {
+      // Add user's message immediately.
+      setMessages(oldMessages => [
+        ...oldMessages,
+        { text: textInput, sender: 'user' }
+      ]);
+      fetchAIResponse(textInput); // Send the text input to the AI.
+      setTextInput(''); // Clear the input field.
     }
   };
 

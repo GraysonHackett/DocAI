@@ -64,6 +64,8 @@
   padding: 10px 20px;
   border-radius: 20px;
   word-wrap: break-word;
+  /* annimation segment */
+  animation: slideIn 0.5s ease-out forwards;
 }
 
 .messages-container {
@@ -133,4 +135,16 @@
 
 .message.ai a:hover {
   color: var(--sendblue); /* Set the color of hovered links to a different color */
+}
+
+/* message animation logic */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

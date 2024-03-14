@@ -1,4 +1,4 @@
-# DocAI - Temp README
+# DocAI - Temp README as of (03/01)
 
 ## <u>Overview</u>
 
@@ -15,20 +15,22 @@ To run the project locally, follow these setup instructions:
 2. Update all dependencies with terminal command: 
    ```sh
    npm install 
-   ```
-3. Install the necessary dependencies by running the following command in your terminal:
-   ```sh
-   npm install axios dotenv node-fetch openai react-markdown
-   ```
-4. Create a `.env` file in the project root directory and add your OpenAI API key to it. The file should look like this:
+   ```   
+3. Create a `.env` file in the project root directory and add your private key's to it. The file should look like this:
    ```js
    REACT_APP_API_KEY=your_openai_api_key_here
+   REACT_APP_API_KEY=your_firebase_api_key
+   REACT_APP_AUTH_DOMAIN=your_firebase_auth_domain
+   REACT_APP_PROJECT_ID=your_firebase_project_id
+   REACT_APP_STORAGE_BUCKET=your_firebase_storage_bucket
+   REACT_APP_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   REACT_APP_APP_ID=your_firebase_app_id
+   REACT_APP_MEASUREMENT_ID=your_firebase_measurement_id
    ```
-5. Run the project using the following command:
+4. Run the project using the following command:
    ```sh
    npm start
    ```
-
 
 ## <u>Code Explanation</u>
 
@@ -36,9 +38,12 @@ The main component of the project is the `Chatbot.js` file, which contains the i
 
 ### <u>Dependencies Used</u>
 
-> `openai`: Used for accessing the openai API and its elements.<br>
+> `openai`: Used for accessing the OpenAI API and its elements.<br>
 > `axios`: Used for sending HTTP requests to the OpenAI API.<br>
-> `dotenv`: Used for loading environment variables from the `.env` file.
+> `dotenv`: Used for loading environment variables from the `.env` file.<br>
+> `node-fetch`: Used for making HTTP requests in the Node.js environment, mainly used for fetching Markdown files from a URL.<br>
+> `react-markdown`: Used for rendering Markdown content in React components.
+> `react-router-dom`: --- 
 
 ### <u>Functionality Overview</u>
 
@@ -63,15 +68,18 @@ const response = await axios.post(
         }
       );
 ```
+
 The snippet shows how we use Axios to send a POST request to the API URL, including what model of GPT we want to use, our message, and the token limit the user has available. It waits for the response, which will be stored in the 'response' variable and be later given back to the user.
 
 ### <u>Component Structure</u>
 
 The component structure is as follows:
 
-> `textInput`: State variable to store the user's input message.<br>
-> `response`: State variable to store the response from the OpenAI API.<br>
-> `instructionSent` and `filesSent`: State variables to keep track of whether initial instructions and Markdown files have been sent to the API.
+> textInput: State variable to store the user's input message.<br>
+> messages: State variable to store all the messages exchanged between the user and the AI.<br>
+> documentation: State variable to store the content of the uploaded documentation file.<br>
+> uploadedFile: Prop representing the uploaded documentation file.<br>
+> instructionSent and filesSent: State variables to keep track of whether initial instructions and Markdown files have been sent to the API.
 
 ### <u>API Integration</u>
 
