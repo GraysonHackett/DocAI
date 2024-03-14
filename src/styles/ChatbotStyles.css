@@ -65,7 +65,7 @@
   border-radius: 20px;
   word-wrap: break-word;
   /* annimation segment */
-  animation: slideIn 0.5s ease-out forwards;
+  animation: slideIn .75s ease-out forwards;
 }
 
 .messages-container {
@@ -137,7 +137,6 @@
   color: var(--sendblue); /* Set the color of hovered links to a different color */
 }
 
-/* message animation logic */
 @keyframes slideIn {
   from {
     opacity: 0;
