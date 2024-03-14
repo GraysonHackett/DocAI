@@ -62,7 +62,6 @@ main {
   width: 100%;
   height: 100%;
   background-color: var(--white);
-  margin-top: 100px;
 }
 
 .App.dark-mode main {
