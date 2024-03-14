@@ -25,7 +25,6 @@ function Signup() {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
-        console.log(userCredentials);
         navigate('/login'); 
       })
       .catch((error) => {

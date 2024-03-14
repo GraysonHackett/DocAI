@@ -24,7 +24,6 @@ function Login() {
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
-        console.log(userCredentials);
         navigate('/'); 
       })
       .catch((error) => {

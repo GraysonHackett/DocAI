@@ -8,8 +8,8 @@ import { getDownloadURL, ref } from '@firebase/storage';
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
-
-  const [documentation, setDocumentation] = useState(''); 
+  const [documentation, setDocumentation] = useState('');
+  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchFileContents = async () => {
@@ -45,17 +45,12 @@ function Chatbot({ uploadedFile }) {
     `;
 
   const fetchAIResponse = async (userInput) => {
+
     setIsLoading(true); // Indicate that AI is processing the response.
     try {
 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
-      console.log(prompt); 
-      
-      if (!documentation && uploadedFile) {
-        const fileContents = await readFile(uploadedFile);
-        setDocumentation(fileContents.trim());
-      }
       const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
 
       const url = 'https://api.openai.com/v1/chat/completions';
