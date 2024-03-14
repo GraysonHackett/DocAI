@@ -31,15 +31,25 @@
   box-sizing: border-box;
   padding: 18px;
   background-color: var(--white);
+  border: 1px solid black; 
   border-radius: 25px;
   height: 50px;
   width: calc(100% - 120px); /* Adjust width */
+}
+
+.text-box::placeholder {
+  color: black;
+}
+
+.App.dark-mode .text-box::placeholder {
+  color: black;
 }
 
 .send-button {
   background-color: var(--sendblue);
   color: white;
   border-radius: 40px;
+  border: 1px solid black;
   width: 55px;
   height: 55px;
 }

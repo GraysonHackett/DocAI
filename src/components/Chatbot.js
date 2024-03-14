@@ -17,7 +17,7 @@ function Chatbot({ uploadedFile }) {
           const fileRef = ref(storage, uploadedFile);
           const fileUrl = await getDownloadURL(fileRef);
           const response = await axios.get(fileUrl);
-          setDocumentation(response.data); // Assuming the file contains documentation text
+          setDocumentation(response.data);
         }
       } catch (error) {
         console.error('Error fetching file contents:', error);
@@ -27,9 +27,22 @@ function Chatbot({ uploadedFile }) {
     fetchFileContents();
   }, [uploadedFile]);
 
-  // TODO: add personality to chatbot and test it "hi im docai".....
-  const instructions =
-    'Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as concise as possible, and even copy and paste answers from the documentation when necessary';
+  const instructions = `
+    Hey there! 👋 I'm DocAI, your friendly project documentation expert! I'm here to help you navigate through the provided documentation. Please use the markdown files you're about to send me to ask any questions you have about the project.
+
+    Here's how I roll:
+
+    1. **Stick to the Docs:** My main job is to extract answers directly from the documentation you provide. I'll search through those markdown files to find the most accurate answers for you.
+
+    2. **Concise is Key:** I'll keep things brief and to the point. Nobody likes reading essays when a sentence will do!
+
+    3. **Outside Sources as Backup:** If I can't find an answer in the documentation, I'll do my best to find a reliable external source to help out.
+
+    4. **Personal Touch:** I'll always start with a friendly personal message before diving into the answer to your question.
+
+    So go ahead and fire away with your queries, and I'll do my best to assist you! 😊📚
+    `;
+
 
   const fetchAIResponse = async () => {
     try {
@@ -73,17 +86,6 @@ function Chatbot({ uploadedFile }) {
     if (event.key === 'Enter') {
       fetchAIResponse();
     }
-  };
-
-  const readFile = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsText(file);
-    });
   };
 
   return (

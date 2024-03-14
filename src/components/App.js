@@ -46,9 +46,6 @@ function App() {
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <div className='taskbar'>
-        <Taskbar onSelectFile={handleFileSelect} />
-        </div>
         <header className="App-header">
           <h1>DocAI</h1>
           <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
@@ -63,9 +60,11 @@ function App() {
           )}
           {user && <span className="user-name">{user.displayName}</span>}
         </header>
+        <div className='taskbar'>
+          <Taskbar onSelectFile={handleFileSelect} />
+        </div>
         <main>
           <Routes>
-            <Route exact path='/' element={<main />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
           </Routes>

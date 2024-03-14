@@ -8,6 +8,7 @@ import '../styles/Taskbar.css';
 function Taskbar({ onSelectFile }) {
   const [fileList, setFileList] = useState([]);
   const [user, setUser] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null); // Introduce selectedFile state
 
   const fetchFileList = async () => {
     try {
@@ -32,6 +33,7 @@ function Taskbar({ onSelectFile }) {
 
   useEffect(() => {
     fetchFileList();
+  // eslint-disable-next-line
   }, [user]);
 
   useEffect(() => {
@@ -43,8 +45,9 @@ function Taskbar({ onSelectFile }) {
   }, []);
 
   const handleFileSelect = (file) => {
-    const fileUrl = file.url; 
-    onSelectFile(fileUrl); 
+    const fileUrl = file.url;
+    setSelectedFile(file); // Set selectedFile state when a file is selected
+    onSelectFile(fileUrl);
   };
 
   return (
@@ -52,7 +55,7 @@ function Taskbar({ onSelectFile }) {
       <h2>Uploaded Files</h2>
       <ul className="fileList">
         {fileList.map((file) => (
-          <li key={file.name}>
+          <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
             <button onClick={() => handleFileSelect(file)}>{file.name}</button>
           </li>
         ))}
