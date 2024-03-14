@@ -1,29 +1,39 @@
 /* Taskbar.css */
 
 .taskbar {
-    background-color: white;
-    width: 250px;
-    height: 100%;
-    max-height: 750px;
-    padding-right: 50px;
-    padding-top: 20px;
-    margin-top: auto;
-    border: 2px solid black;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-  
-  .dark-mode .taskbar {
-    background-color: var(--darkgray);
-    border: 2px solid white; 
-  }
-  
-.fileList {
-    width: 100%;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    justify-content: center;
-    align-items: center;
-  }
+  background-color: slategray;
+  border-right: 1px solid black;
+  height: 100%;
+  width: 25%;
+  margin-top: 100px;
+  top: 0;
+  left: 0;
+}
 
-.App.dark-mode .fileList {}
+.dark-mode .taskbar {
+  background-color: var(--darkgray);
+  border-right: 1px solid white;
+}
+
+.fileList {
+  border-radius: 10px;
+  width: fit-content;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileList li {
+  list-style: none;
+}
+
+.fileList button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.fileList .selected {
+  background-color: #007bff; /* Change to desired highlight color */
+  color: white;
+}

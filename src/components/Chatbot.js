@@ -1,21 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown';
+import { storage } from '../database/Firebase';
+import { getDownloadURL, ref } from '@firebase/storage';
 
 function Chatbot({ uploadedFile }) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
+
+  const [documentation, setDocumentation] = useState(''); 
+
+  useEffect(() => {
+    const fetchFileContents = async () => {
+      try {
+        if (uploadedFile) {
+          const fileRef = ref(storage, uploadedFile);
+          const fileUrl = await getDownloadURL(fileRef);
+          const response = await axios.get(fileUrl);
+          setDocumentation(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching file contents:', error);
+      }
+    };
+
+    fetchFileContents();
+  }, [uploadedFile]);
+
+  const instructions = `
+    Hey there! 👋 I'm DocAI, your friendly project documentation expert! I'm here to help you navigate through the provided documentation. Please use the markdown files you're about to send me to ask any questions you have about the project.
+
+    Here's how I roll:
+
+    1. **Stick to the Docs:** My main job is to extract answers directly from the documentation you provide. I'll search through those markdown files to find the most accurate answers for you.
+
+    2. **Concise is Key:** I'll keep things brief and to the point. Nobody likes reading essays when a sentence will do!
+
+    3. **Outside Sources as Backup:** If I can't find an answer in the documentation, I'll do my best to find a reliable external source to help out.
+
+    4. **Personal Touch:** I'll always start with a friendly personal message before diving into the answer to your question.
+
+    So go ahead and fire away with your queries, and I'll do my best to assist you! 😊📚
+    `;
   const [documentation, setDocumentation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  // TODO: add personality to chatbot and test it "hi im docai".....
-  const instructions =
-    'Please use the markdown files I am about to send to you, to answer questions about the provided project documentation. Only get answers from the documentation and when not possible, give the best answer utilizing outside sources. Make sure to make the answers as concise as possible, and even copy and paste answers from the documentation when necessary';
 
   const fetchAIResponse = async (userInput) => {
     setIsLoading(true); // Indicate that AI is processing the response.
     try {
+
+      const apiKey = process.env.REACT_APP_API_KEY;
+      const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
+      console.log(prompt); 
+      
       if (!documentation && uploadedFile) {
         const fileContents = await readFile(uploadedFile);
         setDocumentation(fileContents.trim());
@@ -25,6 +63,7 @@ function Chatbot({ uploadedFile }) {
 
       const apiKey = process.env.REACT_APP_API_KEY;
       const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
+
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
       const response = await axios.post(
@@ -68,17 +107,6 @@ function Chatbot({ uploadedFile }) {
       fetchAIResponse(textInput); // Send the text input to the AI.
       setTextInput(''); // Clear the input field.
     }
-  };
-
-  const readFile = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsText(file);
-    });
   };
 
   return (

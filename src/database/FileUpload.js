@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
+import '../styles/Taskbar.css'
 
 function FileUpload({ onFileUpload }) {
   const [file, setFile] = useState(null);
@@ -21,14 +22,16 @@ function FileUpload({ onFileUpload }) {
   };
 
   return (
-    <div>
+    <div className="fileUpload">
       <input
+        className="fileSelection"
         type="file"
+        accept=".md"
         onChange={(event) => {
           setFile(event.target.files[0]);
         }}
       />
-      <button onClick={handleFileUpload}>Upload File</button>
+      <button className="uploadButton" onClick={handleFileUpload}>Upload File</button>
     </div>
   );
 }
