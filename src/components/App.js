@@ -40,7 +40,6 @@ function App() {
 
   const handleFileSelect = (fileUrl) => {
     setUploadedFile(fileUrl);
-    console.log(uploadedFile);
   };
 
   return (
