@@ -53,14 +53,17 @@ function Taskbar({ onSelectFile }) {
   return (
     <div>
       <h2>Uploaded Files</h2>
-      <ul className="fileList">
-        {fileList.map((file) => (
-          <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
-            <button onClick={() => handleFileSelect(file)}>{file.name}</button>
-          </li>
-        ))}
-      </ul>
-      <FileUpload onFileUpload={fetchFileList} />
+      <div className="fileListWrapper">
+        <ul className="fileList">
+          {fileList.map((file) => (
+            <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
+              <input type="checkbox" id={file.name} name={file.name} /> {/* Checkbox added */}
+              <label htmlFor={file.name}>{file.name}</label> {/* Make sure label is clickable */}
+            </li>
+          ))}
+        </ul>
+        <FileUpload onFileUpload={fetchFileList} />
+      </div>
     </div>
   );
 }
