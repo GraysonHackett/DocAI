@@ -1,13 +1,11 @@
 /* Taskbar.css */
 
 .taskbar {
-  background-color: slategray;
- /* border-right: 1px solid black;*/
-  height: 100%;
+  background-color: #fcf9ed;
+  border-right: 1px solid black;
+  height: 615px;
   width: 25%;
-  margin-top: 100px;
-  top: 0;
-  left: 0;
+  margin-top: -2px;
 }
 
 .dark-mode .taskbar {
@@ -32,7 +30,7 @@
   cursor: pointer;
 }
 
-.fileList input[type="checkbox"] {
+.fileList input[type='checkbox'] {
   margin-right: 10px; /* Adds some space between the checkbox and the file name */
 }
 

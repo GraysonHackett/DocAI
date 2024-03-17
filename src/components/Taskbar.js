@@ -51,7 +51,7 @@ function Taskbar({ onSelectFile }) {
   };
 
   return (
-    <div>
+    <div className="taskbar">
       <h2>Uploaded Files</h2>
       <div className="fileListWrapper">
         <ul className="fileList">
