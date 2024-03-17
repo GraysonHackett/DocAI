@@ -55,13 +55,20 @@ function Taskbar({ onSelectFile }) {
       <h2>Uploaded Files</h2>
       <div className="fileListWrapper">
         <ul className="fileList">
-          {fileList.map((file) => (
-            <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
-              <input type="checkbox" id={file.name} name={file.name} /> {/* Checkbox added */}
-              <label htmlFor={file.name}>{file.name}</label> {/* Make sure label is clickable */}
-            </li>
-          ))}
-        </ul>
+        {fileList.map((file) => (
+          <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
+            <input 
+              type="radio" 
+              id={file.name} 
+              name="selectedFile" 
+              value={file.name}
+              onChange={() => handleFileSelect(file)} 
+              checked={file === selectedFile} // Check if the current file is selected
+            />
+            <label htmlFor={file.name}>{file.name}</label> {/* Make sure label is clickable */}
+          </li>
+        ))}
+      </ul>
         <FileUpload onFileUpload={fetchFileList} />
       </div>
     </div>
