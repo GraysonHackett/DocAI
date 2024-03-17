@@ -1,14 +1,14 @@
 .toggle-switch {
-  top: 15px;
   width: 100px; /* Adjusted width */
   height: 125px; /* Adjusted height */
   position: relative;
-  left: 85%;
+  top: 5px;
+  left: 84%;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
+  margin-bottom: 20px;
 }
 
 .toggle-switch input {
@@ -19,7 +19,7 @@
 
 .toggle-switch label {
   width: 100px;
-  height: 100%;
+  height: 50px;
   position: relative;
   display: flex;
   background: #ebebeb;
@@ -56,4 +56,23 @@
 
 .toggle-switch label:active:after {
   width: 50px;
+}
+
+.toggle-switch label img {
+  position: absolute;
+  background-color: transparent;
+  z-index: 2; /* Set a higher z-index for the image */
+  width: 25px; /* Adjust the width of the icons as needed */
+  height: 25px; /* Adjust the height of the icons as needed */
+}
+
+.sun img {
+  margin-left: 10px;
+  margin-top: 10px; 
+}
+
+.moon img {
+  margin-right: 10px;
+  margin-top: 10px; 
+  left: calc(100% - 35px); /* Position the moon label on the right side */
 }

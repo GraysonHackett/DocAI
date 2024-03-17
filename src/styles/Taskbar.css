@@ -1,11 +1,19 @@
 /* Taskbar.css */
 
 .taskbar {
-  background-color: #fcf9ed;
+  background-color: white;
   border-right: 1px solid black;
   height: 615px;
   width: 25%;
   margin-top: -2px;
+}
+
+h2 {
+  color: black; 
+}
+
+.dark-mode h2{
+  color:white; 
 }
 
 .dark-mode .taskbar {

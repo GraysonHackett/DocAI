@@ -29,81 +29,14 @@ body, html {
   margin-top: 15px;
 }
 
-.App-header {
-  background-color: var(--sendblue);
-  border-bottom: 1px solid black;
-  padding-left: 25px;
-  color: white;
-  width: 100%; /* Adjusted width to accommodate left taskbar and padding */
-  height: 10%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.App.dark-mode .App-header {
-  background-color: var(--darkgray);
-  border-bottom: 1px solid white;
-}
-
-.dark-mode {
-  background-color: var(--darkblue);
-  color: #fff;
-}
-
 main {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: #C2D6EB; 
+  background-color: white; 
   padding-top: 50px;
 }
 
 .App.dark-mode main {
   background-color: var(--blue);
-}
-
-.footer {
-  border-top: 1px solid black;
-  background-color: white;
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Open Sans', sans-serif;
-  padding: 4px;
-  size: 1px;
-  color: black;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-.App.dark-mode footer {
-  color: white;
-  background-color: var(--darkblue);
-  border-top: 1px solid white;
-}
-
-.loginButton {
-  width: fit-content;
-  height: fit-content;
-  border-radius: 200px;
-  background-color: #007bff; /* Blue color, you can change it to your preferred color */
-  color: white;
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: none;
-  cursor: pointer;
-  font-size: 18px; /* Adjust font size as needed */
-  transition: background-color 0.3s ease; /* Smooth transition effect */
-  margin-left: 74%;
-  text-decoration: none;
-}
-
-/* TODO: change css for signup to adjust for the spacing between the slider */
-
-.loginButton:hover {
-  background-color: #0056b3; /* Darker shade of blue on hover */
 }
