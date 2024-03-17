@@ -5,7 +5,8 @@ import Taskbar from './Taskbar'; // Import the Taskbar component
 import Header from './Header';
 import { auth } from '../database/Firebase';
 import '../styles/App.css';
-import '../styles/Taskbar.css'
+import '../styles/Footer.css'; 
+import '../styles/Taskbar.css';
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
 

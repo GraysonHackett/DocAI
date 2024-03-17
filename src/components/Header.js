@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ToggleSwitch from './ToggleSwitch';
+import '../styles/Header.css'; 
 
 function Header({ darkMode, toggleDarkMode, user, handleSignOut }) {
   return (
