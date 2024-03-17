@@ -8,6 +8,7 @@ import '../styles/App.css';
 import '../styles/Taskbar.css'
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
+import logo from '../assets/logo.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -46,8 +47,9 @@ function App() {
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
         <header className="App-header">
+        <img src={logo} alt="Logo" className="header-logo" /> {/* Logo image */}
           <h1>DocAI</h1>
-          <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
+          
           {user ? (
             <button className="loginButton" onClick={handleSignOut}>
               Sign Out
@@ -58,6 +60,7 @@ function App() {
             </Link>
           )}
           {user && <span className="user-name">{user.displayName}</span>}
+          <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
         </header>
         <div className='taskbar'>
           <Taskbar onSelectFile={handleFileSelect} />

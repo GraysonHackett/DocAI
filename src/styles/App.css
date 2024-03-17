@@ -32,16 +32,29 @@ body, html {
 .App-header {
   background-color: var(--sendblue);
   border-bottom: 1px solid black;
-  padding-left: 25px;
+  padding-left: 15px;
   color: white;
   width: 100%; /* Adjusted width to accommodate left taskbar and padding */
   height: 10%;
   position: fixed;
   top: 0;
-  left: 0;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
+  
+}
+
+/* Make the logo responsive */
+.header-logo {
+  width: 10vw; /* Responsive width */
+  max-width: 150px; /* Maximum size */
+  max-height: 150px; /* Maximum size */
+  margin-right: 2vw; /* Responsive spacing */
+}
+
+.header-h1{
+  padding: 20px;
+  margin: auto;
 }
 
 .App.dark-mode .App-header {
@@ -100,8 +113,8 @@ main {
   cursor: pointer;
   font-size: 18px; /* Adjust font size as needed */
   transition: background-color 0.3s ease; /* Smooth transition effect */
-  margin-left: 74%;
   text-decoration: none;
+  margin-left: 50%;
 }
 
 /* TODO: change css for signup to adjust for the spacing between the slider */
