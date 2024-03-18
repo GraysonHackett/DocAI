@@ -7,7 +7,7 @@
   --sendblue: #728597;
   --darkgray: #485a70;
   --lightgray: #303c4b;
-  --white: #d9d9d9;
+  --white: #FFFFFF;
 }
 
 .openai-container {
@@ -103,7 +103,7 @@
 
 .message.user {
   background-color: var(--textblue);
-  color: var(--white);
+  color: white;
   border-radius: 20px;
   display: inline-flex;
   float: right;
@@ -117,8 +117,8 @@
 }
 
 .message.ai {
-  background-color: var(--textgray);
-  color: var(--white);
+  background-color: grey;
+  color: white;
   border-radius: 20px;
   float: left;
   text-align: left;

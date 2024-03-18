@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
-import '../styles/Taskbar.css'
+import '../styles/Upload.css'
 
 function FileUpload({ onFileUpload }) {
   const [file, setFile] = useState(null);
@@ -23,7 +23,7 @@ function FileUpload({ onFileUpload }) {
 
   return (
     <div className="fileUpload">
-      <input
+      <input  // styling for choose file button needs to be inline not css page 
         className="fileSelection"
         type="file"
         accept=".md"
