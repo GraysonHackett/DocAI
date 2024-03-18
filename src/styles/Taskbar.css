@@ -3,8 +3,9 @@
 .taskbar {
   background-color: white;
   border-right: 1px solid black;
-  height: 615px;
-  width: 25%;
+  height: 100%;
+  width: 25vw;
+  margin-bottom: .5%;
 }
 
 h2 {
