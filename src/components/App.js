@@ -9,6 +9,7 @@ import '../styles/Footer.css';
 import '../styles/Taskbar.css';
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
+import logo from '../assets/logo.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
