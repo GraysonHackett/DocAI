@@ -69,6 +69,7 @@ function Taskbar({ onSelectFile }) {
           </li>
         ))}
       </ul>
+        <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3>
         <FileUpload onFileUpload={fetchFileList} />
       </div>
     </div>
