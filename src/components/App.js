@@ -45,11 +45,11 @@ function App() {
 
   return (
     <Router>
-      <div className="black-rectangle" />
+      
       <div className={darkMode ? 'App dark-mode' : 'App'}>
       
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} user={user} handleSignOut={handleSignOut} />
-        <main className='main'>
+        
+        <main className=''>
           
           <Taskbar onSelectFile={handleFileSelect} />
           <Routes>
@@ -59,9 +59,7 @@ function App() {
           <Chatbot uploadedFile={uploadedFile} />
           
         </main>
-        <footer className="footer">
-            DocAI Project Created In Collaboration with Red Hat ©2024
-        </footer>
+        
       </div>
     </Router>
   );
