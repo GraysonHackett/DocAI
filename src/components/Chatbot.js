@@ -51,8 +51,7 @@ function Chatbot({ uploadedFile }) {
 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
-      const aiPrompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
-
+      console.log(prompt); 
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
       const response = await axios.post(

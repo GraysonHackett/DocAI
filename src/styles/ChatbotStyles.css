@@ -7,7 +7,7 @@
   --sendblue: #728597;
   --darkgray: #485a70;
   --lightgray: #303c4b;
-  --white: #d9d9d9;
+  --white: #FFFFFF;
 }
 
 .openai-container {
@@ -15,8 +15,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align messages to the bottom */
-  width: 70vw;
-  height: 75vh;
+  width: 75vw;
+  height: 85vh;
+  padding-left: 25vw;
+  margin-bottom: 3%;
 }
 
 .input-container {
@@ -24,13 +26,14 @@
   justify-content: space-between;
   width: 70vw;
   margin-top: 20px; /* Add some space between main container and input container */
+  margin-bottom: 10px;
 }
 
 /* Chat input and button */
 .text-box {
   box-sizing: border-box;
   padding: 18px;
-  background-color: var(--white);
+  background-color: white;
   border: 1px solid black; 
   border-radius: 25px;
   height: 50px;
@@ -46,12 +49,12 @@
 }
 
 .send-button {
-  background-color: var(--sendblue);
-  color: white;
+  background-color: white;
+  color: black;
   border-radius: 40px;
   border: 1px solid black;
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
 }
 
 .send-button:hover {
@@ -75,6 +78,7 @@
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
   padding-right: 10px;
+  padding-top: 25px;
 }
 
 /* Custom scrollbar for .messages-container */
@@ -100,7 +104,7 @@
 
 .message.user {
   background-color: var(--textblue);
-  color: var(--white);
+  color: white;
   border-radius: 20px;
   display: inline-flex;
   float: right;
@@ -114,8 +118,8 @@
 }
 
 .message.ai {
-  background-color: var(--textgray);
-  color: var(--white);
+  background-color: grey;
+  color: white;
   border-radius: 20px;
   float: left;
   text-align: left;

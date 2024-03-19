@@ -1,13 +1,26 @@
 /* Taskbar.css */
 
 .taskbar {
-  background-color: slategray;
+  position: absolute;
   border-right: 1px solid black;
   height: 100%;
-  width: 25%;
-  margin-top: 100px;
-  top: 0;
-  left: 0;
+  width: 25vw;
+  margin-bottom: 3%;
+}
+
+h2, h3 {
+  color: black;
+  align-items: center;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.dark-mode h2{
+  color: white
+}
+
+.dark-mode h3 {
+  color: white;
 }
 
 .dark-mode .taskbar {
@@ -16,15 +29,18 @@
 }
 
 .fileList {
-  border-radius: 10px;
-  width: fit-content;
-  background-color: #f0f0f0;
-  justify-content: center;
-  align-items: center;
+  list-style-type: none;
+  padding: 0;
 }
 
 .fileList li {
-  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dark-mode .fileList {
+  color: white;
 }
 
 .fileList button {
@@ -33,7 +49,24 @@
   cursor: pointer;
 }
 
+.fileList input[type='checkbox'] {
+  margin-right: 10px; /* Adds some space between the checkbox and the file name */
+}
+
+.fileList label {
+  cursor: pointer; /* Changes cursor to pointer when hovering over the label */
+}
+
 .fileList .selected {
   background-color: #007bff; /* Change to desired highlight color */
   color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.fileListWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: fit-content;
 }

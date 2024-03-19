@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import ToggleSwitch from './ToggleSwitch';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chatbot from './Chatbot';
 import Taskbar from './Taskbar'; // Import the Taskbar component
+import Header from './Header';
 import { auth } from '../database/Firebase';
 import '../styles/App.css';
-import '../styles/Taskbar.css'
+import '../styles/Footer.css'; 
+import '../styles/Taskbar.css';
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
 import logo from '../assets/logo.png';
@@ -46,35 +47,17 @@ function App() {
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <header className="App-header">
-        <img src={logo} alt="Logo" className="header-logo" /> {/* Logo image */}
-          <h1>DocAI</h1>
-          
-          {user ? (
-            <button className="loginButton" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          ) : (
-            <Link className="loginButton" to="/login">
-              Login
-            </Link>
-          )}
-          {user && <span className="user-name">{user.displayName}</span>}
-          <ToggleSwitch isChecked={darkMode} onChange={toggleDarkMode} />
-        </header>
-        <div className='taskbar'>
-          <Taskbar onSelectFile={handleFileSelect} />
-        </div>
+        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} user={user} handleSignOut={handleSignOut} />
         <main>
+          <Taskbar onSelectFile={handleFileSelect} />
           <Routes>
-            <Route exact path='/' element={<main />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
           </Routes>
           <Chatbot uploadedFile={uploadedFile} />
         </main>
         <footer className="footer">
-          DocAI Project Created In Collaboration with Red Hat ©2024
+            DocAI Project Created In Collaboration with a Red Hat Mentor
         </footer>
       </div>
     </Router>
