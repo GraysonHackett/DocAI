@@ -1,26 +1,31 @@
 :root {
-  /* Color pallete */
-  --darkblue: #0e131b;
-  --darkgray: #302f37;
-  --textblue: #007AFF;
-  --textgray: #8E8E93; 
-  --sendblue: #728597;
-  --darkgray: #485a70;
-  --lightgray: #303c4b;
-  --white: #FFFFFF;
+  /* Red Hat Color pallete */
+  --gray-90: #1f1f1f;
+  --gray-95: #151515;
+  --red-60: #a60000;
+  --red-70: #5f0000;
 }
 
 .openai-container {
+  margin: auto;
+  width: 50%;
+  border: 1px solid var(--gray-95);
+  padding: 10px;  
+
+  background-color: var(--gray-95);
+  border-color: white;
   display: flex;
+  border-radius: 12px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align messages to the bottom */
-  width: 70vw;
-  height: 85vh;
-  padding-left: 15px;
+  width: 70%;
+  height: 75%;
+  padding-left: 10px;
 }
 
 .input-container {
+  
   display: flex;
   justify-content: space-between;
   width: 70vw;
@@ -32,32 +37,33 @@
 .text-box {
   box-sizing: border-box;
   padding: 18px;
-  background-color: white;
-  border: 1px solid black; 
-  border-radius: 25px;
+  background-color: var(--gray-95);
+  border: 1px solid white; 
+  border-radius: 6px;
   height: 50px;
   width: calc(100% - 120px); /* Adjust width */
 }
 
 .text-box::placeholder {
-  color: black;
+  color: white;
 }
 
 .App.dark-mode .text-box::placeholder {
-  color: black;
+  color: white;
 }
 
 .send-button {
-  background-color: white;
-  color: black;
-  border-radius: 40px;
-  border: 1px solid black;
-  width: 50px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid red;
+  width: 110px;
   height: 50px;
 }
 
 .send-button:hover {
-  background-color: #0056b3; /* Darken on hover */
+  background-color: var(--red-60);
+  border: 1px solid var(--red-60); /* Darken on hover */
 }
 
 /* Chat message styles */
@@ -102,9 +108,9 @@
 }
 
 .message.user {
-  background-color: var(--textblue);
+  background-color: red;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   display: inline-flex;
   float: right;
   text-align: right;
@@ -117,9 +123,10 @@
 }
 
 .message.ai {
-  background-color: grey;
+  background-color: var(--gray-95);
+  border: 1px solid white;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   float: left;
   text-align: left;
   max-width: 50vw;

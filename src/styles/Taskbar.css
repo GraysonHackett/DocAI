@@ -1,14 +1,20 @@
 /* Taskbar.css */
 
+
 .taskbar {
-  background-color: white;
-  border-right: 1px solid black;
-  height: 615px;
-  width: 25%;
+  margin: auto;
+  width: 50%;
+  border: 0.01em solid var(--gray-95);
+  border-radius: 10px;
+  background-color: var(--gray-95);
+  border-color: white;
+  padding: 10px;  
+  height: 75%;
+  width: 23%;
 }
 
 h2 {
-  color: black; 
+  color: white; 
 }
 
 .dark-mode h2{
@@ -50,7 +56,7 @@ h2 {
 }
 
 .fileList .selected {
-  background-color: #007bff; /* Change to desired highlight color */
+  background-color: red; /* Change to desired highlight color */
   color: white;
   padding: 5px;
   border-radius: 5px;
@@ -60,5 +66,5 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 200px); /* Adjust height as necessary */
+  height: 20%; /* Adjust height as necessary */
 }
