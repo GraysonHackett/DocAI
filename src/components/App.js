@@ -56,7 +56,7 @@ function App() {
           <Chatbot uploadedFile={uploadedFile} />
         </main>
         <footer className="footer">
-            DocAI Project Created In Collaboration with Red Hat ©2024
+            DocAI Project Created In Collaboration with a Red Hat Mentor
         </footer>
       </div>
     </Router>
