@@ -13,27 +13,22 @@ body,
 html {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  background-color: var(--white);
   color: #333;
   overflow: hidden;
 }
 
 .App {
-  padding: 0;
+  display: flex;
   height: 100%;
   width: 100%;
-  display: flex;
+  padding: 0;
   bottom: 0;
+  position: relative;
 }
 
 main {
-  overflow: hidden;
+  /* position: fixed; */
   display: flex;
-  width: 100%;
-  background-color: red;
-  margin-top: 5%;
-}
-
-.App.dark-mode main {
-  background-color: var(--blue);
+  width: 100vw;
+  height: 100vh;
 }

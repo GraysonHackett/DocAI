@@ -9,6 +9,7 @@ import '../styles/Footer.css';
 import '../styles/Taskbar.css';
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
+import logo from '../assets/logo.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -45,19 +46,20 @@ function App() {
 
   return (
     <Router>
+      
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} user={user} handleSignOut={handleSignOut} />
-        <main>
-          <Taskbar onSelectFile={handleFileSelect} />
+        
+        <main className=''>
+          
+          <Taskbar onSelectFile={handleFileSelect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
           </Routes>
           <Chatbot uploadedFile={uploadedFile} />
+          
         </main>
-        <footer className="footer">
-            DocAI Project Created In Collaboration with Red Hat ©2024
-        </footer>
+        
       </div>
     </Router>
   );

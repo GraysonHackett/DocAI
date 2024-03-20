@@ -2,6 +2,11 @@
 
 :root {
   /* My Color Palette */
+  --gray-90: #1f1f1f;
+  --gray-95: #151515;
+  --red-60: #a60000;
+  --red-70: #5f0000;
+
   --darkblue: #0E131B;
   --darkgray: #302F37;
   --blue: #202832;
@@ -11,10 +16,10 @@
 }
 
 .App-header {
-  background-color: #C2D6EB;
-  border-bottom: 1px solid black;
+  background-color: var(--gray-95);
+  border-bottom: 1px solid var(--gray-95);
   padding-left: 25px;
-  color: black;
+  color: white;
   width: 100%; /* Adjusted width to accommodate left taskbar and padding */
   height: 10%;
   position: fixed;
@@ -31,17 +36,17 @@
 }
 
 .loginButton {
-  border-radius: 200px;
-  background-color: #007bff; /* Blue color, you can change it to your preferred color */
+  border-radius: 5px;
+  background-color: red; /* Blue color, you can change it to your preferred color */
   color: white;
   padding: 10px 20px; /* Adjust padding as needed */
   border: none;
   cursor: pointer;
-  font-size: 18px; /* Adjust font size as needed */
+  font-size: 14px; /* Adjust font size as needed */
   margin-left: 70%;
   text-decoration: none;
 }
 
 .loginButton:hover {
-  background-color: #0056b3; /* Darker shade of blue on hover */
+  background-color: var(--red-60); /* Darker shade of blue on hover */
 }
