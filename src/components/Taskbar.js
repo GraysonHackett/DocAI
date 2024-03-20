@@ -4,6 +4,10 @@ import { storage } from "../database/Firebase";
 import { auth } from "../database/Firebase";
 import FileUpload from "../database/FileUpload";
 import '../styles/Taskbar.css';
+import userIcon from '../assets/user.png'
+import darkmodeIcon from '../assets/darkmode.png'
+import fileuploadIcon from '../assets/fileupload.png'
+import choosefileIcon from '../assets/choosefile.png'
 
 function Taskbar({ onSelectFile }) {
   const [fileList, setFileList] = useState([]);
@@ -72,6 +76,13 @@ function Taskbar({ onSelectFile }) {
       </ul>
         <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3>
         <FileUpload onFileUpload={fetchFileList} />
+      </div>
+        <div class="actions">
+          <button><img src={fileuploadIcon} alt="File Upload" /><span class="hover-text">Upload File</span></button><br></br>
+          <button><img src={choosefileIcon} alt="Choose File" /><span class="hover-text">Choose File</span></button><br></br>
+          <p>break</p>
+          <button><img src={userIcon} alt="Sign In" /><span class="hover-text">Sign In</span></button><br></br>
+          <button><img src={darkmodeIcon} alt="Dark mode" /><span class="hover-text">Dark Mode</span></button><br></br>
       </div>
     </div>
   );

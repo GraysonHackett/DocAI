@@ -9,27 +9,24 @@
 .openai-container {
   margin: auto;
   border: 1px solid var(--gray-95);
-  
+
   background-color: var(--gray-95);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align messages to the bottom */
-  width: 83%;
-  height: 100%;
+  width: 80vw;
+  height: 100vh;
   padding-left: 10px;
 }
 .header {
-  
   padding-right: 95%;
-  
 }
 p {
   font-size: 12px;
   padding-bottom: 5px;
 }
 .input-container {
-  
   display: flex;
   justify-content: space-between;
   width: 70vw;
@@ -39,10 +36,11 @@ p {
 
 /* Chat input and button */
 .text-box {
+  color: white;
   box-sizing: border-box;
   padding: 18px;
   background-color: var(--gray-95);
-  border: 1px solid white; 
+  border: 1px solid white;
   border-radius: 20px;
   height: 50px;
   width: calc(100% - 120px); /* Adjust width */
@@ -50,6 +48,10 @@ p {
 
 .text-box::placeholder {
   color: white;
+}
+
+.text-box:focus::placeholder {
+  color: transparent;
 }
 
 .App.dark-mode .text-box::placeholder {
@@ -61,8 +63,8 @@ p {
   color: white;
   border-radius: 15px;
   border: 1px solid red;
-  width: 45px;
-  height: 45px;
+  width: 100px;
+  height: 50px;
 }
 
 .send-button:hover {
@@ -77,7 +79,7 @@ p {
   border-radius: 20px;
   word-wrap: break-word;
   /* annimation segment */
-  animation: slideIn .75s ease-out forwards;
+  animation: slideIn 0.75s ease-out forwards;
 }
 
 .messages-container {
@@ -86,7 +88,6 @@ p {
   border-radius: 20px;
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
-  padding-right: 10px;
   padding-top: 25px;
 }
 
@@ -148,7 +149,9 @@ p {
 }
 
 .message.ai a:hover {
-  color: var(--sendblue); /* Set the color of hovered links to a different color */
+  color: var(
+    --sendblue
+  ); /* Set the color of hovered links to a different color */
 }
 
 @keyframes slideIn {
