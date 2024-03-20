@@ -32,7 +32,3 @@ main {
   width: 100vw; 
   height: 100vh;  
 }
-
-.App.dark-mode main {
-  background-color: var(--blue);
-}

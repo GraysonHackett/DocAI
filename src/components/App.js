@@ -51,7 +51,7 @@ function App() {
         
         <main className=''>
           
-          <Taskbar onSelectFile={handleFileSelect} />
+          <Taskbar onSelectFile={handleFileSelect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />

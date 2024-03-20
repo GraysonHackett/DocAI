@@ -71,7 +71,7 @@ h3 {
 .actions {
   /* background-color: red; */
   height: fit-content;
-  margin-top: calc(40vh);
+  margin-top: calc(25vh);
 }
 
 .actions button:nth-of-type(1),

@@ -19,6 +19,11 @@
   height: 100vh;
   padding-left: 10px;
 }
+
+.App.dark-mode .openai-container {
+  background-color: gainsboro;
+}
+
 .header {
   padding-right: 95%;
 }
@@ -33,6 +38,7 @@ p {
   margin-top: 20px; /* Add some space between main container and input container */
   margin-bottom: 10px;
 }
+
 
 /* Chat input and button */
 .text-box {
@@ -55,7 +61,7 @@ p {
 }
 
 .App.dark-mode .text-box::placeholder {
-  color: white;
+  color: red;
 }
 
 .send-button {
