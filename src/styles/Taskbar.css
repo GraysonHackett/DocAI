@@ -1,32 +1,28 @@
 /* Taskbar.css */
 
-
 .taskbar {
   margin: auto;
   width: 50%;
   border: 0.01em solid var(--gray-90);
-  
   background-color: var(--gray-90);
-  
-  padding: 10px;  
-  height: 100%;
-  width: 17%;
+  padding: 10px;
+  height: 100vh;
+  width: 20vw;
 }
 
 p {
-  color: white; 
+  color: white;
 }
 h3 {
-  color: white; 
+  color: white;
 }
 
-.dark-mode h2{
-  color:white; 
+.dark-mode h2 {
+  color: white;
 }
 
 .dark-mode .taskbar {
   background-color: var(--darkgray);
-  
 }
 
 .fileList {
@@ -70,4 +66,46 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   height: 20%; /* Adjust height as necessary */
+}
+
+.actions {
+  /* background-color: red; */
+  height: fit-content;
+  margin-top: calc(40vh);
+}
+
+.actions button:nth-of-type(1),
+.actions button:nth-of-type(2),
+.actions button:nth-of-type(3),
+.actions button:nth-of-type(4) {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.actions button:nth-of-type(1) img,
+.actions button:nth-of-type(2) img,
+.actions button:nth-of-type(3) img,
+.actions button:nth-of-type(4) img {
+  width: 50px; /* Adjust to desired width */
+  height: 50px; /* Adjust to desired height */
+}
+
+.actions button {
+  position: relative; /* Position the button relatively for absolute positioning of text */
+}
+
+.actions button .hover-text {
+  display: none; /* Initially hide the text */
+  position: absolute; /* Position the text absolutely */
+  top: 50%; /* Align the text vertically centered with the button */
+  left: calc(100% + 10px); /* Position the text to the right of the button */
+  white-space: nowrap; /* Prevent the text from wrapping to a new line */
+  color: #fff; /* Text color */
+  font-size: 17.5px; /* Adjust font size */
+}
+
+.actions button:hover .hover-text {
+  display: inline; /* Show the text when button is hovered over */
+  transform: translateY(-50%) translateX(0); /* Slide the text in when button is hovered over */
 }

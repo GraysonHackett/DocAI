@@ -13,7 +13,6 @@ body,
 html {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  
   color: #333;
   overflow: hidden;
 }
@@ -27,15 +26,12 @@ html {
   position: relative;
 }
 
-
-
 main {
   /* position: fixed; */
   overflow: hidden;
   display: flex;
-  width: 100%;
-  
-  
+  width: 100vw; 
+  height: 100vh;  
 }
 
 .App.dark-mode main {

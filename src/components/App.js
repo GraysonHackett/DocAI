@@ -47,7 +47,6 @@ function App() {
     <Router>
       
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-      
         
         <main className=''>
           
