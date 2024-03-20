@@ -98,7 +98,9 @@ function Chatbot({ uploadedFile }) {
   };
 
   return (
+    
     <div className="openai-container">
+      <h3 className='header'>DocAI</h3>
       <div className="messages-container">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
@@ -123,6 +125,9 @@ function Chatbot({ uploadedFile }) {
           Send
         </button>
       </div>
+      <p>
+      DocAI Project Created In Collaboration with Red Hat ©2024
+      </p>
     </div>
   );
 }

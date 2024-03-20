@@ -52,7 +52,8 @@ function Taskbar({ onSelectFile }) {
 
   return (
     <div className="taskbar">
-      <h2>Uploaded Files</h2>
+      <h3>Redhat</h3>
+      <p>Uploaded Files</p>
       <div className="fileListWrapper">
         <ul className="fileList">
         {fileList.map((file) => (

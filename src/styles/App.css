@@ -12,10 +12,8 @@
 body,
 html {
   font-family: 'Open Sans', sans-serif;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  background-color: var(--white);
+  margin: 0;
+
   color: #333;
   overflow: hidden;
 }
@@ -26,14 +24,13 @@ html {
   width: 100%;
   padding: 0;
   bottom: 0;
+  position: relative;
 }
 
 main {
   /* position: fixed; */
   display: flex;
   width: 100%;
-  background-color: white;
-  margin-top: 5%;
 }
 
 .App.dark-mode main {
