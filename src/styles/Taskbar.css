@@ -10,6 +10,10 @@
   width: 20vw;
 }
 
+.App.dark-mode .taskbar { 
+  background-color: var(--gray-90);
+}
+
 p {
   color: white;
 }

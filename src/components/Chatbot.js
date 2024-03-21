@@ -125,7 +125,7 @@ function Chatbot({ uploadedFile }) {
           Send
         </button>
       </div>
-      <p className='foot'>
+      <p className='bottom'>
       DocAI Project Created In Collaboration with Red Hat ©2024
       </p>
     </div>
