@@ -74,24 +74,18 @@ h3 {
   margin-top: calc(25vh);
 }
 
-.actions button:nth-of-type(1),
-.actions button:nth-of-type(2),
-.actions button:nth-of-type(3),
-.actions button:nth-of-type(4) {
+.actions img { 
+  width: 50px;
+  height: 50px;
+}
+
+/* Apply the same styling for all buttons in the .actions class */
+.actions button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.actions button:nth-of-type(1) img,
-.actions button:nth-of-type(2) img,
-.actions button:nth-of-type(3) img,
-.actions button:nth-of-type(4) img {
   width: 50px; /* Adjust to desired width */
   height: 50px; /* Adjust to desired height */
-}
-
-.actions button {
   position: relative; /* Position the button relatively for absolute positioning of text */
 }
 
@@ -108,4 +102,11 @@ h3 {
 .actions button:hover .hover-text {
   display: inline; /* Show the text when button is hovered over */
   transform: translateY(-50%) translateX(0); /* Slide the text in when button is hovered over */
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid white; /* Solid white line */
+  width: 100%; /* Span the width of the actions window */
+  margin: 10px 0; /* Adjust margin as needed */
 }

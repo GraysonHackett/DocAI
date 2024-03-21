@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chatbot from './Chatbot';
 import Taskbar from './Taskbar'; // Import the Taskbar component
-import Header from './Header';
 import { auth } from '../database/Firebase';
 import '../styles/App.css';
 import '../styles/Footer.css'; 
 import '../styles/Taskbar.css';
 import Login from '../authentication/Login';
 import Signup from '../authentication/Signup';
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
