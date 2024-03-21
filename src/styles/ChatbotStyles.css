@@ -32,13 +32,13 @@
 }
 
 .bottom {
-  color: wite;
+  color: black;
   font-size: 12px;
   padding-bottom: 5px;
 }
 
 .App.dark-mode .bottom { 
-  color: black; 
+  color: white; 
 }
 
 .input-container {

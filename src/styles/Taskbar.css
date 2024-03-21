@@ -13,12 +13,20 @@
   background-color: #1d1d1d;
 }
 
-p {
-  color: white;
-}
 h3 {
+  color: black;
+}
+.App.dark-mode h3 { 
   color: white;
 }
+
+p {
+  color: black;
+}
+.App.dark-mode p { 
+  color: white;
+}
+
 
 .dark-mode h2 {
   color: white;
@@ -35,23 +43,25 @@ h3 {
 }
 
 .fileList li {
+  justify-content: center;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  background-color: #D3D3D3;
+  border-radius: 50px;
+  height: 50px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.dark-mode .fileList {
-  color: white;
-}
-
-.fileList button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.fileList input[type='checkbox'] {
-  margin-right: 10px; /* Adds some space between the checkbox and the file name */
+.fileList input {
+  border-radius: 50px;
+  height: 50px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: none;
 }
 
 .fileList label {
@@ -61,8 +71,7 @@ h3 {
 .fileList .selected {
   background-color: red; /* Change to desired highlight color */
   color: white;
-  padding: 5px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .fileListWrapper {
@@ -99,8 +108,12 @@ h3 {
   top: 50%; /* Align the text vertically centered with the button */
   left: calc(100% + 10px); /* Position the text to the right of the button */
   white-space: nowrap; /* Prevent the text from wrapping to a new line */
-  color: #fff; /* Text color */
+  color: black; /* Text color */
   font-size: 17.5px; /* Adjust font size */
+}
+
+.App.dark-mode .actions .hover-text {
+  color: white;
 }
 
 .actions button:hover .hover-text {
@@ -108,9 +121,14 @@ h3 {
   transform: translateY(-50%) translateX(0); /* Slide the text in when button is hovered over */
 }
 
+
 .divider {
   border: none;
-  border-top: 1px solid white; /* Solid white line */
+  border-top: 1px solid black; /* Solid white line */
   width: 100%; /* Span the width of the actions window */
   margin: 10px 0; /* Adjust margin as needed */
+}
+
+.App.dark-mode .divider { 
+  border-top: 1px solid white; 
 }

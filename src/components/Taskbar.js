@@ -5,11 +5,14 @@ import { auth } from "../database/Firebase";
 import { Link } from "react-router-dom";
 import FileUpload from "../database/FileUpload";
 import '../styles/Taskbar.css';
-import userIcon from '../assets/user.png'
-import signOutIcon from '../assets/signout.png'
+import userIconLight from '../assets/userIconLight.png'
+import userIconDark from '../assets/userIconDark.png'
 import darkmodeIcon from '../assets/darkmode.png'
-import fileuploadIcon from '../assets/fileupload.png'
-import choosefileIcon from '../assets/choosefile.png'
+import lightmodeIcon from '../assets/lightmode.png'
+import fileuploadLightIcon from '../assets/fileuploadLight.png'
+import fileuploadDarkIcon from '../assets/fileuploadDark.png'
+import choosefileIconLight from '../assets/choosefileLight.png'
+import choosefileIconDark from '../assets/choosefileDark.png'
 
 
 function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
@@ -67,7 +70,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   return (
     <div className="taskbar">
       <h3>Redhat</h3>
-      <p>Uploaded Files</p>
+      <p>My Files</p>
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (
@@ -88,17 +91,12 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
         <FileUpload onFileUpload={fetchFileList} />
       </div>
       <div className="actions">
-        <button><img src={fileuploadIcon} alt="File Upload" /><span className="hover-text">Upload File</span></button><br></br>
-        <button><img src={choosefileIcon} alt="Choose File" /><span className="hover-text">Choose File</span></button><br></br>
+        <button><img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" /><span className="hover-text">Upload File</span></button><br></br>
+        <button><img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="Choose File" /><span className="hover-text">File Options</span></button><br></br>
         <hr className="divider" />
-        {user ? (
-          // If user is signed in, display sign out button
-          <button onClick={handleSignOut}><img src={signOutIcon} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
-        ) : (
-          <Link to="/login"><button><img src={userIcon} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
-        )}
+        <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
         <br></br>
-        <button onClick={toggleDarkMode}><img src={darkmodeIcon} alt="Dark mode" /><span className="hover-text">Dark Mode</span></button><br></br>
+        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
       </div>
     </div>
   );
