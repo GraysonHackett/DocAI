@@ -9,7 +9,6 @@
 .openai-container {
   margin: auto;
   background-color: #cdcdcd;
-  border: 1px solid var(--gray-95);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,6 +62,10 @@
   width: calc(100% - 120px); /* Adjust width */
 }
 
+.App.dark-mode .text-box {
+  background-color: var(--gray-95);
+}
+
 .text-box::placeholder {
   color: white;
 }
@@ -72,7 +75,7 @@
 }
 
 .App.dark-mode .text-box::placeholder {
-  color: red;
+  color: white;
 }
 
 .send-button {
@@ -146,7 +149,7 @@
 }
 
 .message.ai {
-  background-color: black;
+  background-color: var(--gray-90);
   border: 1px solid white;
   color: black;
   border-radius: 15px;
@@ -158,8 +161,8 @@
 }
 
 .App.dark-mode .message.ai {
-  background-color: var(--gray-90);
-  border
+  background-color: black;
+  border: 1px solid var(--gray-90);
   color: white;
 }
 
