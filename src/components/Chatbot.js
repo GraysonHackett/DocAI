@@ -4,6 +4,7 @@ import '../styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown';
 import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
+import messageUpload from '../assets/upload.png';
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
@@ -125,7 +126,7 @@ function Chatbot({ uploadedFile }) {
             placeholder="What can I help you with today?"
           />
           <button onClick={fetchAIResponse} className="send-button">
-            Send
+            <img src={messageUpload} alt="Upload Message" />
           </button>
         </div>
       </div>
