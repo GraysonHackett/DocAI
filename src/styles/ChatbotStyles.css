@@ -22,12 +22,24 @@
   background-color: var(--gray-95);
 }
 
-.header {
-  color: black;
-  padding-right: 95%;
+.top {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 70vw;
+  white-space: nowrap;
 }
 
-.App.dark-mode .header {
+.powered {
+  color: black;
+  font-style: italic;
+  font-size: 10px;
+  padding-top: 25px;
+}
+.title {
+  color: black;
+}
+.App.dark-mode .title,
+.App.dark-mode .top {
   color: white;
 }
 
@@ -37,37 +49,55 @@
   padding-bottom: 5px;
 }
 
-.App.dark-mode .bottom { 
-  color: white; 
+.App.dark-mode .bottom {
+  color: white;
 }
 
 .input-container {
   display: flex;
-  justify-content: space-between;
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Horizontally align items */
   width: 70vw;
-  margin-top: 20px; /* Add some space between main container and input container */
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
+.text-box-container {
+  position: relative; /* Make the container relative */
+  width: calc(100% - 120px);
+}
 
-/* Chat input and button */
 .text-box {
-  color: white;
+  color: black;
   box-sizing: border-box;
-  padding: 18px;
-  background-color: var(--gray-95);
-  border: 1px solid white;
+  padding: 18px 80px 18px 18px; /* Adjust padding to accommodate the button */
+  background-color: white;
+  border: 1px solid black;
   border-radius: 20px;
   height: 50px;
-  width: calc(100% - 120px); /* Adjust width */
+  width: 100%; /* Take up remaining space */
+}
+
+.send-button {
+  position: absolute; /* Position the button absolutely */
+  top: 50%; /* Vertically center the button */
+  right: 0; /* Adjust the distance from the right */
+  transform: translateY(-50%); /* Center vertically */
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
 }
 
 .App.dark-mode .text-box {
-  background-color: var(--gray-95);
+  background-color: white;
+  border: 1px solid black;
 }
 
 .text-box::placeholder {
-  color: white;
+  color: black;
 }
 
 .text-box:focus::placeholder {
@@ -75,16 +105,7 @@
 }
 
 .App.dark-mode .text-box::placeholder {
-  color: white;
-}
-
-.send-button {
-  background-color: red;
-  color: white;
-  border-radius: 15px;
-  border: 1px solid red;
-  width: 100px;
-  height: 50px;
+  color: black;
 }
 
 .send-button:hover {
@@ -98,7 +119,6 @@
   padding: 10px 20px;
   border-radius: 20px;
   word-wrap: break-word;
-  /* annimation segment */
   animation: slideIn 0.75s ease-out forwards;
 }
 
@@ -148,10 +168,16 @@
   color: white;
 }
 
+/* AI messages will render as paragraph with react-markdown*/
+.message.ai p {
+  color: white;
+}
+.App.dark-mode .message.ai p {
+  color: black;
+}
+
 .message.ai {
   background-color: var(--gray-90);
-  border: 1px solid white;
-  color: black;
   border-radius: 15px;
   float: left;
   text-align: left;
@@ -161,14 +187,12 @@
 }
 
 .App.dark-mode .message.ai {
-  background-color: black;
-  border: 1px solid var(--gray-90);
-  color: white;
+  background-color: white;
 }
 
 /* Styling for links */
 .message.ai a {
-  color: lightblue; 
+  color: lightblue;
 }
 
 .message.ai a:hover {

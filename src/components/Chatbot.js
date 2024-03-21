@@ -98,9 +98,11 @@ function Chatbot({ uploadedFile }) {
   };
 
   return (
-    
     <div className="openai-container">
-      <h3 className='header'>DocAI</h3>
+      <div className='top'>
+        <h3 className='title'>DocAI</h3>
+        <h3 className='powered'> Powered by Chat-GPT model 3.5</h3>  
+      </div>
       <div className="messages-container">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
@@ -112,21 +114,23 @@ function Chatbot({ uploadedFile }) {
           </div>
         ))}
       </div>
-      <div className='input-container'>
-        <input
-          className="text-box"
-          type="text"
-          value={textInput}
-          onChange={(e) => setTextInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="What can I help you with today?"
-        ></input>
-        <button onClick={fetchAIResponse} className="send-button">
-          Send
-        </button>
+      <div class="input-container">
+        <div class="text-box-container">
+          <input
+            className="text-box"
+            type="text"
+            value={textInput}
+            onChange={(e) => setTextInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="What can I help you with today?"
+          />
+          <button onClick={fetchAIResponse} className="send-button">
+            Send
+          </button>
+        </div>
       </div>
       <p className='bottom'>
-      DocAI Project Created In Collaboration with Red Hat ©2024
+      DocAI Project Created In Collaboration with a Red Hat Mentor ©2024
       </p>
     </div>
   );

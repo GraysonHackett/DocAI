@@ -43,6 +43,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
 
   useEffect(() => {
     fetchFileList();
+    // eslint-disable-next-line
   }, [user]); // Fetch file list whenever the user changes
 
   useEffect(() => {
@@ -94,7 +95,11 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
         <button><img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" /><span className="hover-text">Upload File</span></button><br></br>
         <button><img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="Choose File" /><span className="hover-text">File Options</span></button><br></br>
         <hr className="divider" />
-        <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+        {user ? (
+          <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
+        ) : (
+          <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+        )}
         <br></br>
         <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
       </div>

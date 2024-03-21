@@ -3,30 +3,29 @@
 .taskbar {
   margin: auto;
   width: 50%;
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
   padding: 10px;
   height: 100vh;
   width: 20vw;
 }
 
-.App.dark-mode .taskbar { 
+.App.dark-mode .taskbar {
   background-color: #1d1d1d;
 }
 
 h3 {
   color: black;
 }
-.App.dark-mode h3 { 
+.App.dark-mode h3 {
   color: white;
 }
 
 p {
   color: black;
 }
-.App.dark-mode p { 
+.App.dark-mode p {
   color: white;
 }
-
 
 .dark-mode h2 {
   color: white;
@@ -47,7 +46,7 @@ p {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   border-radius: 50px;
   height: 50px;
   width: 80%;
@@ -82,12 +81,11 @@ p {
 }
 
 .actions {
-  /* background-color: red; */
   height: fit-content;
-  margin-top: calc(25vh);
+  margin-top: 70%;
 }
 
-.actions img { 
+.actions img {
   width: 50px;
   height: 50px;
 }
@@ -121,7 +119,6 @@ p {
   transform: translateY(-50%) translateX(0); /* Slide the text in when button is hovered over */
 }
 
-
 .divider {
   border: none;
   border-top: 1px solid black; /* Solid white line */
@@ -129,6 +126,6 @@ p {
   margin: 10px 0; /* Adjust margin as needed */
 }
 
-.App.dark-mode .divider { 
-  border-top: 1px solid white; 
+.App.dark-mode .divider {
+  border-top: 1px solid white;
 }
