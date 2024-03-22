@@ -4,12 +4,12 @@ import '../styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown';
 import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
+import messageUpload from '../assets/upload.png';
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchFileContents = async () => {
@@ -46,7 +46,6 @@ function Chatbot({ uploadedFile }) {
 
   const fetchAIResponse = async (userInput) => {
 
-    setIsLoading(true); // Indicate that AI is processing the response.
     try {
 
       const apiKey = process.env.REACT_APP_API_KEY;
@@ -80,8 +79,6 @@ function Chatbot({ uploadedFile }) {
       }
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
-    } finally {
-      setIsLoading(false); // Stop loading once the response is processed.
     }
   };
 
@@ -99,6 +96,10 @@ function Chatbot({ uploadedFile }) {
 
   return (
     <div className="openai-container">
+      <div className='top'>
+        <h3 className='title'>DocAI</h3>
+        <h3 className='powered'> Powered by Chat-GPT model 3.5</h3>  
+      </div>
       <div className="messages-container">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
@@ -110,19 +111,24 @@ function Chatbot({ uploadedFile }) {
           </div>
         ))}
       </div>
-      <div className='input-container'>
-        <input
-          className="text-box"
-          type="text"
-          value={textInput}
-          onChange={(e) => setTextInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="What can I help you with today?"
-        ></input>
-        <button onClick={fetchAIResponse} className="send-button">
-          Send
-        </button>
+      <div class="input-container">
+        <div class="text-box-container">
+          <input
+            className="text-box"
+            type="text"
+            value={textInput}
+            onChange={(e) => setTextInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="What can I help you with today?"
+          />
+          <button onClick={fetchAIResponse} className="send-button">
+            <img src={messageUpload} alt="Upload Message" />
+          </button>
+        </div>
       </div>
+      <p className='bottom'>
+      DocAI Project Created In Collaboration with a Red Hat Mentor ©2024
+      </p>
     </div>
   );
 }

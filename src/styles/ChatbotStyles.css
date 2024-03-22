@@ -1,64 +1,118 @@
 :root {
-  /* Color pallete */
-  --darkblue: #0e131b;
-  --darkgray: #302f37;
-  --textblue: #007AFF;
-  --textgray: #8E8E93; 
-  --sendblue: #728597;
-  --darkgray: #485a70;
-  --lightgray: #303c4b;
-  --white: #FFFFFF;
+  /* Red Hat Color pallete */
+  --gray-90: #1f1f1f;
+  --gray-95: #151515;
+  --red-60: #a60000;
+  --red-70: #5f0000;
 }
 
 .openai-container {
+  background-color: #cdcdcd;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end; /* Align messages to the bottom */
-  width: 75vw;
-  height: 85vh;
-  padding-left: 25vw;
-  margin-bottom: 3%;
+  width: 80vw;
+  height: 100vh;
+}
+
+.App.dark-mode .openai-container {
+  background-color: var(--gray-95);
+}
+
+.top {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 70vw;
+  white-space: nowrap;
+}
+
+.powered {
+  color: black;
+  font-style: italic;
+  font-size: 10px;
+  padding-top: 25px;
+}
+.title {
+  color: black;
+}
+.App.dark-mode .title,
+.App.dark-mode .top {
+  color: white;
+}
+
+.bottom {
+  color: black;
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+
+.App.dark-mode .bottom {
+  color: white;
 }
 
 .input-container {
   display: flex;
-  justify-content: space-between;
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Horizontally align items */
   width: 70vw;
-  margin-top: 20px; /* Add some space between main container and input container */
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-/* Chat input and button */
+.text-box-container {
+  position: relative; /* Make the container relative */
+  width: 60vw;
+}
+
 .text-box {
+  color: black;
   box-sizing: border-box;
-  padding: 18px;
+  padding: 18px 80px 18px 18px; /* Adjust padding to accommodate the button */
   background-color: white;
-  border: 1px solid black; 
-  border-radius: 25px;
+  border: 1px solid black;
+  border-radius: 20px;
   height: 50px;
-  width: calc(100% - 120px); /* Adjust width */
+  width: 60vw;
+  
+}
+
+.send-button {
+  position: absolute; /* Position the button absolutely */
+  top: 50%; /* Vertically center the button */
+  right: 0; /* Adjust the distance from the right */
+  transform: translateY(-50%); /* Center vertically */
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+.send-button img {
+  width: 25px; /* Adjust width as needed */
+  height: 25px; /* Adjust height as needed */
+}
+
+.App.dark-mode .text-box {
+  background-color: white;
+  border: 1px solid black;
 }
 
 .text-box::placeholder {
   color: black;
 }
 
+.text-box:focus::placeholder {
+  color: transparent;
+}
+
 .App.dark-mode .text-box::placeholder {
   color: black;
 }
 
-.send-button {
-  background-color: white;
-  color: black;
-  border-radius: 40px;
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-}
-
 .send-button:hover {
-  background-color: #0056b3; /* Darken on hover */
+  cursor: pointer;
 }
 
 /* Chat message styles */
@@ -67,18 +121,15 @@
   padding: 10px 20px;
   border-radius: 20px;
   word-wrap: break-word;
-  /* annimation segment */
-  animation: slideIn .75s ease-out forwards;
+  animation: slideIn 0.75s ease-out forwards;
 }
 
 .messages-container {
-  width: 70vw;
-  height: 680px; /* Match the openai-container height */
-  border-radius: 20px;
+  width: 60vw;
+  height: 100vh; /* Match the openai-container height */
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
-  padding-right: 10px;
-  padding-top: 25px;
+  padding-top: 50px;
 }
 
 /* Custom scrollbar for .messages-container */
@@ -103,9 +154,9 @@
 }
 
 .message.user {
-  background-color: var(--textblue);
-  color: white;
-  border-radius: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 15px;
   display: inline-flex;
   float: right;
   text-align: right;
@@ -114,13 +165,21 @@
 }
 
 .App.dark-mode .message.user {
-  background-color: var(--darkgray);
+  background-color: red;
+  color: white;
+}
+
+/* AI messages will render as paragraph with react-markdown*/
+.message.ai p {
+  color: white;
+}
+.App.dark-mode .message.ai p {
+  color: black;
 }
 
 .message.ai {
-  background-color: grey;
-  color: white;
-  border-radius: 20px;
+  background-color: var(--gray-90);
+  border-radius: 15px;
   float: left;
   text-align: left;
   max-width: 50vw;
@@ -128,19 +187,27 @@
   margin: 0px 30vw 0px 0px;
 }
 
-.App.dark-mode .message.ai {
-  background-color: var(--darkgray);
+/* TODO: Add styling for the markdown code** */
+.message.ai code { 
+  color: white;
 }
 
-/* Style for links within messages sent by the AI */
+.App.dark-mode .message.ai {
+  background-color: white;
+}
+
+/* Styling for links */
 .message.ai a {
-  color: lightblue; /* Set the color of links to blue */
+  color: lightblue;
 }
 
 .message.ai a:hover {
-  color: var(--sendblue); /* Set the color of hovered links to a different color */
+  color: var(
+    --sendblue
+  ); /* Set the color of hovered links to a different color */
 }
 
+/* Message animation */
 @keyframes slideIn {
   from {
     opacity: 0;
