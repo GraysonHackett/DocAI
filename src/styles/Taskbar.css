@@ -81,9 +81,11 @@ p {
 }
 
 .actions {
+  height: auto;
+  position: absolute;
+  bottom: 0;
   height: fit-content;
-  position: relative;
-  margin-top: calc(50vh - 60px);
+  width: 20vw;
 }
 
 .actions img {
