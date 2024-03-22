@@ -10,7 +10,6 @@ function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchFileContents = async () => {
@@ -47,7 +46,6 @@ function Chatbot({ uploadedFile }) {
 
   const fetchAIResponse = async (userInput) => {
 
-    setIsLoading(true); // Indicate that AI is processing the response.
     try {
 
       const apiKey = process.env.REACT_APP_API_KEY;
@@ -81,8 +79,6 @@ function Chatbot({ uploadedFile }) {
       }
     } catch (error) {
       console.error('Error fetching OpenAI API:', error);
-    } finally {
-      setIsLoading(false); // Stop loading once the response is processed.
     }
   };
 

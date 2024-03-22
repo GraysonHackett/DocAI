@@ -7,7 +7,6 @@
 }
 
 .openai-container {
-  margin: auto;
   background-color: #cdcdcd;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@
   justify-content: flex-end; /* Align messages to the bottom */
   width: 80vw;
   height: 100vh;
-  padding-left: 10px;
 }
 
 .App.dark-mode .openai-container {
@@ -64,7 +62,7 @@
 
 .text-box-container {
   position: relative; /* Make the container relative */
-  width: calc(100% - 120px);
+  width: 60vw;
 }
 
 .text-box {
@@ -75,7 +73,8 @@
   border: 1px solid black;
   border-radius: 20px;
   height: 50px;
-  width: 100%; /* Take up remaining space */
+  width: 60vw;
+  
 }
 
 .send-button {
@@ -126,12 +125,11 @@
 }
 
 .messages-container {
-  width: 70vw;
-  height: 680px; /* Match the openai-container height */
-  border-radius: 20px;
+  width: 60vw;
+  height: 100vh; /* Match the openai-container height */
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
-  padding-top: 25px;
+  padding-top: 50px;
 }
 
 /* Custom scrollbar for .messages-container */

@@ -82,7 +82,8 @@ p {
 
 .actions {
   height: fit-content;
-  margin-top: 70%;
+  position: relative;
+  margin-top: calc(50vh - 60px);
 }
 
 .actions img {
