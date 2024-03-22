@@ -4,6 +4,7 @@ import '../styles/ChatbotStyles.css';
 import ReactMarkdown from 'react-markdown';
 import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
+import ollama from 'ollama/browser';
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
@@ -49,37 +50,49 @@ function Chatbot({ uploadedFile }) {
     setIsLoading(true); // Indicate that AI is processing the response.
     try {
 
-      const apiKey = process.env.REACT_APP_API_KEY;
+      //const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n ${documentation} \n\n ${textInput}`;
       console.log(prompt); 
-      const url = 'https://api.openai.com/v1/chat/completions';
+      //const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
-      const response = await axios.post(
-        url,
+      const response = await ollama.chat(
         {
-          model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 500,
-        },
+          model: 'llama2',
+          messages: [{ role: 'user', content: prompt, stream: true }],
+          //max_tokens: 500,
+        }
+        /* GPT-3.5 USE 
+        ,
         {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${apiKey}`,
           },
         }
+        */
       );
-
+      
+      /* GPT-3.5 USE
       if (response.data.choices && response.data.choices.length > 0) {
         const chosenText = response.data.choices[0].message.content;
         setMessages(oldMessages => [
           ...oldMessages,
           { text: chosenText, sender: 'ai' }
         ]);
-      } else {
-        console.error('Error: No choices found in the response');
+      } 
+      */
+
+      if (response && response.message && response.message.content) {
+        setMessages(oldMessages => [
+          ...oldMessages,
+          { text: response.message.content, sender: 'ai'}
+        ]);
+      }
+      else {
+        console.error('Error: No response from Ollama');
       }
     } catch (error) {
-      console.error('Error fetching OpenAI API:', error);
+      console.error('Error fetching from Ollama', error);
     } finally {
       setIsLoading(false); // Stop loading once the response is processed.
     }
