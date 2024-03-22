@@ -41,7 +41,7 @@ function Login() {
     <div className="auth-container">
       <div className="auth-content">
         <Link to="/" className="close-button">X</Link>
-        <h2>Login</h2>
+        <h2 className='login-signup'>Login</h2>
         <input
           type="email"
           value={email}
