@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
 import userIconLight from '../assets/userIconLight.png'
@@ -18,6 +19,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null); // Reference to file input element
+  const location = useLocation(); // Use useLocation hook to get access to the current location
 
   const fetchFileList = async () => {
     try {
@@ -40,11 +42,15 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     }
   };
 
+  // Trigger fetchFileList() on return from the FileOptions route 
   useEffect(() => {
-    // eslint-disable-next-line
     fetchFileList();
-    // eslint-disable-next-line
-  }, [user]);
+
+    if (location.pathname === '/') {
+      fetchFileList(); 
+    }
+
+}, [location]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
