@@ -91,3 +91,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.login-signup {
+  color: black;
+}
+
+.App.dark-mode .login-signup {
+  color: black;
+}
