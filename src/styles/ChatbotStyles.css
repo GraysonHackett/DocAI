@@ -219,11 +219,7 @@
 }
 
 .welcome-image {
-  background-color: transparent;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  width: 800px;
-  margin-left: 7vw;
-  margin-top: 5vh;
+  height: 50vh;
+  width: 50vw;
+  margin-left: 5vw;
 }

@@ -1,5 +1,5 @@
 // Taskbar.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
 import { useLocation } from "react-router-dom";
@@ -21,7 +21,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   const fileInputRef = useRef(null); // Reference to file input element
   const location = useLocation(); // Use useLocation hook to get access to the current location
 
-  const fetchFileList = async () => {
+  const fetchFileList = useCallback(async () => {
     try {
       if (!user) {
         setFileList([]);
@@ -40,17 +40,16 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     } catch (error) {
       console.error("Error fetching file list:", error);
     }
-  };
+  }, [user]);
 
   // Trigger fetchFileList() on return from the FileOptions route 
   useEffect(() => {
     fetchFileList();
-
     if (location.pathname === '/') {
       fetchFileList(); 
     }
+}, [fetchFileList, location]);
 
-}, [location]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -91,6 +90,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
+  // TODO: add user ? contron for the taskbar
   return (
     <div className="taskbar">
       <h3>DocAI</h3>
