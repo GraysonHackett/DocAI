@@ -87,8 +87,11 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
 
   return (
     <div className="taskbar">
-      <h3>Redhat</h3>
-      <p>My Files</p>
+      <h3>DocAI</h3>
+      {user ? 
+      <p>My Files</p> : 
+      <p>Welcome to DocAI chatbot! Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+      }
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (
@@ -105,7 +108,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
             </li>
           ))}
         </ul>
-        <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3>
+        {user ? <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3> : null }
         <input 
           type="file" 
           accept=".md" 

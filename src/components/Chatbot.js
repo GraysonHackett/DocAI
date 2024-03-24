@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
 import messageUpload from '../assets/upload.png';
+import cube from '../assets/chatbot.gif'; 
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);
@@ -94,13 +95,25 @@ function Chatbot({ uploadedFile }) {
     }
   };
 
+  const handleButtonPress = () => {
+    if (textInput.trim() !== '') {
+      setMessages(oldMessages => [
+        ...oldMessages,
+        { text: textInput, sender: 'user' }
+      ]);
+      fetchAIResponse(textInput); // Send the text input to the AI.
+      setTextInput(''); // Clear the input field.
+    }
+  };
+
   return (
     <div className="openai-container">
       <div className='top'>
-        <h3 className='title'>DocAI</h3>
         <h3 className='powered'> Powered by Chat-GPT model 3.5</h3>  
       </div>
       <div className="messages-container">
+        {/* Loading gif that will erase when the user sends a message */}
+        {messages.length === 0 ? <img className='welcome-image' src={cube} alt='loading welcome img'/> : null}
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             {msg.sender === 'ai' ? (
@@ -121,7 +134,7 @@ function Chatbot({ uploadedFile }) {
             onKeyPress={handleKeyPress}
             placeholder="What can I help you with today?"
           />
-          <button onClick={fetchAIResponse} className="send-button">
+          <button onClick={handleButtonPress} className="send-button">
             <img src={messageUpload} alt="Upload Message" />
           </button>
         </div>
