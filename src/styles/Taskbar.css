@@ -4,7 +4,7 @@
   margin: auto;
   width: 50%;
   background-color: #e4e4e4;
-  padding: 10px;
+  padding-left: 10px;
   height: 100vh;
   width: 20vw;
 }
@@ -125,7 +125,7 @@ p {
 .divider {
   border: none;
   border-top: 1px solid black; /* Solid white line */
-  width: 100%; /* Span the width of the actions window */
+  width: calc(100% - 10px); /* Span the width of the actions window */
   margin: 10px 0; /* Adjust margin as needed */
 }
 
