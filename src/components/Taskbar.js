@@ -1,7 +1,8 @@
 // Taskbar.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
 import userIconLight from '../assets/userIconLight.png'
@@ -18,8 +19,9 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null); // Reference to file input element
+  const location = useLocation(); // Use useLocation hook to get access to the current location
 
-  const fetchFileList = async () => {
+  const fetchFileList = useCallback(async () => {
     try {
       if (!user) {
         setFileList([]);
@@ -38,13 +40,16 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     } catch (error) {
       console.error("Error fetching file list:", error);
     }
-  };
-
-  useEffect(() => {
-    // eslint-disable-next-line
-    fetchFileList();
-    // eslint-disable-next-line
   }, [user]);
+
+  // Trigger fetchFileList() on return from the FileOptions route 
+  useEffect(() => {
+    fetchFileList();
+    if (location.pathname === '/') {
+      fetchFileList(); 
+    }
+}, [fetchFileList, location]);
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -85,10 +90,14 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
+  // TODO: add user ? contron for the taskbar
   return (
     <div className="taskbar">
-      <h3>Redhat</h3>
-      <p>My Files</p>
+      <h3>DocAI</h3>
+      {user ? 
+      <p>My Files</p> : 
+      <p>Welcome to DocAI chatbot! Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+      }
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (
@@ -105,7 +114,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
             </li>
           ))}
         </ul>
-        <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3>
+        {user ? <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3> : null }
         <input 
           type="file" 
           accept=".md" 

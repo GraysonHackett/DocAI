@@ -74,7 +74,6 @@
   border-radius: 20px;
   height: 50px;
   width: 60vw;
-  
 }
 
 .send-button {
@@ -169,16 +168,9 @@
   color: white;
 }
 
-/* AI messages will render as paragraph with react-markdown*/
-.message.ai p {
-  color: white;
-}
-.App.dark-mode .message.ai p {
-  color: black;
-}
-
 .message.ai {
   background-color: var(--gray-90);
+  color: white;
   border-radius: 15px;
   float: left;
   text-align: left;
@@ -186,25 +178,32 @@
   max-height: fit-content;
   margin: 0px 30vw 0px 0px;
 }
-
-/* TODO: Add styling for the markdown code** */
-.message.ai code { 
-  color: white;
-}
-
 .App.dark-mode .message.ai {
   background-color: white;
 }
 
-/* Styling for links */
+/* AI messages will render as paragraph with react-markdown*/
+.message.ai h1,
+.message.ai h2,
+.message.ai p,
+.message.ai code,
+.message.ai li {
+  color: white;
+}
 .message.ai a {
   color: lightblue;
+  text-decoration: underline;
+}
+.App.dark-mode .message.ai a {
+  color: blue;
 }
 
-.message.ai a:hover {
-  color: var(
-    --sendblue
-  ); /* Set the color of hovered links to a different color */
+.App.dark-mode .message.ai h1,
+.App.dark-mode .message.ai h2,
+.App.dark-mode .message.ai p,
+.App.dark-mode .message.ai code,
+.App.dark-mode .message.ai li {
+  color: black;
 }
 
 /* Message animation */
@@ -217,4 +216,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.welcome-image {
+  height: 50vh;
+  width: 50vw;
+  margin-left: 5vw;
 }

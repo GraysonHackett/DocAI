@@ -1,5 +1,5 @@
 // FileOptions.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { listAll, getDownloadURL, ref, deleteObject } from "firebase/storage";
 import { storage, auth } from "../database/Firebase";
 import '../styles/FileOptions.css'; // Import your CSS file for styling
@@ -10,7 +10,7 @@ function FileOptions() {
   const [fileList, setFileList] = useState([]);
   const [user, setUser] = useState(null);
 
-  const fetchFileList = async () => {
+  const fetchFileList = useCallback(async () => {
     try {
       if (!user) {
         setFileList([]);
@@ -29,7 +29,7 @@ function FileOptions() {
     } catch (error) {
       console.error("Error fetching file list:", error);
     }
-  };
+  }, [user]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -41,8 +41,7 @@ function FileOptions() {
 
   useEffect(() => {
     fetchFileList();
-    // eslint-disable-next-line
-  }, [user]);
+  }, [fetchFileList,user]);
 
 
   const confirmDelete = (file) => {
