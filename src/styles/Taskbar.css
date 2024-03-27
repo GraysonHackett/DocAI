@@ -15,6 +15,7 @@
 
 h3 {
   color: black;
+  padding:15px;
 }
 .App.dark-mode h3 {
   color: white;
@@ -22,6 +23,7 @@ h3 {
 
 p {
   color: black;
+  padding:15px;
 }
 .App.dark-mode p {
   color: white;
@@ -78,6 +80,7 @@ p {
   flex-direction: column;
   justify-content: space-between;
   height: 20%; /* Adjust height as necessary */
+  
 }
 
 .actions {
@@ -86,6 +89,7 @@ p {
   bottom: 0;
   height: fit-content;
   width: 20vw;
+  margin-bottom: 12px;
 }
 
 .actions img {

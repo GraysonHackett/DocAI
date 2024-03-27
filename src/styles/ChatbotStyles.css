@@ -28,10 +28,12 @@
 }
 
 .powered {
-  color: black;
+  color: gray;
   font-style: italic;
   font-size: 10px;
   padding-top: 25px;
+  margin-left: auto;
+  
 }
 .title {
   color: black;
@@ -42,9 +44,10 @@
 }
 
 .bottom {
-  color: black;
+  color: gray;
   font-size: 12px;
-  padding-bottom: 5px;
+  padding:0;
+  margin:5;
 }
 
 .App.dark-mode .bottom {
@@ -57,12 +60,12 @@
   justify-content: center; /* Horizontally align items */
   width: 70vw;
   margin-top: 20px;
-  margin-bottom: 10px;
+  
 }
 
 .text-box-container {
   position: relative; /* Make the container relative */
-  width: 60vw;
+  width: 55vw;
 }
 
 .text-box {
@@ -70,10 +73,10 @@
   box-sizing: border-box;
   padding: 18px 80px 18px 18px; /* Adjust padding to accommodate the button */
   background-color: white;
-  border: 1px solid black;
-  border-radius: 20px;
-  height: 50px;
-  width: 60vw;
+  border: 1px solid white;
+  border-radius: 15px;
+  height: 55px;
+  width: 55vw;
 }
 
 .send-button {
@@ -99,7 +102,8 @@
 }
 
 .text-box::placeholder {
-  color: black;
+  color: gray;
+  font-size: 15px;
 }
 
 .text-box:focus::placeholder {
