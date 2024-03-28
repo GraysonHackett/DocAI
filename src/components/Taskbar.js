@@ -114,7 +114,6 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
             </li>
           ))}
         </ul>
-        {user ? <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3> : null }
         <input 
           type="file" 
           accept=".md" 
@@ -124,18 +123,27 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
         />
       </div>
       <div className="actions">
-        <button onClick={handleClickUploadButton}>
-          <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
-          <span className="hover-text">Upload File</span>
-        </button><br></br>
-        <Link to="/fileoptions">
-          <button>
-            <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
-            <span className="hover-text">File Options</span>
+        {user ? (
+          <button onClick={handleClickUploadButton}>
+            <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
+            <span className="hover-text">Upload File</span>
           </button>
-        </Link>
+        ) : (
+          null
+        )}
         <br></br>
-        <hr className="divider" />
+        {user ? (
+          <Link to="/fileoptions">
+            <button>
+              <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
+              <span className="hover-text">File Options</span>
+            </button>
+          </Link>
+        ) : (
+          null
+        )}
+        <br></br>
+        {user ? <hr className="divider" /> : null }
         {user ? (
           <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
         ) : (
