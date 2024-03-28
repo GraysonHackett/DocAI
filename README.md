@@ -1,8 +1,8 @@
-# DocAI - Temp README as of (03/01)
+# DocAI - Temp README as of (03/22)
 
 ## <u>Overview</u>
 
-This project is a capstone class project developed in collaboration with the College of Charleston and RedHat. The aim of this project is to create a new way to assist developers in reading and understanding documentation more efficiently.
+This project is a capstone class project developed in collaboration with the College of Charleston and a RedHat mentor. The aim of this project is to create a new way to assist developers in reading, interacting, and understanding documentation more efficiently.
 
 ## <u>Setup Instructions</u>
 
@@ -16,7 +16,7 @@ To run the project locally, follow these setup instructions:
    ```sh
    npm install 
    ```   
-3. Create a `.env` file in the project root directory and add your private key's to it. The file should look like this:
+3. Create a `.env` file in the project root directory and add your (ChatGPT-API & Firebase) private key's to it. The file should look like this:
    ```js
    REACT_APP_API_KEY=your_openai_api_key_here
    REACT_APP_API_KEY=your_firebase_api_key
@@ -42,15 +42,14 @@ The main component of the project is the `Chatbot.js` file, which contains the i
 > `axios`: Used for sending HTTP requests to the OpenAI API.<br>
 > `dotenv`: Used for loading environment variables from the `.env` file.<br>
 > `node-fetch`: Used for making HTTP requests in the Node.js environment, mainly used for fetching Markdown files from a URL.<br>
-> `react-markdown`: Used for rendering Markdown content in React components.
-> `react-router-dom`: --- 
+> `react-markdown`: Used for rendering Markdown content in React components.<br>
+> `react-router-dom`: Used for handling routing in React applications.
 
 ### <u>Functionality Overview</u>
 
 The `Chatbot.js` file outlines our chatbot setup within the function `OpenAiAPI`
 
-- Initial instructions and documentation will be sent to the OpenAI API when the component mounts.
-- It sends user input messages to the OpenAI API and displays the response from the AI.
+- With each API request, the instructions, selected documentation, and users prompt will be sent to the API
 
 ```js
 const response = await axios.post(
@@ -78,15 +77,13 @@ The component structure is as follows:
 > textInput: State variable to store the user's input message.<br>
 > messages: State variable to store all the messages exchanged between the user and the AI.<br>
 > documentation: State variable to store the content of the uploaded documentation file.<br>
-> uploadedFile: Prop representing the uploaded documentation file.<br>
-> instructionSent and filesSent: State variables to keep track of whether initial instructions and Markdown files have been sent to the API.
 
 ### <u>API Integration</u>
 
-The component interacts with the OpenAI API using Axios to send requests. It sends instructions, Markdown files, and user input messages to the API and receives responses.
+The component interacts with the OpenAI API using the Axios-dependency to send requests. It sends instructions, Markdown files, and user input messages to the API and receives responses, before formatting them back to the user.
 
 ## <u>Conclusion</u>
 
 This project demonstrates the integration of an AI-powered chatbot into a React application for assisting developers in understanding project documentation more effectively.For any issues or suggestions, please feel free to open an issue in the GitHub repository.
 
-![image](https://venturebeat.com/wp-content/uploads/2021/09/Red-Hat-e1684880569131.jpg?w=1200&strip=all)
+![DocAI-proto](https://github.com/GraysonHackett/DocAI/assets/44790226/19d4f743-5c82-409d-aaba-764caef4bd04)
