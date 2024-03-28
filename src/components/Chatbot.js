@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../styles/ChatbotStyles.css';
-import ReactMarkdown from 'react-markdown';
-import { storage } from '../database/Firebase';
 import { getDownloadURL, ref } from '@firebase/storage';
+import React, { useState, useEffect } from 'react';
 import messageUpload from '../assets/upload.png';
+import { storage } from '../database/Firebase';
+import ReactMarkdown from 'react-markdown';
 import cube from '../assets/chatbot.gif'; 
+import '../styles/ChatbotStyles.css';
+import axios from 'axios';
+
 
 function Chatbot({ uploadedFile }) {
   const [messages, setMessages] = useState ([]);

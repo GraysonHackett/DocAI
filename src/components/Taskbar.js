@@ -1,18 +1,19 @@
 // Taskbar.js
-import React, { useState, useEffect, useRef, useCallback } from "react";
 import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import choosefileIconLight from '../assets/choosefileLight.png';
+import fileuploadLightIcon from '../assets/fileuploadLight.png';
+import choosefileIconDark from '../assets/choosefileDark.png';
+import fileuploadDarkIcon from '../assets/fileuploadDark.png';
+import userIconLight from '../assets/userIconLight.png';
+import userIconDark from '../assets/userIconDark.png';
 import { storage, auth } from "../database/Firebase";
+import lightmodeIcon from '../assets/lightmode.png';
+import darkmodeIcon from '../assets/darkmode.png';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
-import userIconLight from '../assets/userIconLight.png'
-import userIconDark from '../assets/userIconDark.png'
-import darkmodeIcon from '../assets/darkmode.png'
-import lightmodeIcon from '../assets/lightmode.png'
-import fileuploadLightIcon from '../assets/fileuploadLight.png'
-import fileuploadDarkIcon from '../assets/fileuploadDark.png'
-import choosefileIconLight from '../assets/choosefileLight.png'
-import choosefileIconDark from '../assets/choosefileDark.png'
+
 
 function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   const [fileList, setFileList] = useState([]);
