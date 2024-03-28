@@ -15,7 +15,6 @@
 
 h3 {
   color: black;
-  padding: 15px;
 }
 .App.dark-mode h3 {
   color: white;
@@ -23,7 +22,6 @@ h3 {
 
 p {
   color: black;
-  padding: 15px;
 }
 .App.dark-mode p {
   color: white;
@@ -87,7 +85,7 @@ p {
   position: absolute;
   height: fit-content;
   width: 20vw;
-  margin-bottom: 12px;
+  bottom: 15px;
 }
 
 .actions img {
