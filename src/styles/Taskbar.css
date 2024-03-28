@@ -20,11 +20,31 @@ h3 {
   color: white;
 }
 
-p {
+p{
   color: black;
 }
 .App.dark-mode p {
   color: white;
+}
+
+.welcome-message {
+  color: var(--text-black);
+  letter-spacing: 2px;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: underline;
+  
+}
+.sign-in {
+  text-align: center; 
+  color: var(--text-black);
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.App.dark-mode .welcome-message,
+.App.dark-mode .sign-in {
+  color: white; 
 }
 
 .dark-mode h2 {

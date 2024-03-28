@@ -91,14 +91,19 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
-  // TODO: add user ? contron for the taskbar
   return (
     <div className="taskbar">
-      <h3>DocAI</h3>
-      {user ? 
-      <p>My Files</p> : 
-      <p>Welcome to DocAI chatbot! Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
-      }
+      {user ? <h3>DocAI</h3> : null }
+      {user ? (
+      <p>My Files</p>
+      ) : 
+      (<p className="welcome-message"><br></br>Welcome to DocAI</p>
+      )}
+      {user ? (
+        null
+      ) : (
+        <p className="sign-in"> Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+      )}
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (

@@ -73,7 +73,6 @@ function FileOptions() {
               <button className="deleteButton" onClick={() => confirmDelete(file)}>
                 <img src={trashCanIcon} alt="Delete" />
               </button>
-              {/* TODO: Find a way to trigger the fetch file list on the taskbar, after the user navigates back to the mainpage */}
             </li>
           ))}
         </ul>
