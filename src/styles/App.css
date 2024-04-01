@@ -27,8 +27,24 @@ html {
 }
 
 main {
-  /* position: fixed; */
   display: flex;
   width: 100vw;
   height: 100vh;
+}
+
+.collapseButton {
+  background-color: var(--darkgray);
+  border: none;
+  position: fixed;
+  margin-top: calc(50vh - 1.5rem);
+  margin-left: calc(20vw + 10px);
+  height: 3vh;
+  width: 1vw;
+  border-radius: 25%;
+  transition: 0.3s ease , margin-left 0.3s ease;
+}
+.collapseButton:hover {
+  transform: ;
+  width: 3rem; /* Expanded width */
+  margin-left: calc(20vw - 2rem + 10px); /* Adjusted margin for expansion to the left */
 }

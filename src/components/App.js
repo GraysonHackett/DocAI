@@ -9,6 +9,7 @@ import '../styles/App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [collapse, setCollapse] = useState(false); 
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const toggleDarkMode = () => {
@@ -19,17 +20,27 @@ function App() {
     setUploadedFile(fileUrl);
   };
 
+  const toggleCollapse = () => {
+    setCollapse(!collapse); 
+  }
+
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
         <main className=''>
-          <Taskbar onSelectFile={handleFileSelect} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Taskbar
+            onSelectFile={handleFileSelect}
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode}
+            isCollapsed={collapse}
+          />
+          <button className='collapseButton' onClick={toggleCollapse} />
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/fileoptions" element={<FileOptions />} />
           </Routes>
-          <Chatbot uploadedFile={uploadedFile} />
+          <Chatbot uploadedFile={uploadedFile} isCollapsed={collapse} />
         </main>        
       </div>
     </Router>

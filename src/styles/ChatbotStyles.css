@@ -15,6 +15,10 @@
   width: 80vw;
   height: 100vh;
 }
+.openai-container collapsed {
+  transition: 0.3s ease;
+  width: 100vw;
+}
 
 .App.dark-mode .openai-container {
   background-color: #3F3e48;

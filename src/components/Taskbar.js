@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
 
 
-function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
+function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
   const [fileList, setFileList] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -92,7 +92,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
   };
 
   return (
-    <div className="taskbar">
+    <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
       {user ? <h3>DocAI</h3> : null }
       {user ? (
       <p>My Files</p>

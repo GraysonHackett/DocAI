@@ -8,7 +8,7 @@ import '../styles/ChatbotStyles.css';
 import axios from 'axios';
 
 
-function Chatbot({ uploadedFile }) {
+function Chatbot({ uploadedFile }, isCollapsed) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
@@ -108,7 +108,7 @@ function Chatbot({ uploadedFile }) {
   };
 
   return (
-    <div className="openai-container">
+    <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
       <div className='top'>
         <h3 className='powered'> Powered by Chat-GPT model 3.5</h3>  
       </div>
