@@ -8,7 +8,7 @@ import '../styles/ChatbotStyles.css';
 import axios from 'axios';
 
 
-function Chatbot({ uploadedFile }, isCollapsed) {
+function Chatbot({ uploadedFile, isCollapsed }) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');

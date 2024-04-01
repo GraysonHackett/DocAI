@@ -34,7 +34,7 @@ function App() {
             toggleDarkMode={toggleDarkMode}
             isCollapsed={collapse}
           />
-          <button className='collapseButton' onClick={toggleCollapse} />
+          <button className={collapse? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse} />
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />

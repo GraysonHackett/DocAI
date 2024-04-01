@@ -6,11 +6,10 @@
   padding-left: 10px;
   height: 100vh;
   width: 20vw;
+  transition: width 0.5s ease, display 0s 0.5s;
 }
 .taskbar.collapsed {
-  transition: 0.3s ease;
-  z-index: -9999;
-  display: none;
+  width: 65px;  
 }
 
 .App.dark-mode .taskbar {
@@ -29,6 +28,9 @@ p{
 }
 .App.dark-mode p {
   color: white;
+}
+.collapsed p {
+  display: none;
 }
 
 .welcome-message {
@@ -63,6 +65,9 @@ p{
   list-style-type: none;
   color: black;
   padding: 0;
+}
+.collapsed .fileList {
+  display: none;
 }
 
 .fileList li {
@@ -152,8 +157,11 @@ p{
   border-top: 1px solid black; /* Solid white line */
   width: calc(100% - 10px); /* Span the width of the actions window */
   margin: 10px 0; /* Adjust margin as needed */
+  transition: width 0.5s ease;
 }
-
 .App.dark-mode .divider {
   border-top: 1px solid white;
+}
+.collapsed .divider {
+  width: 50px;
 }

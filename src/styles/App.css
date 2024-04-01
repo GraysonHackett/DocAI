@@ -41,10 +41,12 @@ main {
   height: 3vh;
   width: 1vw;
   border-radius: 25%;
-  transition: 0.3s ease , margin-left 0.3s ease;
+  transition: 0.3s ease , margin-left 0.5s ease;
 }
 .collapseButton:hover {
-  transform: ;
   width: 3rem; /* Expanded width */
-  margin-left: calc(20vw - 2rem + 10px); /* Adjusted margin for expansion to the left */
+  margin-right: calc(20vw - 2rem + 10px); /* Adjusted margin for expansion to the left */
+}
+.collapseButton.collapsed {
+  margin-left: 75px;
 }
