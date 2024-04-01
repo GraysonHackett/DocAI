@@ -39,13 +39,12 @@ main {
   margin-top: calc(50vh - 1.5rem);
   margin-left: calc(20vw + 10px);
   height: 3vh;
-  width: 1vw;
+  width: 1px;
   border-radius: 25%;
-  transition: 0.3s ease , margin-left 0.5s ease;
+  transition: 0.3s ease, margin-left 0.5s ease;
 }
 .collapseButton:hover {
-  width: 3rem; /* Expanded width */
-  margin-right: calc(20vw - 2rem + 10px); /* Adjusted margin for expansion to the left */
+  width: 2rem;
 }
 .collapseButton.collapsed {
   margin-left: 75px;
