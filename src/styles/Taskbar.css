@@ -2,7 +2,7 @@
 
 .taskbar {
   margin: auto;
-  background-color: #ededed;
+  background-color: #f9f9f9;
   padding-left: 10px;
   height: 100vh;
   width: 20vw;
@@ -23,13 +23,13 @@ h3 {
   color: white;
 }
 
-p{
+.myFiles{
   color: black;
 }
-.App.dark-mode p {
+.App.dark-mode .myFiles {
   color: white;
 }
-.collapsed p {
+.collapsed .myFiles {
   display: none;
 }
 
@@ -97,7 +97,7 @@ p{
 }
 
 .fileList .selected {
-  background-color: red; /* Change to desired highlight color */
+  background-color: red;
   color: white;
   border-radius: 50px;
 }
@@ -106,7 +106,7 @@ p{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20%; /* Adjust height as necessary */
+  height: 20%;
 }
 
 .actions {
@@ -122,25 +122,28 @@ p{
   height: 50px;
 }
 
-/* Apply the same styling for all buttons in the .actions class */
+.collapsed button:nth-child(-n+2) img {
+  display: none;
+}
+
 .actions button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 50px; /* Adjust to desired width */
-  height: 50px; /* Adjust to desired height */
-  position: relative; /* Position the button relatively for absolute positioning of text */
+  width: 50px; 
+  height: 50px;
+  position: relative;
   padding: 0;
 }
 
 .actions button .hover-text {
-  display: none; /* Initially hide the text */
-  position: absolute; /* Position the text absolutely */
-  top: 50%; /* Align the text vertically centered with the button */
-  left: calc(100% + 10px); /* Position the text to the right of the button */
-  white-space: nowrap; /* Prevent the text from wrapping to a new line */
-  color: black; /* Text color */
-  font-size: 17.5px; /* Adjust font size */
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  white-space: nowrap;
+  color: black;
+  font-size: 17.5px;
 }
 
 .App.dark-mode .actions .hover-text {
@@ -148,15 +151,15 @@ p{
 }
 
 .actions button:hover .hover-text {
-  display: inline; /* Show the text when button is hovered over */
-  transform: translateY(-50%) translateX(0); /* Slide the text in when button is hovered over */
+  display: inline;
+  transform: translateY(-50%) translateX(0);
 }
 
 .divider {
   border: none;
-  border-top: 1px solid black; /* Solid white line */
-  width: calc(100% - 10px); /* Span the width of the actions window */
-  margin: 10px 0; /* Adjust margin as needed */
+  border-top: 1px solid black;
+  width: calc(100% - 10px);
+  margin: 10px 0;
   transition: width 0.5s ease;
 }
 .App.dark-mode .divider {

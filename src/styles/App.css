@@ -38,8 +38,8 @@ main {
   position: fixed;
   margin-top: calc(50vh - 1.5rem);
   margin-left: calc(20vw + 10px);
-  height: 3vh;
-  width: 1px;
+  height: 3rem;
+  width: 1rem;
   border-radius: 25%;
   transition: 0.3s ease, margin-left 0.5s ease;
   z-index: 1;
@@ -48,33 +48,32 @@ main {
   margin-left: 75px;
 }
 
-.base-image {
+.base-image-1,
+.base-image-2 {
+  border-radius: 50px;
   width: 50px;
-  height: 30px;
+  height: 15px;
   cursor: pointer;
   position: absolute;
-  top: 0;
+  top: 5px;
   left: -20px;
+  transition: transform 0.3s ease;
 }
 
-.collapseButton:not(collapsed) .base-image:hover {
-  content: url('../assets/arrow.png');
-  width: 20px;
-  height: 25px;
-  top: 0;
-  left: 0;
-  margin-right: 10px;
-  transform: scaleX(-1);
-  cursor: pointer; /* Ensure cursor changes to pointer on hover */
+.base-image-2 {
+  top: 20px
 }
-.collapseButton.collapsed .base-image:hover {
-  content: url('../assets/arrow.png');
-  width: 20px;
-  height: 25px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: scaleX(1);
-  margin-right: 10px;
-  cursor: pointer; /* Ensure cursor changes to pointer on hover */
+
+.collapseButton.collapsed:hover .base-image-1 {
+  transform: translateY(0px) rotate(-20deg) translateZ(0px);
+}
+.collapseButton.collapsed:hover .base-image-2 {
+  transform: translateY(0px) rotate(20deg) translateZ(0px);
+}
+
+.collapseButton:not(collapsed):hover .base-image-1 {
+  transform: translateY(0px) rotate(20deg) translateZ(0px);
+}
+.collapseButton:not(collapsed):hover .base-image-2 {
+  transform: translateY(0px) rotate(-20deg) translateZ(0px);
 }

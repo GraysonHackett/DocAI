@@ -95,7 +95,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
     <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
       {user ? <h3>DocAI</h3> : null }
       {user ? (
-      <p>My Files</p>
+      <p className="myFiles">My Files</p>
       ) : 
       (<p className="welcome-message"><br></br>Welcome to DocAI</p>
       )}

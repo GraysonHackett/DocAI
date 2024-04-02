@@ -36,7 +36,8 @@ function App() {
             isCollapsed={collapse}
           />
           <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
-              <img src={line} alt="Collapse Button" class="base-image" />
+              <img src={line} alt="Collapse Button" class="base-image-1" />
+              <img src={line} alt="Collapse Button" class="base-image-2" />
           </button>
           <Routes>
             <Route exact path="/login" element={<Login />} />
