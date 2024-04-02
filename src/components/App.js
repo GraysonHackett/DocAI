@@ -5,6 +5,7 @@ import Signup from '../authentication/Signup';
 import Login from '../authentication/Login';
 import Chatbot from './Chatbot';
 import Taskbar from './Taskbar';
+import line from '../assets/line.png'
 import '../styles/App.css';
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
             toggleDarkMode={toggleDarkMode}
             isCollapsed={collapse}
           />
-          <button className={collapse? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse} />
+          <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
+              <img src={line} alt="Collapse Button" class="base-image" />
+          </button>
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
