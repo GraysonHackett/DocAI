@@ -7,7 +7,6 @@ import Chatbot from './Chatbot';
 import Taskbar from './Taskbar';
 import line from '../assets/line.png'
 import '../styles/App.css';
-import { auth } from '../database/Firebase';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);

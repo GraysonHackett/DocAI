@@ -6,12 +6,14 @@ import ReactMarkdown from 'react-markdown';
 import cube from '../assets/chatbot.gif'; 
 import '../styles/ChatbotStyles.css';
 import axios from 'axios';
+import ollama from 'ollama/browser';
 
 
 function Chatbot({ uploadedFile, isCollapsed }) {
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
+  const [selectedModel, setSelectedModel] = useState('chatGPT');
 
   useEffect(() => {
     const fetchFileContents = async () => {
@@ -97,7 +99,7 @@ function Chatbot({ uploadedFile, isCollapsed }) {
     `;
 
   const fetchAIResponse = async (userInput) => {
-
+    let response;
     try {
       historyUpload(userInput, "user");
       const history = await fetchChatHistory(); 
@@ -105,21 +107,32 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n CHAT HISTORY: \n${history} \n\n CURRENT USER INPUT: ${textInput /*TODO: CHANGE TO HISTORY*/}`;
       console.log(prompt); 
       const url = 'https://api.openai.com/v1/chat/completions';
-      setTextInput('');
-      const response = await axios.post(
-        url,
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 500,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`,
+      setTextInput(''); 
+      
+      if (selectedModel === 'chatGPT') {
+        response = await axios.post(
+          url,
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 500,
           },
-        }
-      );
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${apiKey}`,
+            },
+          }
+        );
+      } else if (selectedModel === 'ollama') {
+        response = await ollama.chat(
+          {
+            model: 'llama2',
+            messages: [{ role: 'user', content: prompt, stream: true }],
+          }
+        );
+      }
+
 
       if (response.data.choices && response.data.choices.length > 0) {
         const chosenText = response.data.choices[0].message.content;
@@ -157,13 +170,16 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       setTextInput('');
     }
   };
+  const handleModelChange = (event) => {
+    setSelectedModel(event.target.value);
+  };
 
   return (
     <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
       <div className='top'>
         <h3 className='powered'> 
           Powered by 
-          <select id="modelSelector">
+          <select id="modelSelector" onChange={handleModelChange} value={selectedModel}>
             <option value="chatGPT">Chat-GPT model 3.5</option>
             <option value="ollama">Ollama</option>
           </select>
