@@ -1,7 +1,7 @@
-import { getDownloadURL, ref } from '@firebase/storage';
+import { getDownloadURL, ref, uploadString } from '@firebase/storage';
 import React, { useState, useEffect } from 'react';
 import messageUpload from '../assets/upload.png';
-import { storage } from '../database/Firebase';
+import { storage, auth } from '../database/Firebase';
 import ReactMarkdown from 'react-markdown';
 import cube from '../assets/chatbot.gif'; 
 import '../styles/ChatbotStyles.css';
@@ -30,6 +30,57 @@ function Chatbot({ uploadedFile, isCollapsed }) {
     fetchFileContents();
   }, [uploadedFile]);
 
+  const fetchChatHistory = async () => {
+    try {
+      const chatHistoryRef = ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`);
+  
+      // Check if the file exists
+      try {
+        await getDownloadURL(chatHistoryRef);
+      } catch (error) {
+        // File doesn't exist, create it with default content
+        await uploadString(chatHistoryRef, `Chat history for user: ${auth.currentUser.uid}`);
+      }
+  
+      // Fetch chat history content
+      const snapshot = await getDownloadURL(chatHistoryRef);
+      const response = await fetch(snapshot);
+      const data = await response.text();
+  
+      // Return chat history data
+      return data;
+    } catch (error) {
+      console.error('Error fetching chat history:', error);
+      return ''; // Return empty string if there's an error
+    }
+  };  
+
+  const historyUpload = async (input, user) => {
+    try {
+      const chatHistoryRef = ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`);
+      const currentContent = await downloadHistory(chatHistoryRef);
+  
+      // Append new input to the chat history
+      const updatedContent = `${currentContent}\n${user}: ${input} \n`;
+  
+      // Upload the updated content to the chat history file
+      await uploadString(chatHistoryRef, updatedContent);
+    } catch (error) {
+      console.error('Error uploading chat history:', error);
+    }
+  }
+
+  const downloadHistory = async (chatHistoryRef) => {
+    try {
+      const url = await getDownloadURL(chatHistoryRef);
+      const response = await fetch(url);
+      return await response.text();
+    } catch (error) {
+      // Return empty string if file doesn't exist
+      return '';
+    }
+  };
+
   const instructions = `
 
     You are going to respond as if your name is DocAI, a friendly project documentation expert! You're here to help you navigate through the provided documentation. Please use the markdown files that you are going to recieve to answer any questions you have about the project.
@@ -47,9 +98,10 @@ function Chatbot({ uploadedFile, isCollapsed }) {
   const fetchAIResponse = async (userInput) => {
 
     try {
-
+      historyUpload(userInput, "user");
+      const history = fetchChatHistory(); 
       const apiKey = process.env.REACT_APP_API_KEY;
-      const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n USER INPUT:${textInput}`;
+      const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n CHAT HISTORY:${history} \n\n CURRENT USER INPUT:${textInput /*TODO: CHANGE TO HISTORY*/}`;
       console.log(prompt); 
       const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput('');
@@ -74,6 +126,7 @@ function Chatbot({ uploadedFile, isCollapsed }) {
           ...oldMessages,
           { text: chosenText, sender: 'ai' }
         ]);
+        historyUpload(chosenText, "ai"); 
       } else {
         console.error('Error: No choices found in the response');
       }
@@ -121,8 +174,8 @@ function Chatbot({ uploadedFile, isCollapsed }) {
           </div>
         ))}
       </div>
-      <div class="input-container">
-        <div class="text-box-container">
+      <div className="input-container">
+        <div className="text-box-container">
           <input
             className="text-box"
             type="text"

@@ -43,7 +43,6 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
     }
   }, [user]);
 
-  // Trigger fetchFileList() on return from the FileOptions route 
   useEffect(() => {
     fetchFileList();
     if (location.pathname === '/') {
