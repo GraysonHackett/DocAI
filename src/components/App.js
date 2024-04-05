@@ -7,6 +7,7 @@ import Chatbot from './Chatbot';
 import Taskbar from './Taskbar';
 import line from '../assets/line.png'
 import '../styles/App.css';
+import { auth } from '../database/Firebase';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,7 +29,6 @@ function App() {
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <main className=''>
           <Taskbar
             onSelectFile={handleFileSelect}
             darkMode={darkMode}
@@ -36,16 +36,16 @@ function App() {
             isCollapsed={collapse}
           />
           <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
-              <img src={line} alt="Collapse Button" className="base-image-1" />
-              <img src={line} alt="Collapse Button" className="base-image-2" />
+            <img src={line} alt="Collapse Button" className="base-image-1" />
+            <img src={line} alt="Collapse Button" className="base-image-2" />
           </button>
           <Routes>
+            <Route exact path="/" element={<main/>} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/fileoptions" element={<FileOptions />} />
           </Routes>
           <Chatbot uploadedFile={uploadedFile} isCollapsed={collapse} />
-        </main>        
       </div>
     </Router>
   );

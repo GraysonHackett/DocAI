@@ -26,12 +26,6 @@ html {
   position: relative;
 }
 
-main {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-
 .collapseButton {
   background-color: transparent;
   border: none;

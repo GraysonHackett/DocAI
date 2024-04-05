@@ -80,7 +80,8 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
 
   const handleSignOut = async () => {
     try {
-      await uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), ''); 
+      await uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), '');
+      window.location.reload(); 
       await auth.signOut();
     } catch (error) {
       console.error('Error signing out:', error);
