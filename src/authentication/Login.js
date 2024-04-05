@@ -23,8 +23,8 @@ function Login() {
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        navigate('/'); 
+      .then(() => {
+        navigate('/');
       })
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
@@ -33,7 +33,7 @@ function Login() {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      handleSignIn();
+      handleSignIn(); 
     }
   };
 
