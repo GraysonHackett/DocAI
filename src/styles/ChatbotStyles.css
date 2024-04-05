@@ -35,10 +35,9 @@
 .powered {
   color: gray;
   font-style: italic;
-  font-size: 10px;
+  font-size: 11px;
   padding-top: 25px;
   margin-left: auto;
-  
 }
 .title {
   color: black;
@@ -231,4 +230,32 @@
   height: 50vh;
   width: 50vw;
   margin-left: 5vw;
+}
+
+
+#modelSelector {
+  font-size: 12px;
+  border-radius: 50px;
+  border-color: var(--red-60);
+  background-color: transparent;
+  color: gray;
+  margin-left: 5px;
+  font-style: italic;
+}
+.App.dark-mode #modelSelector {
+  color: white;
+}
+
+#modelSelector option {
+  background-color: #fff;
+  color: gray;
+}
+.App.dark-mode #modelSelector option {
+  color: white;
+  background-color: #3F3e48;
+}
+#modelSelector:focus {
+  outline: none;
+  border-color: var(--red-60);
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
 }

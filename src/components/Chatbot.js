@@ -161,7 +161,13 @@ function Chatbot({ uploadedFile, isCollapsed }) {
   return (
     <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
       <div className='top'>
-        <h3 className='powered'> Powered by Chat-GPT model 3.5</h3>  
+        <h3 className='powered'> 
+          Powered by 
+          <select id="modelSelector">
+            <option value="chatGPT">Chat-GPT model 3.5</option>
+            <option value="ollama">Ollama</option>
+          </select>
+        </h3>  
       </div>
       <div className="messages-container">
         {messages.length === 0 ? <img className='welcome-image' src={cube} alt='loading welcome img'/> : null}
