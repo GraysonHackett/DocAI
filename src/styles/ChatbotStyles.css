@@ -12,10 +12,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* Align messages to the bottom */
+  justify-content: flex-end;
   width: 80vw;
   height: 100vh;
-  transition: width 0.5s ease; /* Transition for width property */
+  transition: width 0.5s ease;
 }
 .openai-container.collapsed {
   width: 100vw;
