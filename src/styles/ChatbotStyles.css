@@ -4,20 +4,25 @@
   --gray-95: #151515;
   --red-60: #a60000;
   --red-70: #5f0000;
+  --white: #ffffff; 
 }
 
 .openai-container {
-  background-color: #cdcdcd;
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* Align messages to the bottom */
+  justify-content: flex-end;
   width: 80vw;
   height: 100vh;
+  transition: width 0.5s ease;
+}
+.openai-container.collapsed {
+  width: 100vw;
 }
 
 .App.dark-mode .openai-container {
-  background-color: var(--gray-95);
+  background-color: #3F3e48;
 }
 
 .top {
@@ -28,10 +33,12 @@
 }
 
 .powered {
-  color: black;
+  color: gray;
   font-style: italic;
   font-size: 10px;
   padding-top: 25px;
+  margin-left: auto;
+  
 }
 .title {
   color: black;
@@ -42,9 +49,10 @@
 }
 
 .bottom {
-  color: black;
+  color: gray;
   font-size: 12px;
-  padding-bottom: 5px;
+  padding:0;
+  margin:5;
 }
 
 .App.dark-mode .bottom {
@@ -57,23 +65,23 @@
   justify-content: center; /* Horizontally align items */
   width: 70vw;
   margin-top: 20px;
-  margin-bottom: 10px;
+  
 }
 
 .text-box-container {
   position: relative; /* Make the container relative */
-  width: 60vw;
+  width: 55vw;
 }
 
 .text-box {
   color: black;
   box-sizing: border-box;
   padding: 18px 80px 18px 18px; /* Adjust padding to accommodate the button */
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 20px;
-  height: 50px;
-  width: 60vw;
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 15px;
+  height: 55px;
+  width: 55vw;
 }
 
 .send-button {
@@ -99,7 +107,8 @@
 }
 
 .text-box::placeholder {
-  color: black;
+  color: gray;
+  font-size: 15px;
 }
 
 .text-box:focus::placeholder {

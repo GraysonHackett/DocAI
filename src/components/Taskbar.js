@@ -1,20 +1,21 @@
 // Taskbar.js
+import { listAll, getDownloadURL, ref, uploadBytes, uploadString } from "firebase/storage";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import choosefileIconLight from '../assets/choosefileLight.png';
+import fileuploadLightIcon from '../assets/fileuploadLight.png';
+import choosefileIconDark from '../assets/choosefileDark.png';
+import fileuploadDarkIcon from '../assets/fileuploadDark.png';
+import userIconLight from '../assets/userIconLight.png';
+import userIconDark from '../assets/userIconDark.png';
 import { storage, auth } from "../database/Firebase";
+import lightmodeIcon from '../assets/lightmode.png';
+import darkmodeIcon from '../assets/darkmode.png';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
-import userIconLight from '../assets/userIconLight.png'
-import userIconDark from '../assets/userIconDark.png'
-import darkmodeIcon from '../assets/darkmode.png'
-import lightmodeIcon from '../assets/lightmode.png'
-import fileuploadLightIcon from '../assets/fileuploadLight.png'
-import fileuploadDarkIcon from '../assets/fileuploadDark.png'
-import choosefileIconLight from '../assets/choosefileLight.png'
-import choosefileIconDark from '../assets/choosefileDark.png'
 
-function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
+
+function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
   const [fileList, setFileList] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -42,7 +43,6 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     }
   }, [user]);
 
-  // Trigger fetchFileList() on return from the FileOptions route 
   useEffect(() => {
     fetchFileList();
     if (location.pathname === '/') {
@@ -80,6 +80,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
 
   const handleSignOut = async () => {
     try {
+      await uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), ''); 
       await auth.signOut();
     } catch (error) {
       console.error('Error signing out:', error);
@@ -90,14 +91,19 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
-  // TODO: add user ? contron for the taskbar
   return (
-    <div className="taskbar">
-      <h3>DocAI</h3>
-      {user ? 
-      <p>My Files</p> : 
-      <p>Welcome to DocAI chatbot! Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
-      }
+    <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
+      {user ? <h3>DocAI</h3> : null }
+      {user ? (
+      <p className="myFiles">My Files</p>
+      ) : 
+      (<p className="welcome-message"><br></br>Welcome to DocAI</p>
+      )}
+      {user ? (
+        null
+      ) : (
+        <p className="sign-in"> Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+      )}
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (
@@ -114,7 +120,6 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
             </li>
           ))}
         </ul>
-        {user ? <h3>Selected Documentation: {selectedFile ? selectedFile.name.split('.').slice(0, -1).join('.') : ""}</h3> : null }
         <input 
           type="file" 
           accept=".md" 
@@ -124,18 +129,27 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode }) {
         />
       </div>
       <div className="actions">
-        <button onClick={handleClickUploadButton}>
-          <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
-          <span className="hover-text">Upload File</span>
-        </button><br></br>
-        <Link to="/fileoptions">
-          <button>
-            <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
-            <span className="hover-text">File Options</span>
+        {user ? (
+          <button onClick={handleClickUploadButton}>
+            <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
+            <span className="hover-text">Upload File</span>
           </button>
-        </Link>
+        ) : (
+          null
+        )}
         <br></br>
-        <hr className="divider" />
+        {user ? (
+          <Link to="/fileoptions">
+            <button>
+              <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
+              <span className="hover-text">File Options</span>
+            </button>
+          </Link>
+        ) : (
+          null
+        )}
+        <br></br>
+        {user ? <hr className="divider" /> : null }
         {user ? (
           <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
         ) : (

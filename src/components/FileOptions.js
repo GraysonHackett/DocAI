@@ -1,10 +1,10 @@
 // FileOptions.js
-import React, { useState, useEffect, useCallback } from "react";
 import { listAll, getDownloadURL, ref, deleteObject } from "firebase/storage";
+import React, { useState, useEffect, useCallback } from "react";
 import { storage, auth } from "../database/Firebase";
-import '../styles/FileOptions.css'; // Import your CSS file for styling
-import { Link } from "react-router-dom";
 import trashCanIcon from '../assets/trashcan.png'
+import { Link } from "react-router-dom";
+import '../styles/FileOptions.css';
 
 function FileOptions() {
   const [fileList, setFileList] = useState([]);
@@ -73,7 +73,6 @@ function FileOptions() {
               <button className="deleteButton" onClick={() => confirmDelete(file)}>
                 <img src={trashCanIcon} alt="Delete" />
               </button>
-              {/* TODO: Find a way to trigger the fetch file list on the taskbar, after the user navigates back to the mainpage */}
             </li>
           ))}
         </ul>
