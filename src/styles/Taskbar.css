@@ -105,8 +105,8 @@ h3 {
 .fileListWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 20%;
+  margin-right: 10px;
+  height: fit-content;
 }
 
 .actions {
