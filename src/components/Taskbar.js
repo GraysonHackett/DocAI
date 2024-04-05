@@ -1,5 +1,5 @@
 // Taskbar.js
-import { listAll, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { listAll, getDownloadURL, ref, uploadBytes, uploadString } from "firebase/storage";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import choosefileIconLight from '../assets/choosefileLight.png';
 import fileuploadLightIcon from '../assets/fileuploadLight.png';
@@ -80,6 +80,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
 
   const handleSignOut = async () => {
     try {
+      await uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), ''); 
       await auth.signOut();
     } catch (error) {
       console.error('Error signing out:', error);

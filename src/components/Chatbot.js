@@ -61,7 +61,7 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       const currentContent = await downloadHistory(chatHistoryRef);
   
       // Append new input to the chat history
-      const updatedContent = `${currentContent}\n${user}: ${input} \n`;
+      const updatedContent = `${currentContent}\n${user}: ${input} \n\n`;
   
       // Upload the updated content to the chat history file
       await uploadString(chatHistoryRef, updatedContent);
