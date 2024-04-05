@@ -35,14 +35,10 @@ function App() {
             toggleDarkMode={toggleDarkMode}
             isCollapsed={collapse}
           />
-          {auth.currentUser? 
-            <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
-              <img src={line} alt="Collapse Button" className="base-image-1" />
-              <img src={line} alt="Collapse Button" className="base-image-2" />
-            </button>
-          : (
-            null
-          )}
+          <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
+            <img src={line} alt="Collapse Button" className="base-image-1" />
+            <img src={line} alt="Collapse Button" className="base-image-2" />
+          </button>
           <Routes>
             <Route exact path="/" element={<main/>} />
             <Route exact path="/login" element={<Login />} />
