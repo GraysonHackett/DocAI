@@ -11,6 +11,7 @@ import '../styles/App.css';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [collapse, setCollapse] = useState(false); 
+  const [user, setUser] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
 
   const toggleDarkMode = () => {
@@ -35,10 +36,12 @@ function App() {
             toggleDarkMode={toggleDarkMode}
             isCollapsed={collapse}
           />
-          <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
-              <img src={line} alt="Collapse Button" className="base-image-1" />
-              <img src={line} alt="Collapse Button" className="base-image-2" />
-          </button>
+          {user? 
+              <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
+                <img src={line} alt="Collapse Button" className="base-image-1" />
+                <img src={line} alt="Collapse Button" className="base-image-2" />
+            </button>
+          : (null)}
           <Routes>
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
