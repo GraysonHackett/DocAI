@@ -41,6 +41,7 @@
 }
 .title {
   color: black;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .App.dark-mode .title,
 .App.dark-mode .top {
@@ -49,11 +50,13 @@
 
 .bottom {
   color: gray;
-  font-size: 12px;
+  font-size: 11px;
   padding:0;
   margin:5;
 }
-
+.title{
+padding-top: 20px;
+}
 .App.dark-mode .bottom {
   color: white;
 }
@@ -132,7 +135,7 @@
 }
 
 .messages-container {
-  width: 60vw;
+  width: 70vw;
   height: 100vh; /* Match the openai-container height */
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
@@ -161,14 +164,16 @@
 }
 
 .message.user {
-  background-color: white;
-  color: black;
+  background-color: #007AFF;
+  color: white;
   border-radius: 15px;
   display: inline-flex;
   float: right;
-  text-align: right;
+  text-align: left;
   max-width: 30vw;
-  margin: 2.5vh 0px 2.5vh 30vw;
+  line-height: 22px;
+  margin: 2.0vh 0px 2.0vh 20vw;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .App.dark-mode .message.user {
@@ -177,17 +182,19 @@
 }
 
 .message.ai {
-  background-color: var(--gray-90);
-  color: white;
+  background-color: #f5f5f5;
+  color: black;
   border-radius: 15px;
   float: left;
   text-align: left;
   max-width: 50vw;
   max-height: fit-content;
-  margin: 0px 30vw 0px 0px;
+  line-height: 22px;
+  margin: 0px 20vw 0px 0px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .App.dark-mode .message.ai {
-  background-color: white;
+  background-color: black;
 }
 
 /* AI messages will render as paragraph with react-markdown*/
@@ -196,7 +203,7 @@
 .message.ai p,
 .message.ai code,
 .message.ai li {
-  color: white;
+  color: black;
 }
 .message.ai a {
   color: lightblue;
@@ -236,7 +243,7 @@
 #modelSelector {
   font-size: 12px;
   border-radius: 50px;
-  border-color: var(--red-60);
+  border-color: rgb(175, 212, 240);
   background-color: transparent;
   color: gray;
   margin-left: 5px;
@@ -256,6 +263,6 @@
 }
 #modelSelector:focus {
   outline: none;
-  border-color: var(--red-60);
+  border-color: rgb(175, 212, 240);
   box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
 }

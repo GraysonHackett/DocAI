@@ -22,9 +22,16 @@ h3 {
 .App.dark-mode h3 {
   color: white;
 }
+p{
+  padding-left: 5px;
+}
 
 .myFiles{
-  color: black;
+  color: gray;
+  font-size: 14px;
+  padding-top: 35px;
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .App.dark-mode .myFiles {
   color: white;
@@ -64,29 +71,29 @@ h3 {
 .fileList {
   list-style-type: none;
   color: black;
-  padding: 0;
+  padding-left: 5px;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .collapsed .fileList {
   display: none;
 }
 
 .fileList li {
-  justify-content: center;
+  justify-content: left;
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  background-color: #d3d3d3;
-  border-radius: 50px;
-  height: 50px;
-  width: 80%;
-  margin-left: 10%;
+  height: 35px;
+  width: 100%;
+  margin-left: 0%;
   margin-right: 10%;
 }
 
 .fileList input {
   border-radius: 50px;
   height: 50px;
-  width: 80%;
+  width: 100%;
   margin-left: 10%;
   margin-right: 10%;
   display: none;
@@ -97,9 +104,10 @@ h3 {
 }
 
 .fileList .selected {
-  background-color: red;
-  color: white;
-  border-radius: 50px;
+  background-color: rgb(175, 212, 240);
+  color: black;
+  border-radius:5px;
+  
 }
 
 .fileListWrapper {
