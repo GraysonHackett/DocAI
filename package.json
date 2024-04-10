@@ -18,13 +18,8 @@
     "node-fetch": "^3.3.2",
     "nth-check": "^2.1.1",
     "ollama": "^0.5.0",
-<<<<<<< HEAD
-    "openai": "^4.29.1",
-    "postcss": "^8.4.36",
-=======
     "openai": "^4.33.0",
     "postcss": "^8.4.38",
->>>>>>> main
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
