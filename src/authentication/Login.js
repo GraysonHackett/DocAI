@@ -23,8 +23,8 @@ function Login() {
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        navigate('/'); 
+      .then(() => {
+        navigate('/');
       })
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
@@ -33,7 +33,7 @@ function Login() {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      handleSignIn();
+      handleSignIn(); 
     }
   };
 
@@ -41,7 +41,7 @@ function Login() {
     <div className="auth-container">
       <div className="auth-content">
         <Link to="/" className="close-button">X</Link>
-        <h2>Login</h2>
+        <h2 className='login-signup'>Login</h2>
         <input
           type="email"
           value={email}

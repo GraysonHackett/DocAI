@@ -1,64 +1,50 @@
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Chatbot from './Chatbot';
-import Taskbar from './Taskbar'; // Import the Taskbar component
-import Header from './Header';
-import { auth } from '../database/Firebase';
-import '../styles/App.css';
-import '../styles/Footer.css'; 
-import '../styles/Taskbar.css';
-import Login from '../authentication/Login';
+import React, { useState } from 'react';
+import FileOptions from '../components/FileOptions'; 
 import Signup from '../authentication/Signup';
-import logo from '../assets/logo.png';
+import Login from '../authentication/Login';
+import Chatbot from './Chatbot';
+import Taskbar from './Taskbar';
+import line from '../assets/line.png'
+import '../styles/App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [user, setUser] = useState(null);
+  const [collapse, setCollapse] = useState(false); 
   const [uploadedFile, setUploadedFile] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
   };
 
   const handleFileSelect = (fileUrl) => {
     setUploadedFile(fileUrl);
   };
 
+  const toggleCollapse = () => {
+    setCollapse(!collapse); 
+  }
+
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} user={user} handleSignOut={handleSignOut} />
-        <main>
-          <Taskbar onSelectFile={handleFileSelect} />
+          <Taskbar
+            onSelectFile={handleFileSelect}
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode}
+            isCollapsed={collapse}
+          />
+          <button className={collapse ? 'collapseButton collapsed' : 'collapseButton'} onClick={toggleCollapse}>
+            <img src={line} alt="Collapse Button" className="base-image-1" />
+            <img src={line} alt="Collapse Button" className="base-image-2" />
+          </button>
           <Routes>
+            <Route exact path="/" element={<main/>} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/fileoptions" element={<FileOptions />} />
           </Routes>
-          <Chatbot uploadedFile={uploadedFile} />
-        </main>
-        <footer className="footer">
-            DocAI Project Created In Collaboration with a Red Hat Mentor
-        </footer>
+          <Chatbot uploadedFile={uploadedFile} isCollapsed={collapse} />
       </div>
     </Router>
   );
