@@ -176,10 +176,21 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       setTextInput('');
     }
   };
+
   const handleModelChange = (event) => {
-    setSelectedModel(event.target.value);
+    const newModel = event.target.value;
+
+    if (newModel === "ollama") {
+      const confirmed = window.confirm("Notice: Ollama model requires ollama to be downloaded, see README for instructions 👍");
+      if (!confirmed) {
+        return;
+      }
+    }
+
+    setSelectedModel(newModel);
   };
 
+  
   return (
     <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
       <div className='top'>
