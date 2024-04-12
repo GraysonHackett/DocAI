@@ -31,37 +31,22 @@ To run the project utilizing the OpenAI model, follow these setup instructions:
    ```sh
    npm start
    ```
-To run the project locally utilizing the Ollama API, follow these setup instructions:
 
-1. Clone the repository to your local machine:
-   ```sh 
-   git clone https://github.com/GraysonHackett/DocAI
+**<i>To run the project locally utilizing the Ollama API, follow these setup instructions:</i>**
+
+1. Download Ollama to your machine:
    ```
-2. Update all dependencies with terminal command: 
-   ```sh
-   npm install
-   npm i ollama 
-   ```   
-3. Create a `.env` file in the project root directory and add your (ChatGPT-API & Firebase) private key's to it. The file should look like this:
-   ```js
-   REACT_APP_API_KEY=your_openai_api_key_here
-   REACT_APP_API_KEY=your_firebase_api_key
-   REACT_APP_AUTH_DOMAIN=your_firebase_auth_domain
-   REACT_APP_PROJECT_ID=your_firebase_project_id
-   REACT_APP_STORAGE_BUCKET=your_firebase_storage_bucket
-   REACT_APP_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-   REACT_APP_APP_ID=your_firebase_app_id
-   REACT_APP_MEASUREMENT_ID=your_firebase_measurement_id
+   ![ollama website](https://ollama.com/)
    ```
 
-4. Download Ollama to your machine:
+2. Download the latest ollama version:
    ```sh
-   ollama.com
+   npm install ollama
    ```
 
-4. Run the project using the following command:
+3. Pull the `llama2` model:
    ```sh
-   npm start
+   ollama pull llama2
    ```
 
 ## <u>Code Explanation</u>
