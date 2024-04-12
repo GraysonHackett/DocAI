@@ -107,7 +107,6 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n CHAT HISTORY: \n${history} \n\n CURRENT USER INPUT: ${textInput}`;
       console.log(prompt); 
-      //const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput(''); 
       
       if (selectedModel === 'chatGPT') {
