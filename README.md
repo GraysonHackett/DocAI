@@ -6,7 +6,7 @@ This project is a capstone class project developed in collaboration with the Col
 
 ## <u>Setup Instructions</u>
 
-To run the project locally, follow these setup instructions:
+To run the project utilizing the OpenAI model, follow these setup instructions:
 
 1. Clone the repository to your local machine:
    ```sh 
@@ -31,6 +31,38 @@ To run the project locally, follow these setup instructions:
    ```sh
    npm start
    ```
+To run the project locally utilizing the Ollama API, follow these setup instructions:
+
+1. Clone the repository to your local machine:
+   ```sh 
+   git clone https://github.com/GraysonHackett/DocAI
+   ```
+2. Update all dependencies with terminal command: 
+   ```sh
+   npm install
+   npm i ollama 
+   ```   
+3. Create a `.env` file in the project root directory and add your (ChatGPT-API & Firebase) private key's to it. The file should look like this:
+   ```js
+   REACT_APP_API_KEY=your_openai_api_key_here
+   REACT_APP_API_KEY=your_firebase_api_key
+   REACT_APP_AUTH_DOMAIN=your_firebase_auth_domain
+   REACT_APP_PROJECT_ID=your_firebase_project_id
+   REACT_APP_STORAGE_BUCKET=your_firebase_storage_bucket
+   REACT_APP_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   REACT_APP_APP_ID=your_firebase_app_id
+   REACT_APP_MEASUREMENT_ID=your_firebase_measurement_id
+   ```
+
+4. Download Ollama to your machine:
+   ```sh
+   ollama.com
+   ```
+
+4. Run the project using the following command:
+   ```sh
+   npm start
+   ```
 
 ## <u>Code Explanation</u>
 
@@ -43,7 +75,8 @@ The main component of the project is the `Chatbot.js` file, which contains the i
 > `dotenv`: Used for loading environment variables from the `.env` file.<br>
 > `node-fetch`: Used for making HTTP requests in the Node.js environment, mainly used for fetching Markdown files from a URL.<br>
 > `react-markdown`: Used for rendering Markdown content in React components.<br>
-> `react-router-dom`: Used for handling routing in React applications.
+> `react-router-dom`: Used for handling routing in React applications.<br>
+> `Ollama`: Used for accessing multiple different LLM's and offline use for privacy concerns.
 
 ### <u>Functionality Overview</u>
 

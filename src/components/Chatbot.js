@@ -99,19 +99,20 @@ function Chatbot({ uploadedFile, isCollapsed }) {
     `;
 
   const fetchAIResponse = async (userInput) => {
-    let response;
+    
+    let chosenText = '';
     try {
       historyUpload(userInput, "user");
       const history = await fetchChatHistory(); 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n CHAT HISTORY: \n${history} \n\n CURRENT USER INPUT: ${textInput}`;
       console.log(prompt); 
-      const url = 'https://api.openai.com/v1/chat/completions';
+      //const url = 'https://api.openai.com/v1/chat/completions';
       setTextInput(''); 
       
       if (selectedModel === 'chatGPT') {
-        response = await axios.post(
-          url,
+        const response = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
           {
             model: 'gpt-3.5-turbo',
             messages: [{ role: 'user', content: prompt }],
@@ -124,28 +125,34 @@ function Chatbot({ uploadedFile, isCollapsed }) {
             },
           }
         );
+        if (response.data.choices && response.data.choices.length > 0) {
+           chosenText = response.data.choices[0].message.content;
+        }
       } else if (selectedModel === 'ollama') {
-        response = await ollama.chat(
+        const response = await ollama.chat(
           {
             model: 'llama2',
             messages: [{ role: 'user', content: prompt, stream: true }],
           }
         );
+        if (response && response.message && response.message.content) {
+          chosenText = response.message.content;
+        }
       }
 
 
-      if (response.data.choices && response.data.choices.length > 0) {
-        const chosenText = response.data.choices[0].message.content;
+      if (chosenText) {
         setMessages(oldMessages => [
           ...oldMessages,
           { text: chosenText, sender: 'ai' }
         ]);
         historyUpload(chosenText, "DocAI"); 
-      } else {
+      } 
+      else {
         console.error('Error: No choices found in the response');
       }
     } catch (error) {
-      console.error('Error fetching OpenAI API:', error);
+      console.error('Error fetching API:', error);
     }
   };
 
