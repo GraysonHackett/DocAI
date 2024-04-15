@@ -13,7 +13,7 @@ function Login() {
   const mapFirebaseErrorToCustomMessage = (errorCode) => {
     switch (errorCode) {
       case 'auth/invalid-email':
-      case 'auth/wrong-password':
+      case 'auth/invalid-password':
       case 'auth/user-not-found':
         return 'Invalid email/password';
       default:
@@ -55,9 +55,9 @@ function Login() {
           placeholder="Password"
           onKeyPress={handleKeyPress}
         />
+        {error && <div className="error">{error}</div>}
         <button onClick={handleSignIn}>Sign In</button>
         <Link to="/signup">Don't have an account? Sign Up</Link>
-        {error && <div className="error">{error}</div>}
       </div>
     </div>
   );

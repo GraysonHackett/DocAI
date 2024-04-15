@@ -61,9 +61,9 @@ function Signup() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Confirm password"
         />
-        <button onClick={handleSignUp}>Sign Up</button>
-        <Link to="/login">Already have an account? Login <br></br></Link>
         {error && <div className="error">{error}</div>}
+        <button onClick={handleSignUp}>Sign Up</button>
+        <Link to="/login">Already have an account? Login <br></br></Link>    
       </div>
     </div>
   );

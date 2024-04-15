@@ -48,8 +48,9 @@
 }
 
 .auth-container .error {
+  position: absolute;
+  margin-left: 15%;
   color: red;
-  margin-top: 5%;
 }
 
 .auth-container button {
