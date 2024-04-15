@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../database/Firebase';
-import '../styles/Auth.css';
+import '../styles/Authentication.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate(); 
 
@@ -23,18 +24,23 @@ function Signup() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
+    if(password === confirmPassword){
+      createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         navigate('/login'); 
       })
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
       });
+    }
+    else{
+      console.error("Passwords do not match"); 
+    }
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-content">
+      <div className="auth-content-signup">
         <Link to="/" className="close-button">X</Link>
         <h2 className='login-signup'>Sign Up</h2>
         <input
@@ -48,6 +54,12 @@ function Signup() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+        />
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm password"
         />
         <button onClick={handleSignUp}>Sign Up</button>
         <Link to="/login">Already have an account? Login <br></br></Link>
