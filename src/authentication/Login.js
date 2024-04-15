@@ -12,10 +12,12 @@ function Login() {
 
   const mapFirebaseErrorToCustomMessage = (errorCode) => {
     switch (errorCode) {
-      case 'auth/invalid-email':
-      case 'auth/invalid-password':
-      case 'auth/user-not-found':
+      case 'auth/invalid-credential':
         return 'Invalid email/password';
+      case 'auth/user-not-found':
+        return 'Bad request';
+      case 'auth/too-many-requests':
+        return 'Too many attemps, try again later'; 
       default:
         return 'An error occurred, try again';
     }
@@ -28,6 +30,7 @@ function Login() {
       })
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
+        console.log(error); 
       });
   };
 
