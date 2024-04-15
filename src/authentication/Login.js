@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../database/Firebase';
 import '../styles/Authentication.css';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import google from '../assets/google.png'; 
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ function Login() {
       case 'auth/user-not-found':
         return 'Bad request';
       case 'auth/too-many-requests':
-        return 'Too many attemps, try again later'; 
+        return 'Too many attempts, try again later'; 
       default:
         return 'An error occurred, try again';
     }
@@ -31,6 +32,20 @@ function Login() {
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
         console.log(error); 
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // You can access the Google user's profile information here if needed
+        // For example: const user = result.user;
+        navigate('/');
+      })
+      .catch((error) => {
+        setError('An error occurred while signing in with Google. Please try again.');
+        console.log(error);
       });
   };
 
@@ -58,8 +73,11 @@ function Login() {
           placeholder="Password"
           onKeyPress={handleKeyPress}
         />
+        <button onClick={handleSignInWithGoogle} className="google-sign-in-button">
+          <img src={google} alt="Google Logo" /> Continue with Google
+        </button>
         {error && <div className="error">{error}</div>}
-        <button onClick={handleSignIn}>Sign In</button>
+        <button onClick={handleSignIn} className='handle-sign-in'>Sign In</button>
         <Link to="/signup">Don't have an account? Sign Up</Link>
       </div>
     </div>

@@ -62,7 +62,7 @@ function Signup() {
           placeholder="Confirm password"
         />
         {error && <div className="error">{error}</div>}
-        <button onClick={handleSignUp}>Sign Up</button>
+        <button onClick={handleSignUp} className='handle-sign-up'>Sign Up</button>
         <Link to="/login">Already have an account? Login <br></br></Link>    
       </div>
     </div>

@@ -58,7 +58,8 @@
 }
 
 
-.auth-container button {
+.auth-container .handle-sign-in, 
+.auth-container .handle-sign-up  {
   width: 55%;
   padding: 15px;
   border: none;
@@ -69,7 +70,7 @@
   cursor: pointer;
   position: relative;
   left: 50%;
-  bottom: -22%;
+  bottom: -10%;
   transform: translate(-50%, -50%);
   margin: auto;
 }
@@ -90,7 +91,7 @@
   text-decoration: none;
   position: relative;
   left: 50%;
-  bottom: -22%;
+  bottom: -10%;
   transform: translate(-50%, -50%);
   margin: auto;
   font-size: 11px;
@@ -120,4 +121,29 @@
 
 .App.dark-mode .login-signup {
   color: black;
+}
+
+.google-sign-in-button {
+  background-color: transparent;
+  position: fixed;
+  width: fit-content;
+  height: fit-content  + 5px;
+  white-space: nowrap;
+  color: black;
+  display: inline-flex;
+  align-items: center; /* Align items vertically in the center */
+  border-radius: 50px;
+  border: 1px solid black;
+  font-size: 12px;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+}
+
+.google-sign-in-button img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px; /* Add some space between the image and text */
 }
