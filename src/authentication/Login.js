@@ -36,11 +36,10 @@ function Login() {
   };
 
   const handleSignInWithGoogle = () => {
+    setEmail(''); // reset email to null to avoid google-sign-in-error
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // You can access the Google user's profile information here if needed
-        // For example: const user = result.user;
         navigate('/');
       })
       .catch((error) => {
@@ -76,8 +75,9 @@ function Login() {
         <button onClick={handleSignInWithGoogle} className="google-sign-in-button">
           <img src={google} alt="Google Logo" /> Continue with Google
         </button>
-        {error && <div className="error">{error}</div>}
         <button onClick={handleSignIn} className='handle-sign-in'>Sign In</button>
+        {error && <div className="error">{error}</div>}
+
         <Link to="/signup">Don't have an account? Sign Up</Link>
       </div>
     </div>

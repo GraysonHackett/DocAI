@@ -48,13 +48,17 @@
 }
 
 .auth-container .error {
-  width: fit-content;
-  height: fit-content;
-  position: fixed;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
+  text-align: center;
+  margin-top: 15px;
   color: red;
+  text-decoration: none;
+  position: fixed;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  font-size: 12px;
 }
 
 
@@ -91,7 +95,7 @@
   text-decoration: none;
   position: relative;
   left: 50%;
-  bottom: -10%;
+  top: 15%;
   transform: translate(-50%, -50%);
   margin: auto;
   font-size: 11px;
