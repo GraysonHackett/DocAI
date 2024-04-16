@@ -35,9 +35,8 @@ To run the project utilizing the OpenAI model, follow these setup instructions:
 **<i>To run the project locally utilizing the Ollama API, follow these setup instructions:</i>**
 
 1. Download Ollama to your machine:
-   ```
-   ![ollama website](https://ollama.com/)
-   ```
+   
+   https://ollama.com
 
 2. Download the latest ollama version:
    ```sh
