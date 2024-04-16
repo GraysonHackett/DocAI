@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../database/Firebase';
-import '../styles/Auth.css';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import '../styles/Authentication.css';
+import google from '../assets/google.png'; 
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -12,10 +13,12 @@ function Login() {
 
   const mapFirebaseErrorToCustomMessage = (errorCode) => {
     switch (errorCode) {
-      case 'auth/invalid-email':
-      case 'auth/wrong-password':
-      case 'auth/user-not-found':
+      case 'auth/invalid-credential':
         return 'Invalid email/password';
+      case 'auth/user-not-found':
+        return 'Bad request';
+      case 'auth/too-many-requests':
+        return 'Too many attempts, try again later'; 
       default:
         return 'An error occurred, try again';
     }
@@ -28,6 +31,20 @@ function Login() {
       })
       .catch((error) => {
         setError(mapFirebaseErrorToCustomMessage(error.code));
+        console.log(error); 
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    setEmail(''); // reset email to null to avoid google-sign-in-error
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        navigate('/');
+      })
+      .catch((error) => {
+        setError('An error occurred while signing in with Google. Please try again.');
+        console.log(error);
       });
   };
 
@@ -55,9 +72,13 @@ function Login() {
           placeholder="Password"
           onKeyPress={handleKeyPress}
         />
-        <button onClick={handleSignIn}>Sign In</button>
-        <Link to="/signup">Don't have an account? Sign Up</Link>
+        <button onClick={handleSignInWithGoogle} className="google-sign-in-button">
+          <img src={google} alt="Google Logo" /> Continue with Google
+        </button>
+        <button onClick={handleSignIn} className='handle-sign-in'>Sign In</button>
         {error && <div className="error">{error}</div>}
+
+        <Link to="/signup">Don't have an account? Sign Up</Link>
       </div>
     </div>
   );
