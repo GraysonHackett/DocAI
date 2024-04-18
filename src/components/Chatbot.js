@@ -1,6 +1,6 @@
 import { getDownloadURL, ref, uploadString } from '@firebase/storage';
 import React, { useState, useEffect } from 'react';
-import messageUpload from '../assets/upload.png';
+import messageUpload from '../assets/sendbutton.png';
 import { storage, auth } from '../database/Firebase';
 import ReactMarkdown from 'react-markdown';
 import cube from '../assets/chatbot.gif'; 
@@ -194,6 +194,7 @@ function Chatbot({ uploadedFile, isCollapsed }) {
   return (
     <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
       <div className='top'>
+        <h3 className='title'>DocAI</h3>
         <h3 className='powered'> 
           Powered by 
           <select id="modelSelector" onChange={handleModelChange} value={selectedModel}>

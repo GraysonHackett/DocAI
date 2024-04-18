@@ -44,7 +44,7 @@ html {
 
 .base-image-1,
 .base-image-2 {
-  border-radius: 50px;
+  
   width: 50px;
   height: 15px;
   cursor: pointer;

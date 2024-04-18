@@ -1,15 +1,15 @@
 // Taskbar.js
 import { listAll, getDownloadURL, ref, uploadBytes, uploadString } from "firebase/storage";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import choosefileIconLight from '../assets/choosefileLight.png';
-import fileuploadLightIcon from '../assets/fileuploadLight.png';
-import choosefileIconDark from '../assets/choosefileDark.png';
-import fileuploadDarkIcon from '../assets/fileuploadDark.png';
-import userIconLight from '../assets/userIconLight.png';
+import choosefileIconLight from '../assets/folderlight.png';
+import fileuploadLightIcon from '../assets/fileupload.png';
+import choosefileIconDark from '../assets/folderlight.png';
+import fileuploadDarkIcon from '../assets/uploaddoc.png';
+import userIconLight from '../assets/userpuffy.png';
 import userIconDark from '../assets/userIconDark.png';
 import { storage, auth } from "../database/Firebase";
-import lightmodeIcon from '../assets/lightmode.png';
-import darkmodeIcon from '../assets/darkmode.png';
+import lightmodeIcon from '../assets/darkmodelight.png';
+import darkmodeIcon from '../assets/darkmodelight.png';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
@@ -94,7 +94,6 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
 
   return (
     <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
-      {user ? <h3>DocAI</h3> : null }
       {user ? (
       <p className="myFiles">My Files</p>
       ) : 
