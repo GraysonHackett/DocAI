@@ -1,6 +1,6 @@
 import { getDownloadURL, ref, uploadString } from '@firebase/storage';
 import React, { useState, useEffect } from 'react';
-import messageUpload from '../assets/upload.png';
+import messageUpload from '../assets/sendbutton.png';
 import { storage, auth } from '../database/Firebase';
 import ReactMarkdown from 'react-markdown';
 import cube from '../assets/chatbot.gif'; 

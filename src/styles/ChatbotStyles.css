@@ -22,7 +22,7 @@
 }
 
 .App.dark-mode .openai-container {
-  background-color: #3F3e48;
+  background-color: #000000;
 }
 
 .top {
@@ -76,14 +76,15 @@ padding-top: 20px;
 }
 
 .text-box {
-  color: black;
+  color: gray;
   box-sizing: border-box;
   padding: 18px 80px 18px 18px; /* Adjust padding to accommodate the button */
   background-color: #f5f5f5;
   border: 1px solid #f5f5f5;
-  border-radius: 15px;
+  border-radius: 25px;
   height: 55px;
   width: 55vw;
+  outline: none;
 }
 
 .send-button {
@@ -99,13 +100,14 @@ padding-top: 20px;
 }
 
 .send-button img {
-  width: 25px; /* Adjust width as needed */
-  height: 25px; /* Adjust height as needed */
+  width: 35px; /* Adjust width as needed */
+  height: 35px; /* Adjust height as needed */
 }
 
 .App.dark-mode .text-box {
-  background-color: white;
-  border: 1px solid black;
+  background-color: rgb(37, 37, 37);
+  border: 1px solid rgb(36, 36, 36);
+  color:white;
 }
 
 .text-box::placeholder {
@@ -118,7 +120,7 @@ padding-top: 20px;
 }
 
 .App.dark-mode .text-box::placeholder {
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .send-button:hover {
@@ -177,7 +179,7 @@ padding-top: 20px;
 }
 
 .App.dark-mode .message.user {
-  background-color: red;
+  background-color: #007AFF;
   color: white;
 }
 
@@ -194,7 +196,7 @@ padding-top: 20px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .App.dark-mode .message.ai {
-  background-color: black;
+  background-color: rgb(35, 35, 35);
 }
 
 /* AI messages will render as paragraph with react-markdown*/
@@ -218,7 +220,7 @@ padding-top: 20px;
 .App.dark-mode .message.ai p,
 .App.dark-mode .message.ai code,
 .App.dark-mode .message.ai li {
-  color: black;
+  color: white;
 }
 
 /* Message animation */

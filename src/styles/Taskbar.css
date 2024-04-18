@@ -13,7 +13,7 @@
 }
 
 .App.dark-mode .taskbar {
-  background-color: #1d1d1d;
+  background-color: #0b0b0b;
 }
 
 h3 {
@@ -75,6 +75,15 @@ p{
   font-size: 15px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
+.dark-mode .fileList {
+  list-style-type: none;
+  color: rgb(255, 255, 255);
+  padding-left: 5px;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .collapsed .fileList {
   display: none;
 }
@@ -88,6 +97,7 @@ p{
   width: 100%;
   margin-left: 0%;
   margin-right: 10%;
+  padding-left: 5px;
 }
 
 .fileList input {
@@ -107,7 +117,8 @@ p{
   background-color: rgb(175, 212, 240);
   color: black;
   border-radius:5px;
-  
+  padding-left:5px;
+  width:95%;
 }
 
 .fileListWrapper {
@@ -126,8 +137,8 @@ p{
 }
 
 .actions img {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
 }
 
 .collapsed button:nth-child(1) img {
@@ -166,8 +177,9 @@ p{
 .divider {
   border: none;
   border-top: 1px solid black;
-  width: calc(100% - 10px);
-  margin: 10px 0;
+  width: 40%;
+  margin: 10px 28%;
+  
   transition: width 0.5s ease;
 }
 .App.dark-mode .divider {

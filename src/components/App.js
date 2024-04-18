@@ -5,7 +5,7 @@ import Signup from '../authentication/Signup';
 import Login from '../authentication/Login';
 import Chatbot from './Chatbot';
 import Taskbar from './Taskbar';
-import line from '../assets/line.png'
+import line from '../assets/linec.png'
 import '../styles/App.css';
 
 function App() {
