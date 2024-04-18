@@ -1,11 +1,10 @@
 /* Taskbar.css */
 
 .taskbar {
-  margin: auto;
   background-color: #f9f9f9;
-  padding-left: 10px;
+  padding-left: 0;
   height: 100vh;
-  width: 20vw;
+  width: 15vw;
   transition: width 0.5s ease, display 0s 0.5s;
 }
 .taskbar.collapsed {
@@ -177,13 +176,9 @@ p{
 .divider {
   border: none;
   border-top: 1px solid black;
-  width: calc(100% - 10px);
+  width: 50px;
   margin: 10px 0;
-  transition: width 0.5s ease;
 }
 .App.dark-mode .divider {
   border-top: 1px solid white;
-}
-.collapsed .divider {
-  width: 50px;
 }

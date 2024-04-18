@@ -24,7 +24,7 @@ function App() {
   const toggleCollapse = () => {
     setCollapse(!collapse); 
   }
-
+// TODO : Clear on file change for chat-history 
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>

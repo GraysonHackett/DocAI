@@ -10,10 +10,12 @@ import ollama from 'ollama/browser';
 
 
 function Chatbot({ uploadedFile, isCollapsed }) {
+
   const [messages, setMessages] = useState ([]);
   const [textInput, setTextInput] = useState('');
   const [documentation, setDocumentation] = useState('');
   const [selectedModel, setSelectedModel] = useState('chatGPT');
+  const fileRef = ref(storage, uploadedFile); 
 
   useEffect(() => {
     const fetchFileContents = async () => {
@@ -36,24 +38,21 @@ function Chatbot({ uploadedFile, isCollapsed }) {
     try {
       const chatHistoryRef = ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`);
   
-      // Check if the file exists
       try {
         await getDownloadURL(chatHistoryRef);
       } catch (error) {
-        // File doesn't exist, create it with default content
         await uploadString(chatHistoryRef, `Chat history for user: ${auth.currentUser.uid}`);
       }
   
-      // Fetch chat history content
       const snapshot = await getDownloadURL(chatHistoryRef);
       const response = await fetch(snapshot);
       const data = await response.text();
   
-      // Return chat history data
       return data;
     } catch (error) {
       console.error('Error fetching chat history:', error);
-      return ''; // Return empty string if there's an error
+      return '';
+
     }
   };  
 
@@ -106,7 +105,6 @@ function Chatbot({ uploadedFile, isCollapsed }) {
       const history = await fetchChatHistory(); 
       const apiKey = process.env.REACT_APP_API_KEY;
       const prompt = `${instructions} \n\n DOCUMENTATION: ${documentation? documentation : 'null'} \n\n CHAT HISTORY: \n${history} \n\n CURRENT USER INPUT: ${textInput}`;
-      console.log(prompt); 
       setTextInput(''); 
       
       if (selectedModel === 'chatGPT') {
@@ -141,6 +139,7 @@ function Chatbot({ uploadedFile, isCollapsed }) {
 
 
       if (chosenText) {
+        chosenText = `${fileRef? fileRef.name : null} \n\n` + chosenText; // Put the currently chosen file at the top of the message.ai response 
         setMessages(oldMessages => [
           ...oldMessages,
           { text: chosenText, sender: 'ai' }
@@ -190,6 +189,8 @@ function Chatbot({ uploadedFile, isCollapsed }) {
     setSelectedModel(newModel);
   };
 
+
+  // TODO : Add what file it's coming from in the message.ai  (fileRef.name)
   
   return (
     <div className={isCollapsed ? 'openai-container collapsed' : 'openai-container'}>
