@@ -108,6 +108,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <ul className="fileList">
           {fileList.map((file) => (
             <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
+              <img className="foldericon" src={choosefileIconDark}/>
               <input 
                 type="radio" 
                 id={file.name} 
@@ -132,7 +133,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         {user ? (
           <button onClick={handleClickUploadButton}>
             <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
-            <span className="hover-text">Upload File</span>
+            <span className="control">Upload File</span>
           </button>
         ) : (
           null
@@ -142,7 +143,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
           <Link to="/fileoptions">
             <button>
               <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
-              <span className="hover-text">File Options</span>
+              <span className="control">Manage Files</span>
             </button>
           </Link>
         ) : (
@@ -151,12 +152,12 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <br></br>
         {user ? <hr className="divider" /> : null }
         {user ? (
-          <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
+          <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="control">Sign Out</span></button>
         ) : (
-          <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+          <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="control">Sign In</span></button></Link>
         )}
         <br></br>
-        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
+        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="control">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
       </div>
     </div>
   );
