@@ -5,8 +5,8 @@ import choosefileIconLight from '../assets/folderlight.png';
 import fileuploadLightIcon from '../assets/fileupload.png';
 import choosefileIconDark from '../assets/folderlight.png';
 import fileuploadDarkIcon from '../assets/uploaddoc.png';
-import userIconLight from '../assets/userpuffy.png';
-import userIconDark from '../assets/userIconDark.png';
+import userIcon from '../assets/userpuffy.png';
+import signoutIcon from '../assets/signout.png'; 
 import { storage, auth } from "../database/Firebase";
 import lightmodeIcon from '../assets/darkmodelight.png';
 import darkmodeIcon from '../assets/darkmodelight.png';
@@ -131,7 +131,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
       <div className="actions">
         {user ? (
           <button onClick={handleClickUploadButton}>
-            <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
+            <img src={darkMode ? fileuploadLightIcon : fileuploadLightIcon} alt="File Upload" />
             <span className="hover-text">Upload File</span>
           </button>
         ) : (
@@ -151,9 +151,9 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <br></br>
         {user ? <hr className="divider" /> : null }
         {user ? (
-          <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
+          <button onClick={handleSignOut}><img src={darkMode ? signoutIcon : signoutIcon} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
         ) : (
-          <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+          <Link to="/login"><button><img src={darkMode ? userIcon : userIcon} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
         )}
         <br></br>
         <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>

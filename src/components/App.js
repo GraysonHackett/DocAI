@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ref, uploadString } from "firebase/storage";
+import { storage, auth } from "../database/Firebase";
 import React, { useState } from 'react';
 import FileOptions from '../components/FileOptions'; 
 import Signup from '../authentication/Signup';
@@ -18,13 +20,19 @@ function App() {
   };
 
   const handleFileSelect = (fileUrl) => {
+    deleteHistory(); 
     setUploadedFile(fileUrl);
   };
+
+  const deleteHistory = () => {
+    uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), '');
+  }
 
   const toggleCollapse = () => {
     setCollapse(!collapse); 
   }
-// TODO : Clear on file change for chat-history 
+
+
   return (
     <Router>
       <div className={darkMode ? 'App dark-mode' : 'App'}>

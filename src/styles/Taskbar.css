@@ -139,6 +139,9 @@ p{
   width: 25px;
   height: 25px;
 }
+.App.dark-mode .actions img{ 
+  filter: invert(100%);
+}
 
 .collapsed button:nth-child(1) img {
   display: none;
@@ -176,8 +179,8 @@ p{
 .divider {
   border: none;
   border-top: 1px solid black;
-  width: 50px;
-  margin: 10px 0;
+  width: 45px;
+  margin-left: 5px;
 }
 .App.dark-mode .divider {
   border-top: 1px solid white;
