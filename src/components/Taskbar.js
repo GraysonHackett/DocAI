@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import choosefileIconLight from '../assets/folderlight.png';
 import fileuploadLightIcon from '../assets/fileupload.png';
 import choosefileIconDark from '../assets/folderlight.png';
-import fileuploadDarkIcon from '../assets/uploaddoc.png';
 import userIcon from '../assets/userpuffy.png';
 import signoutIcon from '../assets/signout.png'; 
 import { storage, auth } from "../database/Firebase";

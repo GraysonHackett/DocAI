@@ -23,7 +23,7 @@
 }
 
 .App.dark-mode .openai-container {
-  background-color: #000000;
+  background-color: var(--gray-90);
 }
 
 .top {
