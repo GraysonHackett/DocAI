@@ -107,6 +107,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <ul className="fileList">
           {fileList.map((file) => (
             <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
+              <img className="foldericon" src={choosefileIconDark}/>
               <input 
                 type="radio" 
                 id={file.name} 
@@ -141,7 +142,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
           <Link to="/fileoptions">
             <button>
               <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
-              <span className="hover-text">File Options</span>
+              <span className="control">Manage Files</span>
             </button>
           </Link>
         ) : (
@@ -155,7 +156,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
           <Link to="/login"><button><img src={darkMode ? userIcon : userIcon} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
         )}
         <br></br>
-        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
+        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="control">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
       </div>
     </div>
   );

@@ -17,9 +17,13 @@
   width: 85vw;
   height: 100vh;
   transition: width 0.5s ease;
+  overflow-y: hidden;
+  
+  
 }
 .openai-container.collapsed {
   width: 100vw;
+  
 }
 
 .App.dark-mode .openai-container {
@@ -74,6 +78,7 @@ padding-top: 20px;
 .text-box-container {
   position: relative; /* Make the container relative */
   width: 55vw;
+  
 }
 
 .text-box {
@@ -147,6 +152,9 @@ padding-top: 20px;
   overflow-y: auto; /* Enable vertical scrolling */
   flex-direction: column-reverse;
   padding-top: 50px;
+  
+  padding-right:.5%;
+  
 }
 
 /* Custom scrollbar for .messages-container */
@@ -154,10 +162,11 @@ padding-top: 20px;
   width: 8px; /* Width of the scrollbar */
   height: 8px; /* Height of the scrollbar */
   scrollbar-width: none; /* Hide the scrollbar by default */
+  
 }
 
 .messages-container::-webkit-scrollbar-thumb {
-  background: #888; /* Thumb color */
+  background: #e4e4e4; /* Thumb color */
   border-radius: 5px; /* Rounded corners */
 }
 
@@ -201,6 +210,13 @@ padding-top: 20px;
   line-height: 22px;
   margin: 0px 30vw 0px 0px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.message.ai a:link{
+  color: #59a8fc;
+  text-decoration: none;
+}
+.message.ai a:visited{
+  color: #a06afe;
 }
 .App.dark-mode .message.ai {
   background-color: rgb(35, 35, 35);
@@ -248,11 +264,10 @@ padding-top: 20px;
 }
 
 .welcome-image {
-  height: auto;
-  width: auto;
-  max-width: 100vw;
-  max-width: 100vh;
-  margin-left: 10vw;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 
 
