@@ -91,6 +91,8 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
+// TODO : Find a better display for the welcome page then just Welcome to DocAI, please sign in .... 
+
   return (
     <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
       {user ? (
@@ -132,7 +134,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         {user ? (
           <button onClick={handleClickUploadButton}>
             <img src={darkMode ? fileuploadLightIcon : fileuploadLightIcon} alt="File Upload" />
-            <span className="hover-text">Upload File</span>
+            <span className="control">Upload File</span>
           </button>
         ) : (
           null
@@ -151,9 +153,9 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <br></br>
         {user ? <hr className="divider" /> : null }
         {user ? (
-          <button onClick={handleSignOut}><img src={darkMode ? signoutIcon : signoutIcon} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
+          <button onClick={handleSignOut}><img src={darkMode ? signoutIcon : signoutIcon} alt="Sign Out" /><span className="control">Sign Out</span></button>
         ) : (
-          <Link to="/login"><button><img src={darkMode ? userIcon : userIcon} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+          <Link to="/login"><button><img src={darkMode ? userIcon : userIcon} alt="Sign In" /><span className="control">Sign In</span></button></Link>
         )}
         <br></br>
         <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="control">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>

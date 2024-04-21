@@ -56,6 +56,10 @@
   color: #007bff;
 }
 
+/* TODO: Fix the location of the "X" button in the FileOptions window and color correct for darkkmode
+  I would use the filter: invert() for the color of the file images, see how I did it in the taskbar.css for the file list 
+*/
+
 .deleteButton {
   background-color: transparent;
   color: white;
