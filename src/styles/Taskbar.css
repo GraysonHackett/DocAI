@@ -44,6 +44,7 @@ h3 {
 }
 
 .myFiles{
+  text-decoration: underline;
   opacity: 1;
   color: gray;
   font-size: 14px;
@@ -128,9 +129,10 @@ h3 {
   text-overflow: ellipsis;
 }
 
-.App.dark-mode .fileList li img {
+.App.dark-mode .fileList li img:not(.selected img) {
   filter: invert(100%);
 }
+
 
 .fileList input {
   border-radius: 50px;
@@ -152,6 +154,7 @@ h3 {
   padding-left:5px;
   width:98%;
 }
+
 
 .fileListWrapper {
   display: flex;
