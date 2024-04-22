@@ -19,11 +19,9 @@
   height: fit-content;
   background-color: rgba(255, 255, 255);
   text-align: left;
-  
   border-radius: 15px;
   border: 1px solid rgb(255, 255, 255);
   padding-bottom: 15px;
-  
 }
 .fileOptionsWrapper h2 {
   color: rgb(0, 0, 0);
@@ -32,18 +30,37 @@
   padding-bottom: 1%;
   padding-top: 2%;
 }
-.fileList {
-  list-style-type: none;
-}
 
-.fileList li {
-  margin-bottom: 10px;
+.fileOptionsList {
+  list-style-type: none;
+  color: black;
+  padding-left: 5px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.5s ease;
+}
+.fileOptionsList li {
+  text-decoration: underline;
+  justify-content: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 35px;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 10%;
+  padding-left: 5px;
+  text-overflow: ellipsis;
 }
 .foldericonfile{
   width:16px;
   padding-left: 3%;
 }
-.fileList a {
+
+.fileOptionsList a {
   text-decoration: none;
   color: #333;
   display: inline-block;
@@ -52,13 +69,9 @@
   margin-right: auto;
 }
 
-.fileList a:hover {
+.fileOptionsList a:hover {
   color: #007bff;
 }
-
-/* TODO: Fix the location of the "X" button in the FileOptions window and color correct for darkkmode
-  I would use the filter: invert() for the color of the file images, see how I did it in the taskbar.css for the file list 
-*/
 
 .deleteButton {
   background-color: transparent;
@@ -71,34 +84,31 @@
   padding-right: 7%;
 }
 
+.fileHeader {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
 .closebutton{
-  float: left;
-  top: 0;
-  right: 20px;
   width: 15px;
   height: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  border: none;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-right: 25px;
 }
-.closebutton img{
-  width: 1px;
+.closebuttonL:hover img{
+  width: 17px;
+  height: 17px;
 }
+
 .deleteButton img { 
   width: 20px;
   height: 20px;
   background-color: transparent;
-  
 }
-
 .deleteButton:hover img {
   height: 22px;
   width: 22px;
-}
-
-.mainPage { 
-  color: gray;
-  text-decoration: none;
-  
 }

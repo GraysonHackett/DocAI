@@ -4,7 +4,6 @@ import { auth } from '../database/Firebase';
 import '../styles/Authentication.css';
 import google from '../assets/google.png'; 
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import close from '../assets/close.png'; 
 
 function Login() {
   const [email, setEmail] = useState('');

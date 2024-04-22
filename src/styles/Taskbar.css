@@ -80,7 +80,7 @@ h3 {
   color: white; 
 }
 
-.dark-mode h2 {
+.dark-mode>h2 {
   color: white;
 }
 
@@ -172,7 +172,7 @@ h3 {
   width: 25px;
   height: 25px;
 }
-.App.dark-mode .actions img{ 
+.App.dark-mode .actions img { 
   filter: invert(100%);
 }
 

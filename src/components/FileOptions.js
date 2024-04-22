@@ -68,13 +68,15 @@ function FileOptions() {
     <div className="fileOptionsContainer">
       <div className="fileOptionsWrapper">
         <div className="header">
-        <h2>My Files</h2>
-        <Link to="/"><img className='closebutton' src={close} alt='loading welcome img'/> </Link>
+          <div className="fileHeader">
+            <h2 className="myFilesHeader">My Files</h2>
+            <Link to="/"><img className='closebutton' src={close} alt='loading welcome img'/> </Link>
+          </div>
         </div>
-        <ul className="fileList">
+        <ul className="fileOptionsList">
           {fileList.map((file, index) => (
             <li key={index}>
-              <img className="foldericonfile" src={choosefileIconDark}/>
+              <img className="foldericonfile" src={choosefileIconDark} alt="fileIcon"/>
               <a href={file.url} target="_blank" rel="noopener noreferrer">{file.name}</a>
               <button className="deleteButton" onClick={() => confirmDelete(file)}>
                 <img src={trashCanIcon} alt="Delete" />

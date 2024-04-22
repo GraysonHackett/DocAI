@@ -109,7 +109,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <ul className="fileList">
           {fileList.map((file) => (
             <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
-              <img className="foldericon" src={choosefileIconDark}/>
+              <img className="foldericon" src={choosefileIconDark} alt="fileIcon"/>
               <input 
                 type="radio" 
                 id={file.name} 
