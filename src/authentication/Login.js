@@ -58,7 +58,7 @@ function Login() {
   return (
     <div className="auth-container">
       <div className="auth-content">
-        <Link to="/"><img className='close' src={close} alt='loading welcome img'/> </Link>
+        <Link to="/" className="close-button">X</Link>
         <h2 className='login-signup'>Login</h2>
         <input
           type="email"

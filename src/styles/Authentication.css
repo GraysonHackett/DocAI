@@ -14,10 +14,6 @@
   
 }
 
-/* TODO: Fix the close button in the login page and add CSS for the continue with google button -- check how
-  the error codes look by using the wrong password just to make sure they're displaying in the right location
-*/
-
 .auth-content,
 .auth-content-signup {
   background-color: rgb(226, 226, 226);
@@ -116,9 +112,7 @@
   top: 0;
   right: 20px;
   width: 15px;
-  height: 15px;
-  text-decoration: none;
-  color: #333;
+  color: black;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -134,16 +128,16 @@
 }
 
 .google-sign-in-button {
-  background-color: transparent;
+  background-color: #007bff;
   position: fixed;
   width: fit-content;
-  height: fit-content + 5px;
+  height: 30px;
   white-space: nowrap;
-  color: black;
+  color: white;
   display: inline-flex;
   align-items: center; /* Align items vertically in the center */
+  border: none;
   border-radius: 50px;
-  border: 1px solid black;
   font-size: 12px;
   cursor: pointer;
   position: relative;
@@ -156,4 +150,6 @@
   width: 25px;
   height: 25px;
   margin-right: 5px; /* Add some space between the image and text */
+  box-shadow: 0px 0px 10px 0px rgba(1, 1, 1, 0.5); /* Adjust the values as needed */
+  border-radius: 10px;
 }
