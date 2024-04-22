@@ -31,7 +31,7 @@ html {
   border: none;
   position: fixed;
   margin-top: calc(50vh - 1.5rem);
-  margin-left: calc(15vw + 10px);
+  margin-left: calc(15vw + 5px);
   height: 3rem;
   width: 1rem;
   border-radius: 25%;
