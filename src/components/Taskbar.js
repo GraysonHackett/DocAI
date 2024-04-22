@@ -103,7 +103,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
       {user ? (
         null
       ) : (
-        <p className="sign-in"> Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+        <p className="sign-in"> Please sign in or register to upload your own documentation and interact with the chatbot!</p>
       )}
       <div className="fileListWrapper">
         <ul className="fileList">

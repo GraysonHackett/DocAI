@@ -22,7 +22,7 @@ h3 {
   color: white;
 }
 
-/* TODO: Find a way to have the 0.5s opacity transition for when you are coming back from the .collapsed mode */
+/* TODO: Find a way to have the 0.5s opacity transition for when you are coming back from the .collapsed mode ? */
 
 .control{
   opacity: 1;
@@ -33,14 +33,13 @@ h3 {
   color: black;
   font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease-in-out;
 }
 .App.dark-mode .control {
   color: white;
 }
 .collapsed .control {
   opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 .myFiles{
