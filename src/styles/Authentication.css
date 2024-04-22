@@ -11,7 +11,6 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  
 }
 
 .auth-content,
@@ -22,16 +21,12 @@
   height: 300px;
   width: 300px;
   position: relative;
-  
-}
-.auth-content-signup {
   padding-bottom: 80px;
 }
 
 .auth-container h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  
 }
 
 .auth-container input[type='email'],
@@ -112,7 +107,9 @@
   top: 0;
   right: 20px;
   width: 15px;
-  color: black;
+  height: 15px;
+  text-decoration: none;
+  color: #333;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -128,16 +125,16 @@
 }
 
 .google-sign-in-button {
-  background-color: #007bff;
+  background-color: transparent;
   position: fixed;
   width: fit-content;
-  height: 30px;
+  height: fit-content  + 5px;
   white-space: nowrap;
-  color: white;
+  color: black;
   display: inline-flex;
   align-items: center; /* Align items vertically in the center */
-  border: none;
   border-radius: 50px;
+  border: 1px solid black;
   font-size: 12px;
   cursor: pointer;
   position: relative;
@@ -150,6 +147,4 @@
   width: 25px;
   height: 25px;
   margin-right: 5px; /* Add some space between the image and text */
-  box-shadow: 0px 0px 10px 0px rgba(1, 1, 1, 0.5); /* Adjust the values as needed */
-  border-radius: 10px;
 }
