@@ -1,15 +1,14 @@
 // Taskbar.js
 import { listAll, getDownloadURL, ref, uploadBytes, uploadString } from "firebase/storage";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import choosefileIconLight from '../assets/choosefileLight.png';
-import fileuploadLightIcon from '../assets/fileuploadLight.png';
-import choosefileIconDark from '../assets/choosefileDark.png';
-import fileuploadDarkIcon from '../assets/fileuploadDark.png';
-import userIconLight from '../assets/userIconLight.png';
-import userIconDark from '../assets/userIconDark.png';
+import choosefileIconLight from '../assets/folderlight.png';
+import fileuploadLightIcon from '../assets/fileupload.png';
+import choosefileIconDark from '../assets/folderlight.png';
+import userIcon from '../assets/userpuffy.png';
+import signoutIcon from '../assets/signout.png'; 
 import { storage, auth } from "../database/Firebase";
-import lightmodeIcon from '../assets/lightmode.png';
-import darkmodeIcon from '../assets/darkmode.png';
+import lightmodeIcon from '../assets/darkmodelight.png';
+import darkmodeIcon from '../assets/darkmodelight.png';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import '../styles/Taskbar.css';
@@ -92,9 +91,10 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
     fileInputRef.current.click(); // Trigger file input click event
   };
 
+// TODO : Find a better display for the welcome page then just Welcome to DocAI, please sign in .... 
+
   return (
     <div className={isCollapsed ? 'taskbar collapsed' : 'taskbar'}>
-      {user ? <h3>DocAI</h3> : null }
       {user ? (
       <p className="myFiles">My Files</p>
       ) : 
@@ -103,12 +103,13 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
       {user ? (
         null
       ) : (
-        <p className="sign-in"> Please sign in or register to upload your own documentation, and interact with the chatbot!</p>
+        <p className="sign-in"> Please sign in or register to upload your own documentation and interact with the chatbot!</p>
       )}
       <div className="fileListWrapper">
         <ul className="fileList">
           {fileList.map((file) => (
             <li key={file.name} className={file === selectedFile ? 'selected' : ''}>
+              <img className="foldericon" src={choosefileIconDark} alt="fileIcon"/>
               <input 
                 type="radio" 
                 id={file.name} 
@@ -132,8 +133,8 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
       <div className="actions">
         {user ? (
           <button onClick={handleClickUploadButton}>
-            <img src={darkMode ? fileuploadDarkIcon : fileuploadLightIcon} alt="File Upload" />
-            <span className="hover-text">Upload File</span>
+            <img src={darkMode ? fileuploadLightIcon : fileuploadLightIcon} alt="File Upload" />
+            <span className="control">Upload File</span>
           </button>
         ) : (
           null
@@ -143,7 +144,7 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
           <Link to="/fileoptions">
             <button>
               <img src={darkMode ? choosefileIconDark : choosefileIconLight} alt="File Options" />
-              <span className="hover-text">File Options</span>
+              <span className="control">Manage Files</span>
             </button>
           </Link>
         ) : (
@@ -152,12 +153,12 @@ function Taskbar({ onSelectFile, darkMode, toggleDarkMode, isCollapsed}) {
         <br></br>
         {user ? <hr className="divider" /> : null }
         {user ? (
-          <button onClick={handleSignOut}><img src={darkMode ? userIconDark : userIconLight} alt="Sign Out" /><span className="hover-text">Sign Out</span></button>
+          <button onClick={handleSignOut}><img src={darkMode ? signoutIcon : signoutIcon} alt="Sign Out" /><span className="control">Sign Out</span></button>
         ) : (
-          <Link to="/login"><button><img src={darkMode ? userIconDark : userIconLight} alt="Sign In" /><span className="hover-text">Sign In</span></button></Link>
+          <Link to="/login"><button><img src={darkMode ? userIcon : userIcon} alt="Sign In" /><span className="control">Sign In</span></button></Link>
         )}
         <br></br>
-        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="hover-text">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
+        <button onClick={toggleDarkMode}><img src={darkMode ? darkmodeIcon : lightmodeIcon} alt="Dark mode" /><span className="control">{darkMode ? "Light Mode" : "Dark Mode"}</span></button><br></br>
       </div>
     </div>
   );

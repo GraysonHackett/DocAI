@@ -1,11 +1,10 @@
 /* Taskbar.css */
 
 .taskbar {
-  margin: auto;
   background-color: #f9f9f9;
-  padding-left: 10px;
+  padding-left: 0;
   height: 100vh;
-  width: 20vw;
+  width: 15vw;
   transition: width 0.5s ease, display 0s 0.5s;
 }
 .taskbar.collapsed {
@@ -13,7 +12,7 @@
 }
 
 .App.dark-mode .taskbar {
-  background-color: #1d1d1d;
+  background-color: #151515;
 }
 
 h3 {
@@ -23,14 +22,42 @@ h3 {
   color: white;
 }
 
-.myFiles{
+/* TODO: Find a way to have the 0.5s opacity transition for when you are coming back from the .collapsed mode ? */
+
+.control{
+  opacity: 1;
+  position: absolute;
+  top: 30%;
+  left: calc(100% + 0px);
+  white-space: nowrap;
   color: black;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: opacity 0.5s ease-in-out;
+}
+.App.dark-mode .control {
+  color: white;
+}
+.collapsed .control {
+  opacity: 0;
+}
+
+.myFiles{
+  text-decoration: underline;
+  opacity: 1;
+  color: gray;
+  font-size: 14px;
+  padding-top: 35px;
+  padding-left: 3.5%;
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: opacity 0.5s ease;
 }
 .App.dark-mode .myFiles {
   color: white;
 }
 .collapsed .myFiles {
-  display: none;
+  opacity: 0;
 }
 
 .welcome-message {
@@ -53,7 +80,7 @@ h3 {
   color: white; 
 }
 
-.dark-mode h2 {
+.dark-mode>h2 {
   color: white;
 }
 
@@ -64,29 +91,52 @@ h3 {
 .fileList {
   list-style-type: none;
   color: black;
-  padding: 0;
+  padding-left: 5px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.5s ease;
 }
+.foldericon{
+  width:15px;
+  padding-right: 12px;
+}
+.dark-mode .fileList {
+  list-style-type: none;
+  color: rgb(255, 255, 255);
+  padding-left: 5px;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .collapsed .fileList {
-  display: none;
+  opacity: 0;
 }
 
 .fileList li {
-  justify-content: center;
+  justify-content: left;
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  background-color: #d3d3d3;
-  border-radius: 50px;
-  height: 50px;
-  width: 80%;
-  margin-left: 10%;
+  height: 35px;
+  width: 100%;
+  margin-left: 0%;
   margin-right: 10%;
+  padding-left: 5px;
+  text-overflow: ellipsis;
 }
+
+.App.dark-mode .fileList li img:not(.selected img) {
+  filter: invert(100%);
+}
+
 
 .fileList input {
   border-radius: 50px;
   height: 50px;
-  width: 80%;
+  width: 100%;
   margin-left: 10%;
   margin-right: 10%;
   display: none;
@@ -97,10 +147,13 @@ h3 {
 }
 
 .fileList .selected {
-  background-color: red;
-  color: white;
-  border-radius: 50px;
+  background-color: rgb(175, 212, 240);
+  color: black;
+  border-radius:5px;
+  padding-left:5px;
+  width:98%;
 }
+
 
 .fileListWrapper {
   display: flex;
@@ -118,8 +171,11 @@ h3 {
 }
 
 .actions img {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
+}
+.App.dark-mode .actions img { 
+  filter: invert(100%);
 }
 
 .collapsed button:nth-child(1) img {
@@ -136,16 +192,6 @@ h3 {
   padding: 0;
 }
 
-.actions button .hover-text {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 15px);
-  white-space: nowrap;
-  color: black;
-  font-size: 17.5px;
-}
-
 .App.dark-mode .actions .hover-text {
   color: white;
 }
@@ -158,13 +204,14 @@ h3 {
 .divider {
   border: none;
   border-top: 1px solid black;
-  width: calc(100% - 10px);
+  width: 40%;
   margin: 10px 0;
+  margin-left: 4%;
   transition: width 0.5s ease;
 }
 .App.dark-mode .divider {
   border-top: 1px solid white;
 }
 .collapsed .divider {
-  width: 50px;
+  width: 6%;
 }

@@ -3,8 +3,10 @@ import { listAll, getDownloadURL, ref, deleteObject } from "firebase/storage";
 import React, { useState, useEffect, useCallback } from "react";
 import { storage, auth } from "../database/Firebase";
 import trashCanIcon from '../assets/trashcan.png'
+import choosefileIconDark from '../assets/folderlight.png';
 import { Link } from "react-router-dom";
 import '../styles/FileOptions.css';
+import close from '../assets/close.png'; 
 
 function FileOptions() {
   const [fileList, setFileList] = useState([]);
@@ -65,10 +67,16 @@ function FileOptions() {
   return (
     <div className="fileOptionsContainer">
       <div className="fileOptionsWrapper">
-        <h2>My Files</h2>
-        <ul className="fileList">
+        <div className="header">
+          <div className="fileHeader">
+            <h2 className="myFilesHeader">My Files</h2>
+            <Link to="/"><img className='closebutton' src={close} alt='loading welcome img'/> </Link>
+          </div>
+        </div>
+        <ul className="fileOptionsList">
           {fileList.map((file, index) => (
             <li key={index}>
+              <img className="foldericonfile" src={choosefileIconDark} alt="fileIcon"/>
               <a href={file.url} target="_blank" rel="noopener noreferrer">{file.name}</a>
               <button className="deleteButton" onClick={() => confirmDelete(file)}>
                 <img src={trashCanIcon} alt="Delete" />
@@ -76,7 +84,6 @@ function FileOptions() {
             </li>
           ))}
         </ul>
-        <Link className="mainPage" to="/">Back to main page</Link>
       </div>
     </div>
   );

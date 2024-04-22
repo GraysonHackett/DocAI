@@ -1,35 +1,66 @@
 /* FileOptions.css */
 .fileOptionsContainer {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: rgba(91, 91, 91, 0.6); /* Semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  backdrop-filter: blur(2px)
+  
 }
 
 .fileOptionsWrapper {
   width: 400px;
   height: fit-content;
-  background-color: rgba(0, 0, 0, 0.6);
-  text-align: center;
-  color: white;
-  border-radius: 50px;
-  border: 1px solid black;
+  background-color: rgba(255, 255, 255);
+  text-align: left;
+  border-radius: 15px;
+  border: 1px solid rgb(255, 255, 255);
   padding-bottom: 15px;
 }
+.fileOptionsWrapper h2 {
+  color: rgb(0, 0, 0);
+  padding-left: 6%;
+  font-size: 17px;
+  padding-bottom: 1%;
+  padding-top: 2%;
+}
 
-.fileList {
+.fileOptionsList {
   list-style-type: none;
+  color: black;
+  padding-left: 5px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.5s ease;
+}
+.fileOptionsList li {
+  text-decoration: underline;
+  justify-content: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  height: 35px;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 10%;
+  padding-left: 5px;
+  text-overflow: ellipsis;
+}
+.foldericonfile{
+  width:16px;
+  padding-left: 3%;
 }
 
-.fileList li {
-  margin-bottom: 10px;
-}
-
-.fileList a {
+.fileOptionsList a {
   text-decoration: none;
   color: #333;
   display: inline-block;
@@ -38,7 +69,7 @@
   margin-right: auto;
 }
 
-.fileList a:hover {
+.fileOptionsList a:hover {
   color: #007bff;
 }
 
@@ -50,18 +81,34 @@
   border-radius: 5px;
   cursor: pointer;
   margin-left: auto;
+  padding-right: 7%;
+}
+
+.fileHeader {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.closebutton{
+  width: 15px;
+  height: 15px;
+  border: none;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-right: 25px;
+}
+.closebuttonL:hover img{
+  width: 17px;
+  height: 17px;
 }
 
 .deleteButton img { 
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background-color: transparent;
 }
-
 .deleteButton:hover img {
-  height: 35px;
-}
-
-.mainPage { 
-  color: white;
+  height: 22px;
+  width: 22px;
 }

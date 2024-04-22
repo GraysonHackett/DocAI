@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ref, uploadString } from "firebase/storage";
+import { storage, auth } from "../database/Firebase";
 import React, { useState } from 'react';
 import FileOptions from '../components/FileOptions'; 
 import Signup from '../authentication/Signup';
 import Login from '../authentication/Login';
 import Chatbot from './Chatbot';
 import Taskbar from './Taskbar';
-import line from '../assets/line.png'
+import line from '../assets/linec.png'
 import '../styles/App.css';
 
 function App() {
@@ -18,12 +20,18 @@ function App() {
   };
 
   const handleFileSelect = (fileUrl) => {
+    deleteHistory(); 
     setUploadedFile(fileUrl);
   };
+
+  const deleteHistory = () => {
+    uploadString((ref(storage, `chatHistory/${auth.currentUser.uid}/chatHistory.txt`)), '');
+  }
 
   const toggleCollapse = () => {
     setCollapse(!collapse); 
   }
+
 
   return (
     <Router>
