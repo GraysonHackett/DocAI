@@ -58,14 +58,14 @@ html {
 }
 
 .collapseButton.collapsed:hover .base-image-1 {
-  transform: translateY(0.15rem) rotate(-15deg) translateZ(0px);
+  transform: translateY(0.2rem) rotate(-15deg) translateZ(0px);
 }
 .collapseButton.collapsed:hover .base-image-2 {
   transform: translateY(0.1rem) rotate(15deg) translateZ(0px);
 }
 
 .collapseButton:not(collapsed):hover .base-image-1 {
-  transform: translateY(0.15rem) rotate(15deg) translateZ(0px);
+  transform: translateY(0.2rem) rotate(15deg) translateZ(0px);
 }
 .collapseButton:not(collapsed):hover .base-image-2 {
   transform: translateY(0.1rem) rotate(-15deg) translateZ(0px);
