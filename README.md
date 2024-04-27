@@ -100,4 +100,4 @@ The component interacts with the OpenAI API using the Axios-dependency to send r
 
 This project demonstrates the integration of an AI-powered chatbot into a React application for assisting developers in understanding project documentation more effectively.For any issues or suggestions, please feel free to open an issue in the GitHub repository.
 
-![DocAI-proto](https://github.com/GraysonHackett/DocAI/assets/44790226/19d4f743-5c82-409d-aaba-764caef4bd04)
+![DocAI-proto](/src/assets/Demo.png)
