@@ -1,8 +1,8 @@
-# DocAI - Temp README as of (03/22)
+# DocAI
 
 ## <u>Overview</u>
 
-This project is a capstone class project developed in collaboration with the College of Charleston and a RedHat mentor. The aim of this project is to create a new way to assist developers in reading, interacting, and understanding documentation more efficiently.
+This repo hosts a capstone class project developed in collaboration with the College of Charleston and a Red Hat distinguished engineer mentor. The projects aim was to create a new way to assist developers in reading, interacting, and understanding documentation more efficiently. DocAI connectes the power of AI into a chatbot that allows you to interact directly with your project documentation. 
 
 ## <u>Setup Instructions</u>
 
@@ -19,13 +19,14 @@ To run the project utilizing the OpenAI model, follow these setup instructions:
 3. Create a `.env` file in the project root directory and add your (ChatGPT-API & Firebase) private key's to it. The file should look like this:
    ```js
    REACT_APP_API_KEY=your_openai_api_key_here
-   REACT_APP_API_KEY=your_firebase_api_key
-   REACT_APP_AUTH_DOMAIN=your_firebase_auth_domain
-   REACT_APP_PROJECT_ID=your_firebase_project_id
-   REACT_APP_STORAGE_BUCKET=your_firebase_storage_bucket
-   REACT_APP_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-   REACT_APP_APP_ID=your_firebase_app_id
-   REACT_APP_MEASUREMENT_ID=your_firebase_measurement_id
+   
+   REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+   REACT_APP_FIREBASE_MEASUREMENT_ID=your_firebase_measurement_id
    ```
 4. Run the project using the following command:
    ```sh
@@ -47,11 +48,7 @@ To run the project utilizing the OpenAI model, follow these setup instructions:
    ```sh
    ollama pull llama2
    ```
-
-## <u>Code Explanation</u>
-
-The main component of the project is the `Chatbot.js` file, which contains the implementation of the chatbot using React.
-
+   
 ### <u>Dependencies Used</u>
 
 > `openai`: Used for accessing the OpenAI API and its elements.<br>
@@ -103,4 +100,4 @@ The component interacts with the OpenAI API using the Axios-dependency to send r
 
 This project demonstrates the integration of an AI-powered chatbot into a React application for assisting developers in understanding project documentation more effectively.For any issues or suggestions, please feel free to open an issue in the GitHub repository.
 
-![DocAI-proto](https://github.com/GraysonHackett/DocAI/assets/44790226/19d4f743-5c82-409d-aaba-764caef4bd04)
+![DocAI](/src/assets/Demo.png)
