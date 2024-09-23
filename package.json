@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.3",
+    "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@firebase/auth-compat": "^0.5.14",
     "@firebase/firestore": "^4.7.2",
@@ -26,6 +27,7 @@
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
+    "web-vitals": "^4.2.3"
     "web-vitals": "^4.2.3"
   },
   "scripts": {
